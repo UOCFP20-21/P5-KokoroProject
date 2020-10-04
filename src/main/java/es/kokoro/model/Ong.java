@@ -7,82 +7,82 @@ public class Ong {
     /**
      * Nombre Ong
      */
-    private String NombreOng;
+    private String nombreOng;
     /**
      * Listado Delegaciones
      */
-    private List<Delegacion> DelegacionList;
+    private List<Delegacion> delegacionList;
     /**
      * Listado Ingresos
      */
-    private List<Ingresos> IngresosList;
+    private List<Ingresos> ingresosList;
     /**
      * Listado Socios
      */
-    private List<Socio> SociosList;
+    private List<Socio> sociosList;
     /**
      * Listado Proyectos
      */
-    private List<Proyecto> ProyectosList;
+    private List<Proyecto> proyectosList;
     /**
      * Nombre Sede
      */
-    private Sede Sede;
+    private Sede sede;
+
+    public Ong(String nombreOng, List<Delegacion> delegacionList, List<Ingresos> ingresosList, List<Socio> sociosList, List<Proyecto> proyectosList, Sede sede) {
+        this.nombreOng = nombreOng;
+        this.delegacionList = delegacionList;
+        this.ingresosList = ingresosList;
+        this.sociosList = sociosList;
+        this.proyectosList = proyectosList;
+        this.sede = sede;
+    }
 
     public String getNombreOng() {
-        return NombreOng;
+        return nombreOng;
     }
 
     public void setNombreOng(String nombreOng) {
-        NombreOng = nombreOng;
+        this.nombreOng = nombreOng;
     }
 
     public List<Delegacion> getDelegacionList() {
-        return DelegacionList;
+        return delegacionList;
     }
 
     public void setDelegacionList(List<Delegacion> delegacionList) {
-        DelegacionList = delegacionList;
+        this.delegacionList = delegacionList;
     }
 
     public List<Ingresos> getIngresosList() {
-        return IngresosList;
+        return ingresosList;
     }
 
     public void setIngresosList(List<Ingresos> ingresosList) {
-        IngresosList = ingresosList;
+        this.ingresosList = ingresosList;
     }
 
     public List<Socio> getSociosList() {
-        return SociosList;
+        return sociosList;
     }
 
     public void setSociosList(List<Socio> sociosList) {
-        SociosList = sociosList;
+        this.sociosList = sociosList;
     }
 
     public List<Proyecto> getProyectosList() {
-        return ProyectosList;
+        return proyectosList;
     }
 
     public void setProyectosList(List<Proyecto> proyectosList) {
-        ProyectosList = proyectosList;
+        this.proyectosList = proyectosList;
     }
 
-    public es.kokoro.model.Sede getSede() {
-        return Sede;
+    public Sede getSede() {
+        return sede;
     }
 
-    public void setSede(es.kokoro.model.Sede sede) {
-        Sede = sede;
-    }
-
-    public Ong(String nombreOng, List<Delegacion> delegacionList, List<Ingresos> ingresosList, List<Socio> sociosList, List<Proyecto> proyectosList, es.kokoro.model.Sede sede) {
-        NombreOng = nombreOng;
-        DelegacionList = delegacionList;
-        IngresosList = ingresosList;
-        SociosList = sociosList;
-        ProyectosList = proyectosList;
-        Sede = sede;
+    public void setSede(Sede sede) {
+        this.sede = sede;
     }
 }
