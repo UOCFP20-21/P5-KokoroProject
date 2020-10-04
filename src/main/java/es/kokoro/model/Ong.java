@@ -9,19 +9,19 @@ public class Ong {
      */
     private String NombreOng;
     /**
-     *Listado Delegaciones
+     * Listado Delegaciones
      */
     private List<Delegacion> DelegacionList;
     /**
-     *Listado Ingresos
+     * Listado Ingresos
      */
     private List<Ingresos> IngresosList;
     /**
-     *Listado Socios
+     * Listado Socios
      */
     private List<Socio> SociosList;
     /**
-     *Listado Proyectos
+     * Listado Proyectos
      */
     private List<Proyecto> ProyectosList;
 }
