@@ -2,7 +2,7 @@ package es.kokoro.model;
 
 import java.util.Date;
 
-public class Contratados extends Trabajador{
+public class Contratado extends Trabajador{
     private Date inicioContract;
     private Date finalContract;
     private float salario;
