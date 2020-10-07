@@ -21,7 +21,7 @@ public class Legado extends Empresa {
      * @param email Herencia de Empresa
      * @param idLegado Índice Legado
      */
-    public Legado(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, int telefono, String email, Long idLegado) {
+    public Legado(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, String telefono, String email, Long idLegado) {
         super(idEmpresa, nombre, pais, poblacion, direccionSocial, razonSocial, identificacionSocial, telefono, email);
         this.idLegado = idLegado;
     }

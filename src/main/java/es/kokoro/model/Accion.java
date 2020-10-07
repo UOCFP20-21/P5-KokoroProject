@@ -9,7 +9,7 @@ public class Accion {
     private Long idAccion;
     private String nombre;
     private String descripcion;
-    private Double coste;
+    private double coste;
 
     //Constructor
     /***
@@ -19,7 +19,7 @@ public class Accion {
      * @param descripcion Descripcion Accion
      * @param coste Coste accion
      */
-    public Accion(Long idAccion, String nombre, String descripcion, Double coste) {
+    public Accion(Long idAccion, String nombre, String descripcion, double coste) {
         this.idAccion = idAccion;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -73,14 +73,14 @@ public class Accion {
      * Devuelve el cosste de la accion
      * @return coste accion
      */
-    public Double getCoste() {
+    public double getCoste() {
         return coste;
     }
     /**
      * Modifica el coste de la accion
      * @param coste
      */
-    public void setCoste(Double coste) {
+    public void setCoste(double coste) {
         this.coste = coste;
     }
 

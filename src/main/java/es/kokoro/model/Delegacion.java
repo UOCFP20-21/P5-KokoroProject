@@ -33,7 +33,7 @@ public class Delegacion extends Empresa{
      * @param ong Ong
      * @param areaOperativa Area Operativa
      */
-    public Delegacion(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, int telefono, String email, Long idDelegacion, List<Trabajador> trabajadorList, Ong ong, String areaOperativa) {
+    public Delegacion(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, String telefono, String email, Long idDelegacion, List<Trabajador> trabajadorList, Ong ong, String areaOperativa) {
         super(idEmpresa, nombre, pais, poblacion, direccionSocial, razonSocial, identificacionSocial, telefono, email);
         this.idDelegacion = idDelegacion;
         this.trabajadorList = trabajadorList;

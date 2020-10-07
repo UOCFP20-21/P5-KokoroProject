@@ -29,7 +29,7 @@ public class Sede extends Empresa {
      * @param trabajadorList Listado de Trabajadores de la ONG
      * @param ong Objeto ONG con todas sus características.
      */
-    public Sede(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, int telefono, String email, List<Trabajador> trabajadorList, Ong ong) {
+    public Sede(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, String telefono, String email, List<Trabajador> trabajadorList, Ong ong) {
         super(idEmpresa, nombre, pais, poblacion, direccionSocial, razonSocial, identificacionSocial, telefono, email);
         this.trabajadorList = trabajadorList;
         this.ong = ong;

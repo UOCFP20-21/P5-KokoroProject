@@ -6,26 +6,26 @@ public class Ong {
 
     private String nombreOng;
     private List<Delegacion> delegacionList;
-    private List<Ingreso> ingresosList;
-    private List<Socio> sociosList;
-    private List<Proyecto> proyectosList;
+    private List<Ingreso> ingresoList;
+    private List<Socio> socioList;
+    private List<Proyecto> proyectoList;
     private Sede sede;
 
     /***
      *
      * @param nombreOng Nombre de la ONG
      * @param delegacionList Listado de Delegaciones
-     * @param ingresosList Listado de Ingresos
-     * @param sociosList Listado de socios
-     * @param proyectosList Listado de Proyectos
+     * @param ingresoList Listado de Ingresos
+     * @param socioList Listado de socios
+     * @param proyectoList Listado de Proyectos
      * @param sede Objeto de Tipo Sede
      */
-    public Ong(String nombreOng, List<Delegacion> delegacionList, List<Ingreso> ingresosList, List<Socio> sociosList, List<Proyecto> proyectosList, Sede sede) {
+    public Ong(String nombreOng, List<Delegacion> delegacionList, List<Ingreso> ingresoList, List<Socio> socioList, List<Proyecto> proyectoList, Sede sede) {
         this.nombreOng = nombreOng;
         this.delegacionList = delegacionList;
-        this.ingresosList = ingresosList;
-        this.sociosList = sociosList;
-        this.proyectosList = proyectosList;
+        this.ingresoList = ingresoList;
+        this.socioList = socioList;
+        this.proyectoList = proyectoList;
         this.sede = sede;
     }
 
@@ -65,48 +65,48 @@ public class Ong {
      *
      * @return ingresosList
      */
-    public List<Ingreso> getIngresosList() {
-        return ingresosList;
+    public List<Ingreso> getIngresoList() {
+        return ingresoList;
     }
 
     /***
      *
-     * @param ingresosList ingresosList
+     * @param ingresoList ingresosList
      */
-    public void setIngresosList(List<Ingreso> ingresosList) {
-        this.ingresosList = ingresosList;
+    public void setIngresoList(List<Ingreso> ingresoList) {
+        this.ingresoList = ingresoList;
     }
 
     /***
      *
      * @return sociosList
      */
-    public List<Socio> getSociosList() {
-        return sociosList;
+    public List<Socio> getSocioList() {
+        return socioList;
     }
 
     /***
      *
-     * @param sociosList sociosList
+     * @param socioList sociosList
      */
-    public void setSociosList(List<Socio> sociosList) {
-        this.sociosList = sociosList;
+    public void setSocioList(List<Socio> socioList) {
+        this.socioList = socioList;
     }
 
     /***
      *
      * @return proyectosList
      */
-    public List<Proyecto> getProyectosList() {
-        return proyectosList;
+    public List<Proyecto> getProyectoList() {
+        return proyectoList;
     }
 
     /***
      *
-     * @param proyectosList
+     * @param proyectoList
      */
-    public void setProyectosList(List<Proyecto> proyectosList) {
-        this.proyectosList = proyectosList;
+    public void setProyectoList(List<Proyecto> proyectoList) {
+        this.proyectoList = proyectoList;
     }
 
     /***
@@ -130,9 +130,9 @@ public class Ong {
         return "Ong{" +
                 "nombreOng='" + nombreOng + '\'' +
                 ", delegacionList=" + delegacionList.toString() +
-                ", ingresosList=" + ingresosList.toString() +
-                ", sociosList=" + sociosList.toString() +
-                ", proyectosList=" + proyectosList.toString() +
+                ", ingresoList=" + ingresoList.toString() +
+                ", socioList=" + socioList.toString() +
+                ", proyectoList=" + proyectoList.toString() +
                 ", sede=" + sede.toString() +
                 '}';
     }

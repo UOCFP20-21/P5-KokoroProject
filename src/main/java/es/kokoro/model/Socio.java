@@ -1,6 +1,6 @@
 package es.kokoro.model;
 
-import es.kokoro.enums.Periodos;
+import es.kokoro.enums.Periodo;
 import es.kokoro.model.interfaces.iIngreso;
 
 /***
@@ -8,7 +8,7 @@ import es.kokoro.model.interfaces.iIngreso;
  */
 public class Socio extends Persona implements iIngreso {
     private Long idSocio;
-    private Periodos periodo;
+    private Periodo periodo;
     private double cuota;
     private boolean estado = false;
 
@@ -28,7 +28,7 @@ public class Socio extends Persona implements iIngreso {
      * @param cuota Cantidad a pagar
      * @param estado Estado del Socio (activo o no)
      */
-    public Socio(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idSocio, Periodos periodo, double cuota, boolean estado) {
+    public Socio(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idSocio, Periodo periodo, double cuota, boolean estado) {
         super(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email);
         this.idSocio = idSocio;
         this.periodo = periodo;
@@ -56,7 +56,7 @@ public class Socio extends Persona implements iIngreso {
      *
      * @return periodo
      */
-    public Periodos getPeriodo() {
+    public Periodo getPeriodo() {
         return periodo;
     }
 
@@ -64,7 +64,7 @@ public class Socio extends Persona implements iIngreso {
      * Definimos el valor de periodo
      * @param periodo
      */
-    public void setPeriodo(Periodos periodo) {
+    public void setPeriodo(Periodo periodo) {
         this.periodo = periodo;
     }
 

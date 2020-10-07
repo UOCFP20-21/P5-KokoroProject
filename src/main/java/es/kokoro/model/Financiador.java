@@ -72,7 +72,7 @@ public class Financiador implements iFinanciador {
 
     /***
      *
-     * @param financiaciónAportada
+     * @param financiacionAportada
      */
     public void setFinanciacionAportada(double financiacionAportada) {
         this.financiacionAportada = financiacionAportada;
