@@ -11,24 +11,31 @@ import java.util.List;
 public class Sede extends Empresa {
 
     //Atributos
-    /**
-     * Listado de trabajadores
-     */
     private List<Trabajador> trabajadorList;
-    /**
-     *
-     * Ong
-     * */
     private Ong ong;
 
-
-    //Constructor
-    public Sede(Ong ong){
-        super();
-        this.ong=ong;
+    /***
+     * Constructor de la Clase Sede.
+     * Esta clase no tiene Id porque la sede es única por lo que los valores que no pertenezcan a Empresa se guardarán probablemente en otra tabla junto a ONG (u otro sitio)
+     * @param idEmpresa @see Empresa
+     * @param nombre @see Empresa
+     * @param pais @see Empresa
+     * @param poblacion @see Empresa
+     * @param direccionSocial @see Empresa
+     * @param razonSocial @see Empresa
+     * @param identificacionSocial @see Empresa
+     * @param telefono @see Empresa
+     * @param email @see Empresa
+     * @param trabajadorList Listado de Trabajadores de la ONG
+     * @param ong Objeto ONG con todas sus características.
+     */
+    public Sede(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, int telefono, String email, List<Trabajador> trabajadorList, Ong ong) {
+        super(idEmpresa, nombre, pais, poblacion, direccionSocial, razonSocial, identificacionSocial, telefono, email);
+        this.trabajadorList = trabajadorList;
+        this.ong = ong;
     }
 
-    //Metodos publicos
+//Metodos publicos
 
     /**
      * Devuelve el listado de trabajadores
@@ -67,6 +74,12 @@ public class Sede extends Empresa {
         this.ong = ong;
     }
 
-
+    @Override
+    public String toString() {
+        return "Sede{" +
+                "trabajadorList=" + trabajadorList.toString() +
+                ", ong=" + ong +
+                '}';
     }
+}
 

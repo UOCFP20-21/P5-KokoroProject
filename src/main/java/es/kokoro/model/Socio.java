@@ -1,11 +1,12 @@
 package es.kokoro.model;
 
 import es.kokoro.enums.Periodos;
+import es.kokoro.model.interfaces.iIngreso;
 
 /***
  * @author Kokoro
  */
-public class Socio extends Persona{
+public class Socio extends Persona implements iIngreso {
     private Long idSocio;
     private Periodos periodo;
     private double cuota;
@@ -13,19 +14,19 @@ public class Socio extends Persona{
 
     /***
      * Constructor de la clase Socio
-     * @param idPersona
-     * @param nombre
-     * @param apellidos
-     * @param identificador
-     * @param nacionalidad
-     * @param direccion
-     * @param poblacion
-     * @param telefono
-     * @param email
-     * @param idSocio
-     * @param periodo
-     * @param cuota
-     * @param estado
+     * @param idPersona ID de Persona
+     * @param nombre Nombre de Persona
+     * @param apellidos Apellidos de Persona
+     * @param identificador DNI/NIE de Persona
+     * @param nacionalidad país de procedencia
+     * @param direccion de residencia
+     * @param poblacion de residencia
+     * @param telefono de contacto
+     * @param email de contacto
+     * @param idSocio Número de socio
+     * @param periodo de pago
+     * @param cuota Cantidad a pagar
+     * @param estado Estado del Socio (activo o no)
      */
     public Socio(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idSocio, Periodos periodo, double cuota, boolean estado) {
         super(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email);
@@ -51,26 +52,50 @@ public class Socio extends Persona{
         this.idSocio = idSocio;
     }
 
+    /***
+     *
+     * @return periodo
+     */
     public Periodos getPeriodo() {
         return periodo;
     }
 
+    /***
+     * Definimos el valor de periodo
+     * @param periodo
+     */
     public void setPeriodo(Periodos periodo) {
         this.periodo = periodo;
     }
 
+    /***
+     *
+     * @return cuota
+     */
     public double getCuota() {
         return cuota;
     }
 
+    /***
+     * Definimos el valor de cuota
+     * @param cuota
+     */
     public void setCuota(double cuota) {
         this.cuota = cuota;
     }
 
+    /***
+     *
+     * @return estado
+     */
     public boolean isEstado() {
         return estado;
     }
 
+    /***
+     * Definimos el valor de estado
+     * @param estado
+     */
     public void setEstado(boolean estado) {
         this.estado = estado;
     }

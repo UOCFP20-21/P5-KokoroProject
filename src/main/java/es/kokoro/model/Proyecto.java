@@ -11,214 +11,279 @@ import java.util.List;
 public class Proyecto {
 
     //Atributos
-    /**
-     * Acumulador para darle un num. de proyecto
-     */
-    private static int cuentaProyecto =0;
-    /**
-     * Numero de proyecto
-     */
-    private int idProyecto;
-    /**
-     * Pais Proyecto
-     */
+    private Long idProyecto;
+    private String codigoProyecto;
+    private String nombreProyecto;
     private String pais;
-    /**
-     * Localizacion Proyecto
-     */
     private String localizacion;
-    /**
-     *Listado Socio Local
-     */
     private List<SocioLocal> socioLocalList;
-    /**
-     *Listado Personal
-     */
-    private List<Persona> personaList;
-
-    /**
-     * Financiador
-     */
-    private Financiador financiador;
-
-    /**
-     * Acciones a realizar
-     */
+    private List<Trabajador> trabajadorList;
+    private List<Financiador> financiadorList;
     private List<Accion> accionList;
+    private Date fechaInicio;
+    private Date fechaFin;
+    private LineaAccion lineaAccion;
+    private List<SubLineaAccion> subLineaAccionList;
 
-    /**
-     * Fecha de inicio Proyecto
+    /***
+     * Constructor de la clase Proyecto
+     * @param idProyecto Índice del Proyecto
+     * @param codigoProyecto Código del Proyecto
+     * @param nombreProyecto Nombre del Proyecto
+     * @param pais País en el que se realizará el proyecto
+     * @param localizacion Localización donde tendrá lugar el proyecto
+     * @param socioLocalList Listado de socios Locales participantes
+     * @param trabajadorList Listado de Trabajadores participantes
+     * @param financiadorList Listado de Financiadores
+     * @param accionList Listado de Acciones a realizar
+     * @param fechaInicio Fecha de Inicio del Proyecto
+     * @param fechaFin Fecha de Fin del Proyecto
+     * @param lineaAccion Lína de Acción principal del Proyecto
+     * @param subLineaAccionList Sublíneas de Acción del proyecto.
      */
-    private Date FechaInicio;
-
-    /**
-     * Fecha de fin Proyecto
-     */
-    private Date Fechafin;
-
-    /**
-     * Linea de accion
-     */
-    private LineaAccion LineaAccion;
-
-
-    //Constructor
-
-    public Proyecto(int idProyecto, String pais, String localizacion, List<SocioLocal> socioLocalList, List<Persona> personaList, Financiador financiador, List<Accion> accionList, Date fechaInicio, Date fechafin, es.kokoro.model.LineaAccion lineaAccion) {
-        this.idProyecto = cuentaProyecto++;
+    public Proyecto(Long idProyecto, String codigoProyecto, String nombreProyecto, String pais, String localizacion, List<SocioLocal> socioLocalList, List<Trabajador> trabajadorList, List<Financiador> financiadorList, List<Accion> accionList, Date fechaInicio, Date fechaFin, LineaAccion lineaAccion, List<SubLineaAccion> subLineaAccionList) {
+        this.idProyecto = idProyecto;
+        this.codigoProyecto = codigoProyecto;
+        this.nombreProyecto = nombreProyecto;
         this.pais = pais;
         this.localizacion = localizacion;
         this.socioLocalList = socioLocalList;
-        this.personaList = personaList;
-        this.financiador = financiador;
+        this.trabajadorList = trabajadorList;
+        this.financiadorList = financiadorList;
         this.accionList = accionList;
-        this.FechaInicio = fechaInicio;
-        this.Fechafin = fechafin;
-        this.LineaAccion = lineaAccion;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.lineaAccion = lineaAccion;
+        this.subLineaAccionList = subLineaAccionList;
     }
 
 
     //Metodos publicos
 
-    /**
-     * Devuelve el acumulador del proyecto
-     * @return acumulador proyecto
+    /***
+     * Devuelve el ID del Proyecto
+     * @return idProyecto
      */
-    public static int getCuentaProyecto() {
-        return cuentaProyecto;
+    public Long getIdProyecto() {
+        return idProyecto;
     }
-    /**
-     * Modifica el acumulador de proyecto
-     * @param cuentaProyecto
+
+    /***
+     *
+     * @param idProyecto
      */
-    public static void setCuentaProyecto(int cuentaProyecto) {
-        Proyecto.cuentaProyecto = cuentaProyecto;
+    public void setIdProyecto(Long idProyecto) {
+        this.idProyecto = idProyecto;
     }
-    /**
-     * Devuelve el pais del proyecto
-     * @return pais proyecto
+
+    /***
+     * Devuelve el código del Proyecto
+     * @return codigoProyecto
+     */
+    public String getCodigoProyecto() {
+        return codigoProyecto;
+    }
+
+    /***
+     *
+     * @param codigoProyecto
+     */
+    public void setCodigoProyecto(String codigoProyecto) {
+        this.codigoProyecto = codigoProyecto;
+    }
+
+    /***
+     *
+     * @return nombreProyecto
+     */
+    public String getNombreProyecto() {
+        return nombreProyecto;
+    }
+
+    /***
+     *
+     * @param nombreProyecto
+     */
+    public void setNombreProyecto(String nombreProyecto) {
+        this.nombreProyecto = nombreProyecto;
+    }
+
+    /***
+     *
+     * @return pais
      */
     public String getPais() {
         return pais;
     }
-    /**
-     * Modifica el pais de proyecto
+
+    /***
+     *
      * @param pais
      */
     public void setPais(String pais) {
         this.pais = pais;
     }
-    /**
-     * Devuelve la localizacion del proyecto
-     * @return localizacion proyecto
+
+    /***
+     *
+     * @return localizacion
      */
     public String getLocalizacion() {
         return localizacion;
     }
-    /**
-     * Modifica localizacion de proyecto
+
+    /***
+     *
      * @param localizacion
      */
     public void setLocalizacion(String localizacion) {
         this.localizacion = localizacion;
     }
 
-    /**
-     * Devuelve listado de socioLocal del proyecto
-     * @return socioLocalList  proyecto
+    /***
+     *
+     * @return socioLocalList
      */
     public List<SocioLocal> getSocioLocalList() {
         return socioLocalList;
     }
-    /**
-     * Modifica el listado de SocioLocal de proyecto
+
+    /***
+     *
      * @param socioLocalList
      */
     public void setSocioLocalList(List<SocioLocal> socioLocalList) {
         this.socioLocalList = socioLocalList;
     }
-    /**
-     * Devuelve listado de persona del proyecto
-     * @return personaList proyecto
+
+    /***
+     *
+     * @return trabajadorList
      */
-    public List<Persona> getPersonaList() {
-        return personaList;
+    public List<Trabajador> getTrabajadorList() {
+        return trabajadorList;
     }
-    /**
-     * Modifica el listado de Personal de proyecto
-     * @param personaList
+
+    /***
+     *
+     * @param trabajadorList
      */
-    public void setPersonaList(List<Persona> personaList) {
-        this.personaList = personaList;
+    public void setTrabajadorList(List<Trabajador> trabajadorList) {
+        this.trabajadorList = trabajadorList;
     }
-    /**
-     * Devuelve financiador del proyecto
-     * @return financiador proyecto
+
+    /***
+     *
+     * @return financiadorList
      */
-    public Financiador getFinanciador() {
-        return financiador;
+    public List<Financiador> getFinanciadorList() {
+        return financiadorList;
     }
-    /**
-     * Modifica el financiador de proyecto
-     * @param financiador
+
+    /***
+     *
+     * @param financiadorList
      */
-    public void setFinanciador(Financiador financiador) {
-        this.financiador = financiador;
+    public void setFinanciadorList(List<Financiador> financiadorList) {
+        this.financiadorList = financiadorList;
     }
-    /**
-     * Devuelve listado AccionaRealizar del proyecto
-     * @return accionList proyecto
+
+    /***
+     *
+     * @return accionList
      */
     public List<Accion> getAccionList() {
         return accionList;
     }
-    /**
-     * Modifica listado de Accion a REalizar de proyecto
+
+    /***
+     *
      * @param accionList
      */
     public void setAccionList(List<Accion> accionList) {
         this.accionList = accionList;
     }
-    /**
-     * Devuelve fecha inicio del proyecto
-     * @return fechaInicio proyecto
+
+    /***
+     *
+     * @return fechaInicio
      */
     public Date getFechaInicio() {
-        return FechaInicio;
+        return fechaInicio;
     }
-    /**
-     * Modifica fecha inicio de proyecto
+
+    /***
+     *
      * @param fechaInicio
      */
     public void setFechaInicio(Date fechaInicio) {
-        FechaInicio = fechaInicio;
+        this.fechaInicio = fechaInicio;
     }
-    /**
-     * Devuelve fecha fin del proyecto
-     * @return fechafin proyecto
+
+    /***
+     *
+     * @return fechaFin
      */
-    public Date getFechafin() {
-        return Fechafin;
+    public Date getFechaFin() {
+        return fechaFin;
     }
-    /**
-     * Modifica fecha fin de proyecto
-     * @param fechafin
+
+    /***
+     *
+     * @param fechaFin
      */
-    public void setFechafin(Date fechafin) {
-        Fechafin = fechafin;
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
     }
-    /**
-     * Devuelve linea de accion del proyecto
-     * @return lineaAccion proyecto
+
+    /***
+     *
+     * @return lineaAccion
      */
-    public  LineaAccion getLineaAccion() {
-        return LineaAccion;
+    public LineaAccion getLineaAccion() {
+        return lineaAccion;
     }
-    /**
-     * Modifica linea de Accion de proyecto
+
+    /***
+     *
      * @param lineaAccion
      */
-    public void setLineaAccion( LineaAccion lineaAccion) {
-        LineaAccion = lineaAccion;
+    public void setLineaAccion(LineaAccion lineaAccion) {
+        this.lineaAccion = lineaAccion;
+    }
+
+    /***
+     *
+     * @return subLineaAccionList
+     */
+    public List<SubLineaAccion> getSubLineaAccionList() {
+        return subLineaAccionList;
+    }
+
+    /***
+     *
+     * @param subLineaAccionList
+     */
+    public void setSubLineaAccionList(List<SubLineaAccion> subLineaAccionList) {
+        this.subLineaAccionList = subLineaAccionList;
+    }
+
+    @Override
+    public String toString() {
+        return "Proyecto{" +
+                "idProyecto=" + idProyecto +
+                ", codigoProyecto='" + codigoProyecto + '\'' +
+                ", nombreProyecto='" + nombreProyecto + '\'' +
+                ", pais='" + pais + '\'' +
+                ", localizacion='" + localizacion + '\'' +
+                ", socioLocalList=" + socioLocalList +
+                ", trabajadorList=" + trabajadorList +
+                ", financiadorList=" + financiadorList +
+                ", accionList=" + accionList +
+                ", fechaInicio=" + fechaInicio +
+                ", fechaFin=" + fechaFin +
+                ", lineaAccion=" + lineaAccion +
+                ", subLineaAccionList=" + subLineaAccionList +
+                '}';
     }
 }

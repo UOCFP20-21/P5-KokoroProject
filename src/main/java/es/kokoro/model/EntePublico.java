@@ -1,15 +1,74 @@
 package es.kokoro.model;
+
+import es.kokoro.model.interfaces.iIngreso;
+
 /**
  * Clase Ente Público
  */
 
-public class EntePublico {
-    
-    private String Nombre;
-    private String Subvenciones;
+public abstract class EntePublico implements iIngreso {
+    private Long idEntePublico;
+    private String nombre;
+    private String subvencion;
 
-    public EntePublico(String nombre, String subvenciones) {
-        Nombre = nombre;
-        Subvenciones = subvenciones;
+    /***
+     *
+     * @param idEntePublico índice del Ente Público
+     * @param nombre Nombre del Ente público
+     * @param subvencion Nombre de la Subvención
+     */
+    public EntePublico(Long idEntePublico, String nombre, String subvencion) {
+        this.idEntePublico = idEntePublico;
+        this.nombre = nombre;
+        this.subvencion = subvencion;
+    }
+
+    public Long getIdEntePublico() {
+        return idEntePublico;
+    }
+
+    public void setIdEntePublico(Long idEntePublico) {
+        this.idEntePublico = idEntePublico;
+    }
+
+    /***
+     *
+     * @return nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     *
+     * @param nombre Nombre del Ente público
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /***
+     *
+     * @return subvencion
+     */
+    public String getSubvencion() {
+        return subvencion;
+    }
+
+    /***
+     *
+     * @param subvencion Nombre de la Subvención
+     */
+    public void setSubvencion(String subvencion) {
+        this.subvencion = subvencion;
+    }
+
+    @Override
+    public String toString() {
+        return "EntePublico{" +
+                "idEntePublico=" + idEntePublico +
+                ", nombre='" + nombre + '\'' +
+                ", subvencion='" + subvencion + '\'' +
+                '}';
     }
 }
