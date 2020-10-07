@@ -42,7 +42,7 @@ public class Sede extends Empresa {
      *
      * @return listado Trabajador
      */
-    public List<Trabajador> getTrabajadoresList() {
+    public List<Trabajador> getTrabajadorList() {
 
         return trabajadorList;
     }
@@ -61,7 +61,7 @@ public class Sede extends Empresa {
      * Modifica listado Trabajador
      * @param trabajadorList
      */
-    public void setTrabajadoresList(List<Trabajador> trabajadorList) {
+    public void setTrabajadorList(List<Trabajador> trabajadorList) {
         this.trabajadorList = trabajadorList;
     }
 
