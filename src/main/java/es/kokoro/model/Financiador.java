@@ -5,20 +5,20 @@ import es.kokoro.model.interfaces.iFinanciador;
 public class Financiador implements iFinanciador {
     private Long idFinanciador;
     private Object tipoFinanciador;
-    private double financiaciónAportada = 0.0;
+    private double financiacionAportada = 0.0;
     private String moneda;
 
     /***
      *
      * @param idFinanciador Índice de financiador
      * @param tipoFinanciador
-     * @param financiaciónAportada
+     * @param financiacionAportada
      * @param moneda
      */
-    public Financiador(Long idFinanciador, Object tipoFinanciador, double financiaciónAportada, String moneda) {
+    public Financiador(Long idFinanciador, Object tipoFinanciador, double financiacionAportada, String moneda) {
         this.idFinanciador = idFinanciador;
         this.tipoFinanciador = tipoFinanciador;
-        this.financiaciónAportada = financiaciónAportada;
+        this.financiacionAportada = financiacionAportada;
         this.moneda = moneda;
     }
 
@@ -64,18 +64,18 @@ public class Financiador implements iFinanciador {
 
     /***
      *
-     * @return financiaciónAportada
+     * @return financiacionAportada
      */
-    public double getFinanciaciónAportada() {
-        return financiaciónAportada;
+    public double getFinanciacionAportada() {
+        return financiacionAportada;
     }
 
     /***
      *
      * @param financiaciónAportada
      */
-    public void setFinanciaciónAportada(double financiaciónAportada) {
-        this.financiaciónAportada = financiaciónAportada;
+    public void setFinanciacionAportada(double financiacionAportada) {
+        this.financiacionAportada = financiacionAportada;
     }
 
     /***
@@ -99,7 +99,7 @@ public class Financiador implements iFinanciador {
         return "Financiador{" +
                 "idFinanciador=" + idFinanciador +
                 ", tipoFinanciador=" + tipoFinanciador.toString() +
-                ", financiaciónAportada=" + financiaciónAportada +
+                ", financiacionAportada=" + financiacionAportada +
                 ", moneda='" + moneda + '\'' +
                 '}';
     }
