@@ -25,7 +25,7 @@ public class Sociedad extends Empresa {
      * @param email @see Empresa
      * @param idSociedad Índice de Sociedad
      */
-    public Sociedad(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, int telefono, String email, Long idSociedad) {
+    public Sociedad(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, String telefono, String email, Long idSociedad) {
         super(idEmpresa, nombre, pais, poblacion, direccionSocial, razonSocial, identificacionSocial, telefono, email);
         this.idSociedad = idSociedad;
     }

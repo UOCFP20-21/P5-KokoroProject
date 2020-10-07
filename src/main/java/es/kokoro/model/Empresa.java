@@ -16,7 +16,7 @@ public abstract class Empresa implements iIngreso, iFinanciador {
     private String direccionSocial;
     private String razonSocial;
     private String identificacionSocial;
-    private int telefono;
+    private String telefono;
     private String email;
 
     /***
@@ -31,7 +31,7 @@ public abstract class Empresa implements iIngreso, iFinanciador {
      * @param telefono Telefono de Empresa
      * @param email Email de Empresa
      */
-    public Empresa(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, int telefono, String email) {
+    public Empresa(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, String telefono, String email) {
         this.idEmpresa = idEmpresa;
         this.nombre = nombre;
         this.pais = pais;
@@ -168,7 +168,7 @@ public abstract class Empresa implements iIngreso, iFinanciador {
      *
      * @return telefono
      */
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
@@ -177,7 +177,7 @@ public abstract class Empresa implements iIngreso, iFinanciador {
      *
      * @param telefono
      */
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
     /**

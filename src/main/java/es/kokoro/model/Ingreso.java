@@ -29,6 +29,22 @@ public class Ingreso {
 
     /***
      *
+     * @return idIngreso
+     */
+    public Long getIdIngreso() {
+        return idIngreso;
+    }
+
+    /***
+     *
+     * @param idIngreso
+     */
+    public void setIdIngreso(Long idIngreso) {
+        this.idIngreso = idIngreso;
+    }
+
+    /***
+     *
      * @return fuente
      */
     public Object getFuente() {

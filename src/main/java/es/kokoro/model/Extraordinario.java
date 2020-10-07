@@ -21,7 +21,7 @@ public class Extraordinario extends Empresa {
      * @param email Herencia de Empresa
      * @param idExtraordinario Índice de Extraordinario
      */
-    public Extraordinario(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, int telefono, String email, Long idExtraordinario) {
+    public Extraordinario(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, String telefono, String email, Long idExtraordinario) {
         super(idEmpresa, nombre, pais, poblacion, direccionSocial, razonSocial, identificacionSocial, telefono, email);
         this.idExtraordinario = idExtraordinario;
     }

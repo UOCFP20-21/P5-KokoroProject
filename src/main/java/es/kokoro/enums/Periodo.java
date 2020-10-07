@@ -1,13 +1,13 @@
 package es.kokoro.enums;
 
-public enum Periodos {
+public enum Periodo {
     MES("Mensualidad"),
     TRI("Trimestral"),
     ANU("Anual");
 
     private String nombrePeriodo;
 
-    Periodos(String nombrePeriodo) {
+    Periodo(String nombrePeriodo) {
         this.nombrePeriodo = nombrePeriodo;
     }
 

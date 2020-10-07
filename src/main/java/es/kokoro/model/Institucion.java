@@ -22,7 +22,7 @@ public class Institucion extends Empresa {
      * @param email Herencia de Empresa
      * @param idInstitucion Índice Institución
      */
-    public Institucion(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, int telefono, String email, Long idInstitucion) {
+    public Institucion(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, String telefono, String email, Long idInstitucion) {
         super(idEmpresa, nombre, pais, poblacion, direccionSocial, razonSocial, identificacionSocial, telefono, email);
         this.idInstitucion = idInstitucion;
     }
