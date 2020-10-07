@@ -12,16 +12,52 @@ public class SocioLocal extends Empresa {
     /**
      * Listado de proyectos
      */
+    private Long idSocioLocal;
     private List<Proyecto> proyectosList;
 
 
     //Constructor
-    public SocioLocal(){
-        super();
 
+    /***
+     * Constructor de la Clase SocioLocal
+     * Esta Clase va vinculada a los proyectos.
+     * Hereda de Empresa.
+     * @param idEmpresa @see Empresa
+     * @param nombre @see Empresa
+     * @param pais @see Empresa
+     * @param poblacion @see Empresa
+     * @param direccionSocial @see Empresa
+     * @param razonSocial @see Empresa
+     * @param identificacionSocial @see Empresa
+     * @param telefono @see Empresa
+     * @param email @see Empresa
+     * @param idSocioLocal Índice de SocioLocal.
+     * @param proyectosList Listado de Proyectos en los que ha participado
+     */
+    public SocioLocal(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, int telefono, String email, Long idSocioLocal, List<Proyecto> proyectosList) {
+        super(idEmpresa, nombre, pais, poblacion, direccionSocial, razonSocial, identificacionSocial, telefono, email);
+        this.idSocioLocal = idSocioLocal;
+        this.proyectosList = proyectosList;
     }
 
+
     // Metodos Publicos
+
+    /***
+     *
+     * @return idsocioLocal
+     */
+    public Long getIdSocioLocal() {
+        return idSocioLocal;
+    }
+
+    /***
+     *
+     * @param idSocioLocal
+     */
+    public void setIdSocioLocal(Long idSocioLocal) {
+        this.idSocioLocal = idSocioLocal;
+    }
 
     /**
      * Devuelve el listado de proyectos
@@ -42,5 +78,11 @@ public class SocioLocal extends Empresa {
         this.proyectosList = proyectosList;
     }
 
-
+    @Override
+    public String toString() {
+        return "SocioLocal{" +
+                "idSocioLocal=" + idSocioLocal +
+                ", proyectosList=" + proyectosList +
+                '}';
+    }
 }

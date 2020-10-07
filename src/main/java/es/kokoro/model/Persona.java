@@ -3,7 +3,7 @@ package es.kokoro.model;
 /***
  * @author Kokoro
  */
-public class Persona {
+public abstract class Persona {
     private Long idPersona;
     private String nombre;
     private String apellidos;

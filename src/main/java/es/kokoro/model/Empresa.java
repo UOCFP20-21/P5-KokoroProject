@@ -1,84 +1,60 @@
 package es.kokoro.model;
 
+import es.kokoro.model.interfaces.iFinanciador;
+import es.kokoro.model.interfaces.iIngreso;
+
 /**
  * Clase empresa
  * Contiene información de la empresa
  */
-public abstract class Empresa {
+public abstract class Empresa implements iIngreso, iFinanciador {
     //Atributos
-    /**
-     * Acumulador para darle un num. de empresa
-     */
-    private static int cuentaEmpresa=0;
-    /**
-     * Numero de empresa
-     */
-    private int idEmpresa;
-    /**
-     * Nombre Empresa
-     */
+    private Long idEmpresa;
     private String nombre;
-    /**
-     * Pais Empresa
-     */
     private String pais;
-    /**
-     * Poblacion Empresa
-     */
     private String poblacion;
-    /**
-     * Direccion Social Empresa
-     */
     private String direccionSocial;
-    /**
-     * Razon social Empresa
-     */
     private String razonSocial;
-    /**
-     * Identificación Social Empresa
-     */
     private String identificacionSocial;
-    /**
-     * Telefono de Empresa
-     */
     private int telefono;
-    /**
-     * Email de Empresa
-     */
     private String email;
 
-    //Constructor
-   /* public Empresa(String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, int telefono, String email){
-        this.idEmpresa = ++cuentaEmpresa;
-        this.nombre =nombre;
-        this.pais =pais;
-        this.poblacion =poblacion;
-        this.direccionSocial=direccionSocial;
-        this.razonSocial=razonSocial;
+    /***
+     *
+     * @param idEmpresa Numero de empresa
+     * @param nombre Nombre Empresa
+     * @param pais Pais Empresa
+     * @param poblacion Poblacion Empresa
+     * @param direccionSocial Direccion Social Empresa
+     * @param razonSocial Razon social Empresa
+     * @param identificacionSocial Identificación Social Empresa
+     * @param telefono Telefono de Empresa
+     * @param email Email de Empresa
+     */
+    public Empresa(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, int telefono, String email) {
+        this.idEmpresa = idEmpresa;
+        this.nombre = nombre;
+        this.pais = pais;
+        this.poblacion = poblacion;
+        this.direccionSocial = direccionSocial;
+        this.razonSocial = razonSocial;
         this.identificacionSocial = identificacionSocial;
         this.telefono = telefono;
         this.email = email;
-
-    }*/
-
-    public Empresa() {
-
     }
-
-
     //Metodos publicos
     /**
      * Devuelve el numero de empresa
      * @return numero empresa
      */
-    public int getIdEmpresa(){
+    public Long getIdEmpresa(){
         return idEmpresa;
     }
     /**
      * Modifica el numero de empresa
      * @param idEmpresa
      */
-    public void setIdEmpresa(int idEmpresa){
+    public void setIdEmpresa(Long idEmpresa){
 
         this.idEmpresa = idEmpresa;
     }
@@ -222,5 +198,18 @@ public abstract class Empresa {
         this.email = email;
     }
 
-
+    @Override
+    public String toString() {
+        return "Empresa{" +
+                "idEmpresa=" + idEmpresa +
+                ", nombre='" + nombre + '\'' +
+                ", pais='" + pais + '\'' +
+                ", poblacion='" + poblacion + '\'' +
+                ", direccionSocial='" + direccionSocial + '\'' +
+                ", razonSocial='" + razonSocial + '\'' +
+                ", identificacionSocial='" + identificacionSocial + '\'' +
+                ", telefono=" + telefono +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
