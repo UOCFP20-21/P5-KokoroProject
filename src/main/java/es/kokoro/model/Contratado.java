@@ -33,16 +33,12 @@ public class Contratado extends Trabajador{
     public Contratado(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idTrabajador, Delegacion delegacion, Date fechaNac, boolean activo, Long idContratado, Date inicioContract, String finalContract, float salario, String puestoTrabajo) {
         super(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, idTrabajador, delegacion, fechaNac, activo);
         this.idContratado = idContratado;
-        this.inicioContract = inicioContract;
-        this.finalContract = finalContract;
-        this.salario = salario;
-        this.puestoTrabajo = puestoTrabajo;
-    }
 
     /***
      *
      * @return Date: inicioContract
      */
+
     public Date getInicioContract() {
         return inicioContract;
     }
@@ -75,6 +71,7 @@ public class Contratado extends Trabajador{
      *
      * @return salario
      */
+
     public float getSalario() {
         return salario;
     }
