@@ -6,7 +6,7 @@ import es.kokoro.enums.Organismo;
  * Clase Estatales
  */
 
-public class Estatales extends EntePublico {
+public class Estatal extends EntePublico {
     private Long idEstatal;
     private Organismo organismo;
     private String nombreOrganismo;
@@ -20,7 +20,7 @@ public class Estatales extends EntePublico {
      * @param organismo Tipo de Organismo estatal
      * @param nombreOrganismo Nombre del Tipo de Organismo
      */
-    public Estatales(Long idEntePublico, String nombre, String subvencion, Long idEstatal, Organismo organismo, String nombreOrganismo) {
+    public Estatal(Long idEntePublico, String nombre, String subvencion, Long idEstatal, Organismo organismo, String nombreOrganismo) {
         super(idEntePublico, nombre, subvencion);
         this.idEstatal = idEstatal;
         this.organismo = organismo;
@@ -77,7 +77,7 @@ public class Estatales extends EntePublico {
 
     @Override
     public String toString() {
-        return "Estatales{" +
+        return "Estatal{" +
                 "organismo=" + organismo.getNombreOrganismo() + " ("+ organismo.name() +")" +
                 ", nombreOrganismo='" + nombreOrganismo + '\'' +
                 "} " + super.toString();
