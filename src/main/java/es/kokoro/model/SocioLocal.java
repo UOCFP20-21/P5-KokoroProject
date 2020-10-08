@@ -85,4 +85,5 @@ public class SocioLocal extends Empresa {
                 ", proyectoList=" + proyectoList +
                 '}';
     }
+
 }

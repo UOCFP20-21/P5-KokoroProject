@@ -82,4 +82,5 @@ public class Estatal extends EntePublico {
                 ", nombreOrganismo='" + nombreOrganismo + '\'' +
                 "} " + super.toString();
     }
+
 }

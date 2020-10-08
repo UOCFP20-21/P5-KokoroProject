@@ -8,7 +8,7 @@ import java.util.List;
  * Extiende de empresa
  */
 
-public class Delegacion extends Empresa{
+public class Delegacion extends Empresa {
 
     //Atributos
     private Long idDelegacion;
@@ -112,4 +112,5 @@ public class Delegacion extends Empresa{
                 ", areaOperativa='" + areaOperativa + '\'' +
                 "} " + super.toString();
     }
+
 }

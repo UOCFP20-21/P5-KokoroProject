@@ -1,13 +1,12 @@
 package es.kokoro.model;
 
 import es.kokoro.model.interfaces.iFinanciador;
-import es.kokoro.model.interfaces.iIngreso;
 
 /**
  * Clase empresa
  * Contiene información de la empresa
  */
-public abstract class Empresa implements iIngreso, iFinanciador {
+public abstract class Empresa implements iFinanciador {
     //Atributos
     private Long idEmpresa;
     private String nombre;
