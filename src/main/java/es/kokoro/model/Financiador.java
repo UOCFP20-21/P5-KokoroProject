@@ -2,7 +2,7 @@ package es.kokoro.model;
 
 import es.kokoro.model.interfaces.iFinanciador;
 
-public class Financiador implements iFinanciador {
+public class Financiador {
     private Long idFinanciador;
     private Object tipoFinanciador;
     private double financiacionAportada = 0.0;

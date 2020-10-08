@@ -24,7 +24,6 @@ public class Ingreso {
         this.setFuente(fuente);
         this.importe = importe;
         this.fecha = fecha;
-        this.publico = publico;
     }
 
     /***
@@ -60,8 +59,9 @@ public class Ingreso {
         if(fuente instanceof iIngreso)
         {
             this.fuente = fuente;
+            this.setPublico( ((iIngreso) fuente).setPublico() );
         }
-        else{
+        else {
             System.out.println("Fuente de ingresos no válida");
         }
 

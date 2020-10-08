@@ -1,12 +1,13 @@
 package es.kokoro.model;
 
+import es.kokoro.model.interfaces.iFinanciador;
 import es.kokoro.model.interfaces.iIngreso;
 
 /**
  * Clase Ente Público
  */
 
-public abstract class EntePublico implements iIngreso {
+public abstract class EntePublico implements iIngreso, iFinanciador {
     private Long idEntePublico;
     private String nombre;
     private String subvencion;
@@ -70,5 +71,9 @@ public abstract class EntePublico implements iIngreso {
                 ", nombre='" + nombre + '\'' +
                 ", subvencion='" + subvencion + '\'' +
                 '}';
+    }
+    // Métodos de Interface
+    public boolean setPublico() {
+        return true;
     }
 }

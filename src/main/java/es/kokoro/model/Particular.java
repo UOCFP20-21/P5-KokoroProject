@@ -47,4 +47,8 @@ public class Particular extends Persona implements iIngreso, iFinanciador {
                 "idParticular=" + idParticular +
                 "} " + super.toString();
     }
+
+    public boolean setPublico() {
+        return false;
+    }
 }

@@ -60,4 +60,5 @@ public class Internacional extends EntePublico {
                 ", pais='" + pais + '\'' +
                 "} " + super.toString();
     }
+
 }
