@@ -13,7 +13,7 @@ public class SocioLocal extends Empresa {
      * Listado de proyectos
      */
     private Long idSocioLocal;
-    private List<Proyecto> proyectosList;
+    private List<Proyecto> proyectoList;
 
 
     //Constructor
@@ -32,12 +32,12 @@ public class SocioLocal extends Empresa {
      * @param telefono @see Empresa
      * @param email @see Empresa
      * @param idSocioLocal Índice de SocioLocal.
-     * @param proyectosList Listado de Proyectos en los que ha participado
+     * @param proyectoList Listado de Proyectos en los que ha participado
      */
-    public SocioLocal(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, String telefono, String email, Long idSocioLocal, List<Proyecto> proyectosList) {
+    public SocioLocal(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, String telefono, String email, Long idSocioLocal, List<Proyecto> proyectoList) {
         super(idEmpresa, nombre, pais, poblacion, direccionSocial, razonSocial, identificacionSocial, telefono, email);
         this.idSocioLocal = idSocioLocal;
-        this.proyectosList = proyectosList;
+        this.proyectoList = proyectoList;
     }
 
 
@@ -53,7 +53,7 @@ public class SocioLocal extends Empresa {
 
     /***
      *
-     * @param idSocioLocal
+     * @param idSocioLocal Identificado del Socio Local
      */
     public void setIdSocioLocal(Long idSocioLocal) {
         this.idSocioLocal = idSocioLocal;
@@ -64,25 +64,25 @@ public class SocioLocal extends Empresa {
      *
      * @return listado proyectos
      */
-    public List<Proyecto> getProyectosList() {
+    public List<Proyecto> getProyectoList() {
 
-        return proyectosList;
+        return proyectoList;
     }
 
 
     /**
      * Modifica listado Proyectos
-     * @param proyectosList
+     * @param proyectoList Listado de Proyectos
      */
-    public void setProyectosList(List<Proyecto> proyectosList) {
-        this.proyectosList = proyectosList;
+    public void setProyectoList(List<Proyecto> proyectoList) {
+        this.proyectoList = proyectoList;
     }
 
     @Override
     public String toString() {
         return "SocioLocal{" +
                 "idSocioLocal=" + idSocioLocal +
-                ", proyectosList=" + proyectosList +
+                ", proyectoList=" + proyectoList +
                 '}';
     }
 }
