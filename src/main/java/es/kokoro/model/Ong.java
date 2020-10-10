@@ -3,7 +3,7 @@ package es.kokoro.model;
 import java.util.List;
 
 public class Ong {
-
+    private Long idOng;
     private String nombreOng;
     private List<Delegacion> delegacionList;
     private List<Ingreso> ingresoList;
@@ -20,7 +20,8 @@ public class Ong {
      * @param proyectoList Listado de Proyectos
      * @param sede Objeto de Tipo Sede
      */
-    public Ong(String nombreOng, List<Delegacion> delegacionList, List<Ingreso> ingresoList, List<Socio> socioList, List<Proyecto> proyectoList, Sede sede) {
+    public Ong(Long idOng, String nombreOng, List<Delegacion> delegacionList, List<Ingreso> ingresoList, List<Socio> socioList, List<Proyecto> proyectoList, Sede sede) {
+        this.idOng = idOng;
         this.nombreOng = nombreOng;
         this.delegacionList = delegacionList;
         this.ingresoList = ingresoList;
@@ -28,6 +29,23 @@ public class Ong {
         this.proyectoList = proyectoList;
         this.sede = sede;
     }
+
+    /***
+     *
+     * @return idOng
+     */
+    public Long getIdOng() {
+        return idOng;
+    }
+
+    /***
+     *
+     * @param idOng
+     */
+    public void setIdOng(Long idOng) {
+        this.idOng = idOng;
+    }
+
 
     /***
      *
