@@ -111,7 +111,7 @@ public class Socio extends Persona implements iIngreso {
     }
 
     // Métodos de Interface
-    public boolean setPublico() {
+    public boolean isPublico() {
         return false;
     }
 }

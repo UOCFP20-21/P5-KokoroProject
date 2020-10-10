@@ -46,7 +46,7 @@ public class Herencia extends Persona implements iIngreso {
                 "} " + super.toString();
     }
 
-    public boolean setPublico() {
+    public boolean isPublico() {
         return false;
     }
 }

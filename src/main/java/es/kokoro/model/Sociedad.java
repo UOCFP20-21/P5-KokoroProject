@@ -58,7 +58,7 @@ public class Sociedad extends Empresa implements iIngreso {
     }
 
     // Métodos de Interface
-    public boolean setPublico() {
+    public boolean isPublico() {
         return false;
     }
 }

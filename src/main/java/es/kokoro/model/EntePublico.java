@@ -73,7 +73,7 @@ public abstract class EntePublico implements iIngreso, iFinanciador {
                 '}';
     }
     // Métodos de Interface
-    public boolean setPublico() {
+    public boolean isPublico() {
         return true;
     }
 }
