@@ -1,12 +1,12 @@
 package es.kokoro.model;
 
-import es.kokoro.model.interfaces.iIngreso;
+import es.kokoro.model.interfaces.IIngreso;
 
 /**
  * Clase Extraordinarios
  * Extiende de Empresa
  */
-public class Extraordinario extends Empresa implements iIngreso {
+public class Extraordinario extends Empresa implements IIngreso {
     //Atributos
     private Long idExtraordinario;
     private String concepto;

@@ -1,12 +1,12 @@
 package es.kokoro.model;
 
 import es.kokoro.enums.Periodo;
-import es.kokoro.model.interfaces.iIngreso;
+import es.kokoro.model.interfaces.IIngreso;
 
 /***
  * @author Kokoro
  */
-public class Socio extends Persona implements iIngreso {
+public class Socio extends Persona implements IIngreso {
     private Long idSocio;
     private Periodo periodo;
     private double cuota;

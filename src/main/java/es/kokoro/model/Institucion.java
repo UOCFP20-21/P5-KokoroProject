@@ -1,12 +1,12 @@
 package es.kokoro.model;
 
-import es.kokoro.model.interfaces.iIngreso;
+import es.kokoro.model.interfaces.IIngreso;
 
 /**
  * Clase instituciones
  * Extiende de Empresa
  */
-public class Institucion extends Empresa implements iIngreso {
+public class Institucion extends Empresa implements IIngreso {
 
     private Long idInstitucion;
     //Atributos

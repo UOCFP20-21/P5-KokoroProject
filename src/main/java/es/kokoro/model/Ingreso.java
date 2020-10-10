@@ -1,12 +1,12 @@
 package es.kokoro.model;
 
-import es.kokoro.model.interfaces.iIngreso;
+import es.kokoro.model.interfaces.IIngreso;
 
 import java.util.Date;
 
 public class Ingreso {
     private Long idIngreso;
-    private iIngreso ingreso;
+    private IIngreso ingreso;
     private double importe;
     private Date fecha;
 
@@ -17,9 +17,8 @@ public class Ingreso {
      * @param ingreso Objeto de tipo varios
      * @param importe Cantidad del ingreso
      * @param fecha Fecha del ingreso
-     * @param publico Es un ingreso de una fuente pública [true|false]
      */
-    public Ingreso(Long idIngreso, iIngreso ingreso, double importe, Date fecha, boolean publico) {
+    public Ingreso(Long idIngreso, IIngreso ingreso, double importe, Date fecha) {
         this.idIngreso = idIngreso;
         this.setIngreso(ingreso);
         this.importe = importe;
@@ -46,7 +45,7 @@ public class Ingreso {
      *
      * @return fuente
      */
-    public iIngreso getIngreso() {
+    public IIngreso getIngreso() {
         return ingreso;
     }
 
@@ -54,7 +53,7 @@ public class Ingreso {
      *
      * @param ingreso
      */
-    public void setIngreso(iIngreso ingreso) {
+    public void setIngreso(IIngreso ingreso) {
 
         this.ingreso = ingreso;
 

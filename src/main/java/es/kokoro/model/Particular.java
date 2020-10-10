@@ -1,9 +1,9 @@
 package es.kokoro.model;
 
 import es.kokoro.model.interfaces.iFinanciador;
-import es.kokoro.model.interfaces.iIngreso;
+import es.kokoro.model.interfaces.IIngreso;
 
-public class Particular extends Persona implements iIngreso, iFinanciador {
+public class Particular extends Persona implements IIngreso, iFinanciador {
     private Long idParticular;
 
     /***

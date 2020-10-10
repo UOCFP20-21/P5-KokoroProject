@@ -1,6 +1,6 @@
 package es.kokoro.model.interfaces;
 
-public interface iIngreso {
+public interface IIngreso {
 
     boolean isPublico();
 }
