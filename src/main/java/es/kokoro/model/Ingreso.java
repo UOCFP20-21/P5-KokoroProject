@@ -1,6 +1,6 @@
 package es.kokoro.model;
 
-import es.kokoro.model.interfaces.iIngreso;
+import es.kokoro.model.interfaces.IFuente;
 
 import java.util.Date;
 
@@ -9,7 +9,6 @@ public class Ingreso {
     private Object fuente;
     private double importe;
     private Date fecha;
-    private boolean publico;
 
     /***
      *
@@ -19,7 +18,7 @@ public class Ingreso {
      * @param fecha Fecha del ingreso
      * @param publico Es un ingreso de una fuente pública [true|false]
      */
-    public Ingreso(Long idIngreso, Object fuente, double importe, Date fecha, boolean publico) {
+    public Ingreso(Long idIngreso, IFuente fuente, double importe, Date fecha, boolean publico) {
         this.idIngreso = idIngreso;
         this.setFuente(fuente);
         this.importe = importe;
@@ -54,18 +53,8 @@ public class Ingreso {
      *
      * @param fuente
      */
-    public void setFuente(Object fuente) {
-        // Revisar si mejor usar try/catch (o si se puede....)
-        if(fuente instanceof iIngreso)
-        {
-            this.fuente = fuente;
-            this.setPublico( ((iIngreso) fuente).setPublico() );
-        }
-        else {
-            System.out.println("Fuente de ingresos no válida");
-        }
-
-
+    public void setFuente(IFuente fuente) {
+       this.fuente = fuente;
     }
 
     /***
@@ -102,18 +91,10 @@ public class Ingreso {
 
     /***
      *
-     * @return publico
+     * @return boolean
      */
     public boolean isPublico() {
-        return publico;
-    }
-
-    /***
-     *
-     * @param publico
-     */
-    public void setPublico(boolean publico) {
-        this.publico = publico;
+        return ((IFuente) getFuente()).isPublico();
     }
 
     @Override
@@ -122,7 +103,7 @@ public class Ingreso {
                 "fuente=" + fuente.toString() +
                 ", importe=" + importe +
                 ", fecha=" + fecha +
-                ", publico=" + publico +
+                ", publico=" + isPublico() +
                 '}';
     }
 }
