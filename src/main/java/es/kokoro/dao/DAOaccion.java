@@ -20,12 +20,18 @@ public class DAOaccion<vAccion> implements DAO<Accion, vAccion> {
     }
 
     @Override
-    public Long crear(Accion accion) {
+    public Long crea(Accion accion) {
         return null;
     }
 
     @Override
-    public void actualiza(Accion accion) {
+    public void actualiza(Accion accion, String[] params) {
 
     }
+
+    @Override
+    public void borra(Accion accion) {
+
+    }
+
 }

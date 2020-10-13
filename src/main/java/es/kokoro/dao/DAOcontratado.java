@@ -18,12 +18,17 @@ public class DAOcontratado<pContratado> implements DAO<Contratado, pContratado> 
     }
 
     @Override
-    public Long crear(Contratado contratado) {
+    public Long crea(Contratado contratado) {
         return null;
     }
 
     @Override
-    public void actualiza(Contratado contratado) {
+    public void actualiza(Contratado contratado, String[] params) {
+
+    }
+
+    @Override
+    public void borra(Contratado contratado) {
 
     }
 }

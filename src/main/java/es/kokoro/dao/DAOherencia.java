@@ -18,12 +18,17 @@ public class DAOherencia<pHerencia> implements DAO<Herencia,pHerencia> {
     }
 
     @Override
-    public Long crear(Herencia herencia) {
+    public Long crea(Herencia herencia) {
         return null;
     }
 
     @Override
-    public void actualiza(Herencia herencia) {
+    public void actualiza(Herencia herencia, String[] params) {
+
+    }
+
+    @Override
+    public void borra(Herencia herencia) {
 
     }
 }

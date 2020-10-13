@@ -18,12 +18,17 @@ public class DAOinstitucion<pInstitucion> implements DAO<Institucion,pInstitucio
     }
 
     @Override
-    public Long crear(Institucion institucion) {
+    public Long crea(Institucion institucion) {
         return null;
     }
 
     @Override
-    public void actualiza(Institucion institucion) {
+    public void actualiza(Institucion institucion, String[] params) {
+
+    }
+
+    @Override
+    public void borra(Institucion institucion) {
 
     }
 }

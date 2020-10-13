@@ -18,12 +18,17 @@ public class DAOvoluntarioColaborador<pVoluntariocolaborador> implements DAO<Vol
     }
 
     @Override
-    public Long crear(VoluntarioColaborador voluntarioColaborador) {
+    public Long crea(VoluntarioColaborador voluntarioColaborador) {
         return null;
     }
 
     @Override
-    public void actualiza(VoluntarioColaborador voluntarioColaborador) {
+    public void actualiza(VoluntarioColaborador voluntarioColaborador, String[] params) {
+
+    }
+
+    @Override
+    public void borra(VoluntarioColaborador voluntarioColaborador) {
 
     }
 }

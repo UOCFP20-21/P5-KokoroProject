@@ -18,12 +18,17 @@ public class DAOong<pOng> implements DAO<Ong,pOng> {
     }
 
     @Override
-    public Long crear(Ong ong) {
+    public Long crea(Ong ong) {
         return null;
     }
 
     @Override
-    public void actualiza(Ong ong) {
+    public void actualiza(Ong ong, String[] params) {
+
+    }
+
+    @Override
+    public void borra(Ong ong) {
 
     }
 }

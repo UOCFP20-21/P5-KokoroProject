@@ -19,12 +19,17 @@ public class DAOdelegacion<pDelegacion> implements DAO<Delegacion, pDelegacion> 
     }
 
     @Override
-    public Long crear(Delegacion delegacion) {
+    public Long crea(Delegacion delegacion) {
         return null;
     }
 
     @Override
-    public void actualiza(Delegacion delegacion) {
+    public void actualiza(Delegacion delegacion, String[] params) {
+
+    }
+
+    @Override
+    public void borra(Delegacion delegacion) {
 
     }
 }

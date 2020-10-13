@@ -18,12 +18,17 @@ public class DAOestatal<pEstatal> implements DAO<Estatal, pEstatal> {
     }
 
     @Override
-    public Long crear(Estatal estatal) {
+    public Long crea(Estatal estatal) {
         return null;
     }
 
     @Override
-    public void actualiza(Estatal estatal) {
+    public void actualiza(Estatal estatal, String[] params) {
+
+    }
+
+    @Override
+    public void borra(Estatal estatal) {
 
     }
 }

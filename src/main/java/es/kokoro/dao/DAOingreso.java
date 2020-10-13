@@ -18,12 +18,17 @@ public class DAOingreso<pIngreso> implements DAO<Ingreso, pIngreso> {
     }
 
     @Override
-    public Long crear(Ingreso ingreso) {
+    public Long crea(Ingreso ingreso) {
         return null;
     }
 
     @Override
-    public void actualiza(Ingreso ingreso) {
+    public void actualiza(Ingreso ingreso, String[] params) {
+
+    }
+
+    @Override
+    public void borra(Ingreso ingreso) {
 
     }
 }

@@ -14,8 +14,10 @@ public interface DAO<T, P> {
 
     List<T> devuelveTodos();
 
-    Long crear(T t);
+    Long crea(T t);
 
-    void actualiza(T t);
+    void actualiza(T t, String[] params);
+
+    void borra(T t);
 
 }

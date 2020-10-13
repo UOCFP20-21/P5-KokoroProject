@@ -18,12 +18,17 @@ public class DAOsede<pSede> implements DAO<Sede,pSede> {
     }
 
     @Override
-    public Long crear(Sede sede) {
+    public Long crea(Sede sede) {
         return null;
     }
 
     @Override
-    public void actualiza(Sede sede) {
+    public void actualiza(Sede sede, String[] params) {
+
+    }
+
+    @Override
+    public void borra(Sede sede) {
 
     }
 }

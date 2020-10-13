@@ -19,12 +19,17 @@ public class DAOfinanciador<pFinanciador> implements DAO<Financiador, pFinanciad
     }
 
     @Override
-    public Long crear(Financiador financiador) {
+    public Long crea(Financiador financiador) {
         return null;
     }
 
     @Override
-    public void actualiza(Financiador financiador) {
+    public void actualiza(Financiador financiador, String[] params) {
+
+    }
+
+    @Override
+    public void borra(Financiador financiador) {
 
     }
 }

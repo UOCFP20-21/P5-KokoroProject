@@ -18,12 +18,17 @@ public class DAOempresa<pEmpresa> implements DAO<Empresa, pEmpresa> {
     }
 
     @Override
-    public Long crear(Empresa empresa) {
+    public Long crea(Empresa empresa) {
         return null;
     }
 
     @Override
-    public void actualiza(Empresa empresa) {
+    public void actualiza(Empresa empresa, String[] params) {
+
+    }
+
+    @Override
+    public void borra(Empresa empresa) {
 
     }
 }

@@ -18,12 +18,17 @@ public class DAOlineaAccion<pLineaAccion> implements DAO<LineaAccion,pLineaAccio
     }
 
     @Override
-    public Long crear(LineaAccion lineaAccion) {
+    public Long crea(LineaAccion lineaAccion) {
         return null;
     }
 
     @Override
-    public void actualiza(LineaAccion lineaAccion) {
+    public void actualiza(LineaAccion lineaAccion, String[] params) {
+
+    }
+
+    @Override
+    public void borra(LineaAccion lineaAccion) {
 
     }
 }

@@ -89,21 +89,13 @@ public class Ingreso {
         this.fecha = fecha;
     }
 
-    /***
-     *
-     * @return boolean
-     */
-    public boolean isPublico() {
-        return ((IFuente) getFuente()).isPublico();
-    }
-
     @Override
     public String toString() {
         return "Ingreso{" +
                 "fuente=" + fuente.toString() +
                 ", importe=" + importe +
                 ", fecha=" + fecha +
-                ", publico=" + isPublico() +
+                ", publico=" + ((IFuente) getFuente()).isPublico() +
                 '}';
     }
 }

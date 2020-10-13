@@ -18,12 +18,17 @@ public class DAOvoluntarioInternacional<pvoluntarioInternacional> implements DAO
     }
 
     @Override
-    public Long crear(VoluntarioInternacional voluntarioInternacional) {
+    public Long crea(VoluntarioInternacional voluntarioInternacional) {
         return null;
     }
 
     @Override
-    public void actualiza(VoluntarioInternacional voluntarioInternacional) {
+    public void actualiza(VoluntarioInternacional voluntarioInternacional, String[] params) {
+
+    }
+
+    @Override
+    public void borra(VoluntarioInternacional voluntarioInternacional) {
 
     }
 }

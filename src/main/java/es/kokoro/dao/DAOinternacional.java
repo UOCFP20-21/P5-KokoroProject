@@ -18,12 +18,17 @@ public class DAOinternacional<pInternacional> implements DAO<Internacional,pInte
     }
 
     @Override
-    public Long crear(Internacional internacional) {
+    public Long crea(Internacional internacional) {
         return null;
     }
 
     @Override
-    public void actualiza(Internacional internacional) {
+    public void actualiza(Internacional internacional, String[] params) {
+
+    }
+
+    @Override
+    public void borra(Internacional internacional) {
 
     }
 }

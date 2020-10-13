@@ -19,12 +19,17 @@ public class DAOextraordinario<pExtraordinario> implements DAO<Extraordinario, p
     }
 
     @Override
-    public Long crear(Extraordinario extraordinario) {
+    public Long crea(Extraordinario extraordinario) {
         return null;
     }
 
     @Override
-    public void actualiza(Extraordinario extraordinario) {
+    public void actualiza(Extraordinario extraordinario, String[] params) {
+
+    }
+
+    @Override
+    public void borra(Extraordinario extraordinario) {
 
     }
 }

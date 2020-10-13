@@ -18,12 +18,17 @@ public class DAOproyecto<pProyecto> implements DAO<Proyecto,pProyecto> {
     }
 
     @Override
-    public Long crear(Proyecto proyecto) {
+    public Long crea(Proyecto proyecto) {
         return null;
     }
 
     @Override
-    public void actualiza(Proyecto proyecto) {
+    public void actualiza(Proyecto proyecto, String[] params) {
+
+    }
+
+    @Override
+    public void borra(Proyecto proyecto) {
 
     }
 }

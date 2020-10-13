@@ -18,12 +18,17 @@ public class DAOtrabajador<pTrabajador> implements DAO<Trabajador, pTrabajador> 
     }
 
     @Override
-    public Long crear(Trabajador trabajador) {
+    public Long crea(Trabajador trabajador) {
         return null;
     }
 
     @Override
-    public void actualiza(Trabajador trabajador) {
+    public void actualiza(Trabajador trabajador, String[] params) {
+
+    }
+
+    @Override
+    public void borra(Trabajador trabajador) {
 
     }
 }

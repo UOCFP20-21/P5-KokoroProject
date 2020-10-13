@@ -18,12 +18,17 @@ public class DAOentePublico<pEntePublico> implements DAO<EntePublico, pEntePubli
     }
 
     @Override
-    public Long crear(EntePublico entePublico) {
+    public Long crea(EntePublico entePublico) {
         return null;
     }
 
     @Override
-    public void actualiza(EntePublico entePublico) {
+    public void actualiza(EntePublico entePublico, String[] params) {
+
+    }
+
+    @Override
+    public void borra(EntePublico entePublico) {
 
     }
 }

@@ -18,12 +18,17 @@ public class DAOsubLineaAccion<pSubLineaAccion> implements DAO<SubLineaAccion, p
     }
 
     @Override
-    public Long crear(SubLineaAccion subLineaAccion) {
+    public Long crea(SubLineaAccion subLineaAccion) {
         return null;
     }
 
     @Override
-    public void actualiza(SubLineaAccion subLineaAccion) {
+    public void actualiza(SubLineaAccion subLineaAccion, String[] params) {
+
+    }
+
+    @Override
+    public void borra(SubLineaAccion subLineaAccion) {
 
     }
 }

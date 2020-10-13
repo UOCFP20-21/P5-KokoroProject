@@ -18,12 +18,17 @@ public class DAOsociedad<pSociedad> implements DAO<Sociedad, pSociedad> {
     }
 
     @Override
-    public Long crear(Sociedad sociedad) {
+    public Long crea(Sociedad sociedad) {
         return null;
     }
 
     @Override
-    public void actualiza(Sociedad sociedad) {
+    public void actualiza(Sociedad sociedad, String[] params) {
+
+    }
+
+    @Override
+    public void borra(Sociedad sociedad) {
 
     }
 }

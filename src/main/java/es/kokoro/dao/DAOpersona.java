@@ -18,12 +18,17 @@ public class DAOpersona<pPersona> implements DAO<Persona,pPersona> {
     }
 
     @Override
-    public Long crear(Persona persona) {
+    public Long crea(Persona persona) {
         return null;
     }
 
     @Override
-    public void actualiza(Persona persona) {
+    public void actualiza(Persona persona, String[] params) {
+
+    }
+
+    @Override
+    public void borra(Persona persona) {
 
     }
 }
