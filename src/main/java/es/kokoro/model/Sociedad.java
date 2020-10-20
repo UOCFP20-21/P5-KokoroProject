@@ -1,13 +1,13 @@
 package es.kokoro.model;
 
 
-import es.kokoro.model.interfaces.IFuente;
+import es.kokoro.model.interfaces.IIngreso;
 
 /**
  * Clase sociedades
  * Extiende de Empresa
  */
-public class Sociedad extends Empresa implements IFuente {
+public class Sociedad extends Empresa implements IIngreso {
     //Atributos
     private Long idSociedad;
 

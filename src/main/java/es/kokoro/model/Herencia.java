@@ -1,8 +1,8 @@
 package es.kokoro.model;
 
-import es.kokoro.model.interfaces.IFuente;
+import es.kokoro.model.interfaces.IIngreso;
 
-public class Herencia extends Persona implements IFuente {
+public class Herencia extends Persona implements IIngreso {
     private Long idHerencia;
 
     /***

@@ -1,16 +1,16 @@
 package es.kokoro.model;
 
 import es.kokoro.enums.Periodo;
-import es.kokoro.model.interfaces.IFuente;
+import es.kokoro.model.interfaces.IIngreso;
 
 /***
  * @author Kokoro
  */
-public class Socio extends Persona implements IFuente {
+public class Socio extends Persona implements IIngreso {
     private Long idSocio;
     private Periodo periodo;
     private double cuota;
-    private boolean estado;
+    private boolean estado = false;
 
     /***
      * Constructor de la clase Socio
