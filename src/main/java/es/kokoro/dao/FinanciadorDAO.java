@@ -4,7 +4,7 @@ import es.kokoro.model.Financiador;
 
 import java.util.List;
 
-public class FinanciadorDao implements Dao<Financiador> {
+public class FinanciadorDAO implements DAO<Financiador> {
     public Financiador get(long id) {
         return null;
     }

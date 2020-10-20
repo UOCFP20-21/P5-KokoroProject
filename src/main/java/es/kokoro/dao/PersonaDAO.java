@@ -4,7 +4,7 @@ import es.kokoro.model.Persona;
 
 import java.util.List;
 
-public class PersonaDao implements Dao<Persona> {
+public class PersonaDAO implements DAO<Persona> {
     public Persona get(long id) {
         return null;
     }

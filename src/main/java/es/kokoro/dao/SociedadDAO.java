@@ -4,7 +4,7 @@ import es.kokoro.model.Sociedad;
 
 import java.util.List;
 
-public class SociedadDao implements Dao<Sociedad>{
+public class SociedadDAO implements DAO<Sociedad> {
     public Sociedad get(long id) {
         return null;
     }

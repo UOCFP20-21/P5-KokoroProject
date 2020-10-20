@@ -4,7 +4,7 @@ import es.kokoro.model.SocioLocal;
 
 import java.util.List;
 
-public class SocioLocalDao implements Dao<SocioLocal> {
+public class SocioLocalDAO implements DAO<SocioLocal> {
     public SocioLocal get(long id) {
         return null;
     }

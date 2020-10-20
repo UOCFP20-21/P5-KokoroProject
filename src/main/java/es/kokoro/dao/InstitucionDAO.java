@@ -4,7 +4,7 @@ import es.kokoro.model.Institucion;
 
 import java.util.List;
 
-public class InstitucionDao implements Dao<Institucion> {
+public class InstitucionDAO implements DAO<Institucion> {
     public Institucion get(long id) {
         return null;
     }

@@ -4,7 +4,7 @@ import es.kokoro.model.Estatal;
 
 import java.util.List;
 
-public class EstatalDao implements Dao<Estatal>{
+public class EstatalDAO implements DAO<Estatal> {
     public Estatal get(long id) {
         return null;
     }

@@ -4,7 +4,7 @@ import es.kokoro.model.EntePublico;
 
 import java.util.List;
 
-public class EntePublicoDao implements Dao<EntePublico> {
+public class EntePublicoDAO implements DAO<EntePublico> {
     public EntePublico get(long id) {
         return null;
     }

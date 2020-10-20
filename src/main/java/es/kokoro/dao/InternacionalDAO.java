@@ -4,7 +4,7 @@ import es.kokoro.model.Internacional;
 
 import java.util.List;
 
-public class InternacionalDao implements Dao<Internacional> {
+public class InternacionalDAO implements DAO<Internacional> {
     public Internacional get(long id) {
         return null;
     }

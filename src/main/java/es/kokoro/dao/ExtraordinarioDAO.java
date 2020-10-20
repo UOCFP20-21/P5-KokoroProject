@@ -4,7 +4,7 @@ import es.kokoro.model.Extraordinario;
 
 import java.util.List;
 
-public class ExtraordinarioDao implements Dao<Extraordinario> {
+public class ExtraordinarioDAO implements DAO<Extraordinario> {
     public Extraordinario get(long id) {
         return null;
     }

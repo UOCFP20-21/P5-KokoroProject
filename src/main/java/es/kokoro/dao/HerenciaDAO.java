@@ -4,7 +4,7 @@ import es.kokoro.model.Herencia;
 
 import java.util.List;
 
-public class HerenciaDao implements Dao<Herencia> {
+public class HerenciaDAO implements DAO<Herencia> {
     public Herencia get(long id) {
         return null;
     }
