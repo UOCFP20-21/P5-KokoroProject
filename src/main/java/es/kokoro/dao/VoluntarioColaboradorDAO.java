@@ -4,7 +4,7 @@ import es.kokoro.model.VoluntarioColaborador;
 
 import java.util.List;
 
-public class VoluntarioColaboradorDao implements Dao<VoluntarioColaborador> {
+public class VoluntarioColaboradorDAO implements DAO<VoluntarioColaborador> {
     public VoluntarioColaborador get(long id) {
         return null;
     }

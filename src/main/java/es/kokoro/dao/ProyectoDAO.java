@@ -4,7 +4,7 @@ import es.kokoro.model.Proyecto;
 
 import java.util.List;
 
-public class ProyectoDao implements Dao<Proyecto> {
+public class ProyectoDAO implements DAO<Proyecto> {
     public Proyecto get(long id) {
         return null;
     }

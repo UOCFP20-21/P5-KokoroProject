@@ -2,7 +2,7 @@ package es.kokoro.dao;
 
 import java.util.List;
 
-public interface Dao<T> {
+public interface DAO<T> {
 
     T get(long id);
 

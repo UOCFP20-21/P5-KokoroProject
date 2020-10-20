@@ -1,5 +1,6 @@
 package es.kokoro;
 
+import es.kokoro.dao.XmlSocioDAO;
 import es.kokoro.enums.Organismo;
 import es.kokoro.enums.Periodo;
 import es.kokoro.model.Estatal;
@@ -24,5 +25,11 @@ public class Main {
 
         System.out.println("El ingreso es publico: " + ingreso.getIngreso().isPublico());
         System.out.println("El ingreso es publico: " + ingreso1.getIngreso().isPublico());
+
+        XmlSocioDAO xmlSocioDao = new XmlSocioDAO();
+        xmlSocioDao.save(socio1);
+        Socio socio1Recuperado = xmlSocioDao.get(socio1.getIdSocio());
+
+        System.out.println(socio1Recuperado.getIdSocio());
     }
 }

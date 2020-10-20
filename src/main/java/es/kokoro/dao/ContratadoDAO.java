@@ -4,7 +4,7 @@ import es.kokoro.model.Contratado;
 
 import java.util.List;
 
-public class ContratadoDao implements Dao<Contratado> {
+public class ContratadoDAO implements DAO<Contratado> {
     public Contratado get(long id) {
         return null;
     }

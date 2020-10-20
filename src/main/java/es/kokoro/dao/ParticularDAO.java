@@ -4,7 +4,7 @@ import es.kokoro.model.Particular;
 
 import java.util.List;
 
-public class ParticularDao implements Dao<Particular> {
+public class ParticularDAO implements DAO<Particular> {
     public Particular get(long id) {
         return null;
     }

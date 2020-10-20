@@ -4,7 +4,7 @@ import es.kokoro.model.Accion;
 
 import java.util.List;
 
-public class AccionDao implements Dao<Accion> {
+public class AccionDAO implements DAO<Accion> {
     public Accion get(long id) {
         return null;
     }

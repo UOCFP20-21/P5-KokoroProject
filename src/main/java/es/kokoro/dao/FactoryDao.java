@@ -3,57 +3,57 @@ package es.kokoro.dao;
 import es.kokoro.model.*;
 
 public class FactoryDao {
-    public static Dao getFactoryDao(Class classInstance) throws Exception {
+    public static DAO getFactoryDao(Class classInstance) throws Exception {
         if (classInstance.equals(Socio.class)) {
-            return new SocioDao();
+            return new SocioDAO();
         } else if (classInstance.equals(Contratado.class)) {
-            return new ContratadoDao();
+            return new ContratadoDAO();
         } else if (classInstance.equals(VoluntarioColaborador.class)) {
-            return new VoluntarioColaboradorDao();
+            return new VoluntarioColaboradorDAO();
         } else if (classInstance.equals(VoluntarioInternacional.class)) {
-            return new VoluntarioInternacionalDao();
+            return new VoluntarioInternacionalDAO();
         } else if (classInstance.equals(Sede.class)) {
-            return new SedeDao();
+            return new SedeDAO();
         } else if (classInstance.equals(Trabajador.class)) {
-            return new TrabajadorDao();
+            return new TrabajadorDAO();
         } else if (classInstance.equals(Persona.class)) {
-            return new PersonaDao();
+            return new PersonaDAO();
         } else if (classInstance.equals(Delegacion.class)) {
-            return new DelegacionDao();
+            return new DelegacionDAO();
         } else if (classInstance.equals(Empresa.class)) {
-            return new EmpresaDao();
+            return new EmpresaDAO();
         } else if (classInstance.equals(Particular.class)) {
-            return new ParticularDao();
+            return new ParticularDAO();
         } else if (classInstance.equals(Herencia.class)) {
-            return new HerenciaDao();
+            return new HerenciaDAO();
         } else if (classInstance.equals(Sociedad.class)) {
-            return new SociedadDao();
+            return new SociedadDAO();
         } else if (classInstance.equals(Institucion.class)) {
-            return new InstitucionDao();
+            return new InstitucionDAO();
         } else if (classInstance.equals(Extraordinario.class)) {
-            return new ExtraordinarioDao();
+            return new ExtraordinarioDAO();
         } else if (classInstance.equals(Ong.class)) {
-            return new OngDao();
+            return new OngDAO();
         } else if (classInstance.equals(SocioLocal.class)) {
-            return new SocioLocalDao();
+            return new SocioLocalDAO();
         } else if (classInstance.equals(Financiador.class)) {
-            return new FinanciadorDao();
+            return new FinanciadorDAO();
         } else if (classInstance.equals(Proyecto.class)) {
-            return new ProyectoDao();
+            return new ProyectoDAO();
         } else if (classInstance.equals(Ingreso.class)) {
-            return new IngresoDao();
+            return new IngresoDAO();
         } else if (classInstance.equals(Estatal.class)) {
-            return new EstatalDao();
+            return new EstatalDAO();
         } else if (classInstance.equals(Internacional.class)) {
-            return new InternacionalDao();
+            return new InternacionalDAO();
         } else if (classInstance.equals(EntePublico.class)) {
-            return new EntePublicoDao();
+            return new EntePublicoDAO();
         } else if (classInstance.equals(Accion.class)) {
-            return new AccionDao();
+            return new AccionDAO();
         } else if (classInstance.equals(LineaAccion.class)) {
-            return new LineaAccionDao();
+            return new LineaAccionDAO();
         } else if (classInstance.equals(SubLineaAccion.class)) {
-            return new SubLineaAccionDao();
+            return new SubLineaAccionDAO();
         }
         throw new Exception("Clase desconocida");
 

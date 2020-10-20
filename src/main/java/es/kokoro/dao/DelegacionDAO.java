@@ -5,7 +5,7 @@ import es.kokoro.model.Delegacion;
 
 import java.util.List;
 
-public class DelegacionDao implements Dao<Delegacion>{
+public class DelegacionDAO implements DAO<Delegacion> {
 
     public Delegacion get(long id) {
         return null;

@@ -4,7 +4,7 @@ import es.kokoro.model.Ingreso;
 
 import java.util.List;
 
-public class IngresoDao implements Dao<Ingreso> {
+public class IngresoDAO implements DAO<Ingreso> {
     public Ingreso get(long id) {
         return null;
     }

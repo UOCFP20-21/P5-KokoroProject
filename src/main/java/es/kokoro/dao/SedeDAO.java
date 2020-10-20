@@ -4,7 +4,7 @@ import es.kokoro.model.Sede;
 
 import java.util.List;
 
-public class SedeDao implements Dao<Sede> {
+public class SedeDAO implements DAO<Sede> {
     public Sede get(long id) {
         return null;
     }

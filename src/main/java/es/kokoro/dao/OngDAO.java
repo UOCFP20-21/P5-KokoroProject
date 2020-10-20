@@ -4,7 +4,7 @@ import es.kokoro.model.Ong;
 
 import java.util.List;
 
-public class OngDao implements Dao<Ong> {
+public class OngDAO implements DAO<Ong> {
 
     public Ong get(long id) {
 

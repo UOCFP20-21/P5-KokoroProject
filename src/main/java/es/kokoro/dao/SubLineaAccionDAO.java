@@ -4,7 +4,7 @@ import es.kokoro.model.SubLineaAccion;
 
 import java.util.List;
 
-public class SubLineaAccionDao implements Dao<SubLineaAccion> {
+public class SubLineaAccionDAO implements DAO<SubLineaAccion> {
     public SubLineaAccion get(long id) {
         return null;
     }
