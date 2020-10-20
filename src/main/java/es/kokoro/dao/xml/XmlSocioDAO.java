@@ -1,12 +1,15 @@
-package es.kokoro.dao;
+package es.kokoro.dao.xml;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import es.kokoro.dao.SocioDAO;
 import es.kokoro.model.Socio;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
-public class XmlSocioDAO {
+
+public class XmlSocioDAO implements SocioDAO {
 
     XmlMapper mapper;
 
@@ -23,6 +26,11 @@ public class XmlSocioDAO {
         }
     }
 
+    @Override
+    public List<Socio> getAll() {
+        return null;
+    }
+
     public void save(Socio socio) {
         try {
             mapper.writeValue(new File("src/main/resources/xml/socio" + "_" + socio.getIdSocio() + ".xml"), socio);
@@ -31,7 +39,17 @@ public class XmlSocioDAO {
         }
     }
 
+    @Override
+    public void update(Socio socio, String[] params) {
+
+    }
+
     public void delete(Socio socio) {
 
+    }
+
+    @Override
+    public Socio buscarDNI(String dni) {
+        return null;
     }
 }

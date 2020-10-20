@@ -1,15 +1,42 @@
 package es.kokoro.dao;
 
+import es.kokoro.dao.xml.XmlContratadoDAO;
+import es.kokoro.dao.xml.XmlSocioDAO;
+import es.kokoro.dao.xml.XmlVoluntarioColaboradorDAO;
 import es.kokoro.model.*;
 
-public class FactoryDao {
-    public static DAO getFactoryDao(Class classInstance) throws Exception {
+public class FactoryDAO {
+    public static DAO getFactoryDao(Class classInstance, String metodo) throws Exception {
         if (classInstance.equals(Socio.class)) {
-            return new SocioDAO();
+            if(metodo == "xml")
+            {
+                return new XmlSocioDAO();
+            }
+            else if(metodo == "sql")
+            {
+                throw new Exception("No ha método SQL para Socios");
+            }
         } else if (classInstance.equals(Contratado.class)) {
-            return new ContratadoDAO();
+
+            if(metodo == "xml")
+            {
+                return new XmlContratadoDAO();
+            }
+            else if(metodo == "sql")
+            {
+                throw new Exception("No ha método SQL para Contratado");
+            }
         } else if (classInstance.equals(VoluntarioColaborador.class)) {
-            return new VoluntarioColaboradorDAO();
+
+            if(metodo == "xml")
+            {
+                return new XmlVoluntarioColaboradorDAO();
+            }
+            else if(metodo == "sql")
+            {
+                throw new Exception("No ha método SQL para VoluntarioColaborador");
+            }
+
         } else if (classInstance.equals(VoluntarioInternacional.class)) {
             return new VoluntarioInternacionalDAO();
         } else if (classInstance.equals(Sede.class)) {

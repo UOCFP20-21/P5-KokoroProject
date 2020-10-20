@@ -1,6 +1,6 @@
 package es.kokoro;
 
-import es.kokoro.dao.XmlSocioDAO;
+import es.kokoro.dao.xml.XmlSocioDAO;
 import es.kokoro.enums.Organismo;
 import es.kokoro.enums.Periodo;
 import es.kokoro.model.Estatal;

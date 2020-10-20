@@ -4,24 +4,6 @@ import es.kokoro.model.Extraordinario;
 
 import java.util.List;
 
-public class ExtraordinarioDAO implements DAO<Extraordinario> {
-    public Extraordinario get(long id) {
-        return null;
-    }
+public interface ExtraordinarioDAO extends DAO<Extraordinario> {
 
-    public List<Extraordinario> getAll() {
-        return null;
-    }
-
-    public void save(Extraordinario extraordinario) {
-
-    }
-
-    public void update(Extraordinario extraordinario, String[] params) {
-
-    }
-
-    public void delete(Extraordinario extraordinario) {
-
-    }
 }
