@@ -4,24 +4,6 @@ import es.kokoro.model.Estatal;
 
 import java.util.List;
 
-public class EstatalDAO implements DAO<Estatal> {
-    public Estatal get(long id) {
-        return null;
-    }
+public interface EstatalDAO extends DAO<Estatal> {
 
-    public List<Estatal> getAll() {
-        return null;
-    }
-
-    public void save(Estatal estatal) {
-
-    }
-
-    public void update(Estatal estatal, String[] params) {
-
-    }
-
-    public void delete(Estatal estatal) {
-
-    }
 }

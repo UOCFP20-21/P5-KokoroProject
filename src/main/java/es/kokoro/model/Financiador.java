@@ -1,6 +1,6 @@
 package es.kokoro.model;
 
-import es.kokoro.model.interfaces.iFinanciador;
+import es.kokoro.model.interfaces.IFinanciador;
 
 public class Financiador {
     private Long idFinanciador;
@@ -53,7 +53,7 @@ public class Financiador {
     public void setTipoFinanciador(Object tipoFinanciador) {
         this.tipoFinanciador = tipoFinanciador;
         // Revisar si mejor usar try/catch (o si se puede....)
-        if(tipoFinanciador instanceof iFinanciador)
+        if(tipoFinanciador instanceof IFinanciador)
         {
             this.tipoFinanciador = tipoFinanciador;
         }

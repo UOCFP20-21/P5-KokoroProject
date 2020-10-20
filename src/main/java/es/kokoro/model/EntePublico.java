@@ -1,13 +1,13 @@
 package es.kokoro.model;
 
-import es.kokoro.model.interfaces.iFinanciador;
+import es.kokoro.model.interfaces.IFinanciador;
 import es.kokoro.model.interfaces.IIngreso;
 
 /**
  * Clase Ente Público
  */
 
-public abstract class EntePublico implements IIngreso, iFinanciador {
+public abstract class EntePublico implements IIngreso, IFinanciador {
     private Long idEntePublico;
     private String nombre;
     private String subvencion;

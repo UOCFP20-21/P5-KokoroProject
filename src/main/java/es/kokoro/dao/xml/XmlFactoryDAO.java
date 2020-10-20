@@ -1,63 +1,62 @@
-package es.kokoro.dao;
+package es.kokoro.dao.xml;
 
+import es.kokoro.dao.*;
 import es.kokoro.model.*;
 
-public class FactoryDao {
-    public static DAO getFactoryDao(Class classInstance) throws Exception {
+public class XmlFactoryDAO {
+    public static DAO getXmlFactoryDao(Class classInstance) throws Exception {
         if (classInstance.equals(Socio.class)) {
-            return new SocioDAO();
+            return new XmlSocioDAO();
         } else if (classInstance.equals(Contratado.class)) {
-            return new ContratadoDAO();
+            return new XmlContratadoDAO();
         } else if (classInstance.equals(VoluntarioColaborador.class)) {
-            return new VoluntarioColaboradorDAO();
+            return new XmlVoluntarioColaboradorDAO();
         } else if (classInstance.equals(VoluntarioInternacional.class)) {
-            return new VoluntarioInternacionalDAO();
+            return new XmlVoluntarioInternacionalDAO();
         } else if (classInstance.equals(Sede.class)) {
-            return new SedeDAO();
+            return new XmlSedeDAO();
         } else if (classInstance.equals(Trabajador.class)) {
-            return new TrabajadorDAO();
+            return new XmlTrabajadorDAO();
         } else if (classInstance.equals(Persona.class)) {
-            return new PersonaDAO();
+            return new XmlPersonaDAO();
         } else if (classInstance.equals(Delegacion.class)) {
-            return new DelegacionDAO();
+            return new XmlDelegacionDAO();
         } else if (classInstance.equals(Empresa.class)) {
-            return new EmpresaDAO();
+            return new XmlEmpresaDAO();
         } else if (classInstance.equals(Particular.class)) {
-            return new ParticularDAO();
+            return new XmlParticularDAO();
         } else if (classInstance.equals(Herencia.class)) {
-            return new HerenciaDAO();
+            return new XmlHerenciaDAO();
         } else if (classInstance.equals(Sociedad.class)) {
-            return new SociedadDAO();
+            return new XmlSociedadDAO();
         } else if (classInstance.equals(Institucion.class)) {
-            return new InstitucionDAO();
+            return new XmlInstitucionDAO();
         } else if (classInstance.equals(Extraordinario.class)) {
-            return new ExtraordinarioDAO();
+            return new XmlExtraordinarioDAO();
         } else if (classInstance.equals(Ong.class)) {
-            return new OngDAO();
+            return new XmlOngDAO();
         } else if (classInstance.equals(SocioLocal.class)) {
-            return new SocioLocalDAO();
+            return new XmlSocioLocalDAO();
         } else if (classInstance.equals(Financiador.class)) {
-            return new FinanciadorDAO();
+            return new XmlFinanciadorDAO();
         } else if (classInstance.equals(Proyecto.class)) {
-            return new ProyectoDAO();
+            return new XmlProyectoDAO();
         } else if (classInstance.equals(Ingreso.class)) {
-            return new IngresoDAO();
+            return new XmlIngresoDAO();
         } else if (classInstance.equals(Estatal.class)) {
-            return new EstatalDAO();
+            return new XmlEstatalDAO();
         } else if (classInstance.equals(Internacional.class)) {
-            return new InternacionalDAO();
+            return new XmlInternacionalDAO();
         } else if (classInstance.equals(EntePublico.class)) {
-            return new EntePublicoDAO();
+            return new XmlEntePublicoDAO();
         } else if (classInstance.equals(Accion.class)) {
-            return new AccionDAO();
+            return new XmlAccionDAO();
         } else if (classInstance.equals(LineaAccion.class)) {
-            return new LineaAccionDAO();
+            return new XmlLineaAccionDAO();
         } else if (classInstance.equals(SubLineaAccion.class)) {
-            return new SubLineaAccionDAO();
+            return new XmlSubLineaAccionDAO();
         }
         throw new Exception("Clase desconocida");
 
     }
 }
-
-
