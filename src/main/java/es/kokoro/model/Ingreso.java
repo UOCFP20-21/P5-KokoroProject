@@ -1,27 +1,26 @@
 package es.kokoro.model;
 
-import es.kokoro.model.interfaces.iIngreso;
+import es.kokoro.model.interfaces.IIngreso;
 
 import java.util.Date;
 
 public class Ingreso {
     private Long idIngreso;
-    private Object fuente;
+    private IIngreso ingreso;
     private double importe;
     private Date fecha;
-    private boolean publico;
+
 
     /***
      *
      * @param idIngreso Índice de ingreso
-     * @param fuente Objeto de tipo varios
+     * @param ingreso Objeto de tipo varios
      * @param importe Cantidad del ingreso
      * @param fecha Fecha del ingreso
-     * @param publico Es un ingreso de una fuente pública [true|false]
      */
-    public Ingreso(Long idIngreso, Object fuente, double importe, Date fecha, boolean publico) {
+    public Ingreso(Long idIngreso, IIngreso ingreso, double importe, Date fecha) {
         this.idIngreso = idIngreso;
-        this.setFuente(fuente);
+        this.setIngreso(ingreso);
         this.importe = importe;
         this.fecha = fecha;
     }
@@ -46,25 +45,17 @@ public class Ingreso {
      *
      * @return fuente
      */
-    public Object getFuente() {
-        return fuente;
+    public IIngreso getIngreso() {
+        return ingreso;
     }
 
     /***
      *
-     * @param fuente
+     * @param ingreso
      */
-    public void setFuente(Object fuente) {
-        // Revisar si mejor usar try/catch (o si se puede....)
-        if(fuente instanceof iIngreso)
-        {
-            this.fuente = fuente;
-            this.setPublico( ((iIngreso) fuente).setPublico() );
-        }
-        else {
-            System.out.println("Fuente de ingresos no válida");
-        }
+    public void setIngreso(IIngreso ingreso) {
 
+        this.ingreso = ingreso;
 
     }
 
@@ -100,29 +91,13 @@ public class Ingreso {
         this.fecha = fecha;
     }
 
-    /***
-     *
-     * @return publico
-     */
-    public boolean isPublico() {
-        return publico;
-    }
-
-    /***
-     *
-     * @param publico
-     */
-    public void setPublico(boolean publico) {
-        this.publico = publico;
-    }
 
     @Override
     public String toString() {
         return "Ingreso{" +
-                "fuente=" + fuente.toString() +
+                "fuente=" + ingreso.toString() +
                 ", importe=" + importe +
                 ", fecha=" + fecha +
-                ", publico=" + publico +
                 '}';
     }
 }

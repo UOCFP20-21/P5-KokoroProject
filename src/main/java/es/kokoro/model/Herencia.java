@@ -1,8 +1,8 @@
 package es.kokoro.model;
 
-import es.kokoro.model.interfaces.iIngreso;
+import es.kokoro.model.interfaces.IIngreso;
 
-public class Herencia extends Persona implements iIngreso {
+public class Herencia extends Persona implements IIngreso {
     private Long idHerencia;
 
     /***
@@ -46,7 +46,7 @@ public class Herencia extends Persona implements iIngreso {
                 "} " + super.toString();
     }
 
-    public boolean setPublico() {
+    public boolean isPublico() {
         return false;
     }
 }

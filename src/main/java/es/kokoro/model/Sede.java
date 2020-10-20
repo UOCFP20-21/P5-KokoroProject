@@ -11,6 +11,7 @@ import java.util.List;
 public class Sede extends Empresa {
 
     //Atributos
+    private Long idSede;
     private List<Trabajador> trabajadorList;
     private Ong ong;
 
@@ -27,15 +28,35 @@ public class Sede extends Empresa {
      * @param telefono @see Empresa
      * @param email @see Empresa
      * @param trabajadorList Listado de Trabajadores de la ONG
+     *                         * @param idSede
      * @param ong Objeto ONG con todas sus características.
      */
-    public Sede(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, String telefono, String email, List<Trabajador> trabajadorList, Ong ong) {
+    public Sede(Long idSede, Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, String telefono, String email, List<Trabajador> trabajadorList, Ong ong) {
         super(idEmpresa, nombre, pais, poblacion, direccionSocial, razonSocial, identificacionSocial, telefono, email);
+        this.idSede = idSede;
         this.trabajadorList = trabajadorList;
         this.ong = ong;
     }
 
 //Metodos publicos
+
+    /**
+     * Devuelve el id de Sede
+     *
+     * @return idSede
+     */
+    public Long getIdSede() {
+        return idSede;
+    }
+
+    /**
+     * Modifica el idSede
+     *
+     * @@param idSede
+     */
+    public void setIdSede(Long idSede) {
+        this.idSede = idSede;
+    }
 
     /**
      * Devuelve el listado de trabajadores
