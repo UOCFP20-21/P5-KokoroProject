@@ -48,8 +48,4 @@ public class XmlSocioDAO implements SocioDAO {
 
     }
 
-    @Override
-    public Socio buscarDNI(String dni) {
-        return null;
-    }
 }

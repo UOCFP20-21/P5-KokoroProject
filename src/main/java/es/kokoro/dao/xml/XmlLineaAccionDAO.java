@@ -5,7 +5,7 @@ import es.kokoro.model.LineaAccion;
 
 import java.util.List;
 
-public class XmlLineaDeAccionDAO implements LineaAccionDAO {
+public class XmlLineaAccionDAO implements LineaAccionDAO {
     @Override
     public LineaAccion get(long id) {
         return null;
