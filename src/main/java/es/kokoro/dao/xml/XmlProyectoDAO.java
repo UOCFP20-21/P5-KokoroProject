@@ -18,6 +18,8 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import static es.kokoro.commons.FormatFecha.*;
+import static es.kokoro.commons.FormatFecha.FFStringToDate;
 import static java.lang.Long.parseLong;
 
 
@@ -69,15 +71,9 @@ public class XmlProyectoDAO implements ProyectoDAO {
                     /***
                      * Configuramos la fecha
                      */
-                    Date eFechaInicio;
-                    Date eFechaFin;
-                    SimpleDateFormat formatFecha = new SimpleDateFormat("yyyy-MM-dd");
-                    Date tmpFechaInicio = formatFecha.parse(eProyecto.getElementsByTagName("fechaInicio").item(0).getTextContent());
-                    Date tmpFechaFin = formatFecha.parse(eProyecto.getElementsByTagName("fechaFin").item(0).getTextContent());
-                    String sFechaInicio = formatFecha.format(tmpFechaInicio);
-                    String sFechaFin = formatFecha.format(tmpFechaFin);
-                    eFechaInicio = formatFecha.parse(sFechaInicio);
-                    eFechaFin = formatFecha.parse(sFechaFin);
+
+                    Date eFechaInicio = FFStringToDate(eProyecto.getElementsByTagName("fechaInicio").item(0).getTextContent());
+                    Date eFechaFin = FFStringToDate(eProyecto.getElementsByTagName("fechaFin").item(0).getTextContent());
                     /*** FIN Configuracion de fecha ***/
                     Proyecto tmpProyecto = new Proyecto(
                             parseLong(eProyecto.getAttribute("id")),
@@ -192,16 +188,12 @@ public class XmlProyectoDAO implements ProyectoDAO {
             eProyecto.appendChild(eAccionList);
 
             // Fin listado con hijos
-            SimpleDateFormat formatFecha = new SimpleDateFormat("yyyy-MM-dd");
-
             Element eFechaInicio = doc.createElement("fechaInicio");
-            String sFechaInicio = formatFecha.format(proyecto.getFechaInicio());
-            eFechaInicio.appendChild(doc.createTextNode(sFechaInicio));
+            eFechaInicio.appendChild(doc.createTextNode(FFDateToString(proyecto.getFechaInicio())));
             eProyecto.appendChild(eFechaInicio);
 
             Element eFechaFin = doc.createElement("fechaFin");
-            String sFechaFin = formatFecha.format(proyecto.getFechaFin());
-            eFechaFin.appendChild(doc.createTextNode(sFechaFin));
+            eFechaFin.appendChild(doc.createTextNode(FFDateToString(proyecto.getFechaFin())));
             eProyecto.appendChild(eFechaFin);
 
             Element eLineaAccion = doc.createElement("lineaAccion");
@@ -230,7 +222,6 @@ public class XmlProyectoDAO implements ProyectoDAO {
         } catch(Exception e) {
             e.printStackTrace();
         }
-
 
 
     }

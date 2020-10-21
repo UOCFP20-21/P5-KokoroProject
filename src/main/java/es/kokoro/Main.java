@@ -10,6 +10,9 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import static es.kokoro.commons.FormatFecha.FFDateToString;
+import static es.kokoro.commons.FormatFecha.FFStringToDate;
+
 public class Main {
 
     public static void main(String[] args) throws Exception {
@@ -28,15 +31,14 @@ public class Main {
         List<SubLineaAccion> subLineaAccionList = Collections.emptyList();
 
         idProyecto = 1L;
-        codigoProyecto = "01ESP / 0003";
+        codigoProyecto = "01ESP / 0001";
         nombreProyecto = "Prueba cojonuda";
         pais = "España";
         localizacion = "Baleares";
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        String sFechaInicio = "2020-01-25";
-        String sFechaFin = "2020-01-25";
-        fechaInicio = format.parse(sFechaInicio);
-        fechaFin = format.parse(sFechaFin);
+        fechaInicio = FFStringToDate("2020-01-25");
+        fechaFin = FFStringToDate("2020-07-08");
+
+        System.out.println(FFDateToString(fechaInicio));
 
         List<Proyecto> proyectosSocioLocal1 = Collections.emptyList();
         List<Proyecto> proyectosSocioLocal2 = Collections.emptyList();
