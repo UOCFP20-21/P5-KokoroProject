@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Proyectos>
+    <Proyecto id="1">
+        <codigoProyecto>01ESP / 0003</codigoProyecto>
+        <nombreProyecto>Prueba cojonuda</nombreProyecto>
+        <pais>España</pais>
+        <localizacion>Baleares</localizacion>
+        <socioLocalList>
+            <idSocioLocal>1</idSocioLocal>
+            <idSocioLocal>2</idSocioLocal>
+        </socioLocalList>
+        <trabajadorList/>
+        <financiadorList/>
+        <accionList/>
+        <fechaInicio>2020-01-25</fechaInicio>
+        <fechaFin>2020-01-25</fechaFin>
+        <lineaAccion>1</lineaAccion>
+        <subLineaAccionList/>
+    </Proyecto>
+</Proyectos>

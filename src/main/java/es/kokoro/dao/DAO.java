@@ -6,7 +6,7 @@ public interface DAO<T> {
 
     T get(long id);
 
-    List<T> getAll();
+    List<T> getAll() throws Exception;
 
     void save(T t);
 

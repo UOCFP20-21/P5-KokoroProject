@@ -1,35 +1,68 @@
 package es.kokoro;
 
-import es.kokoro.dao.xml.XmlSocioDAO;
-import es.kokoro.enums.Organismo;
-import es.kokoro.enums.Periodo;
-import es.kokoro.model.Estatal;
-import es.kokoro.model.Ingreso;
-import es.kokoro.model.Socio;
+import es.kokoro.dao.xml.XmlProyectoDAO;
+import es.kokoro.model.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-        Socio socio1 = new Socio(1L, "hjkg", "jgg",
-                "12345678Z", "SP", "test",
-                "test", "test", "test@test.com", 1L,
-                Periodo.ANU, 20.0, true);
-        Estatal estatal1 = new Estatal(1L, "espa", "bcn", 1L, Organismo.COM, "Ayun");
+        Long idProyecto;
+        String codigoProyecto;
+        String nombreProyecto;
+        String pais;
+        String localizacion;
+        List<SocioLocal> socioLocalList = Collections.emptyList();
+        List<Trabajador> trabajadorList = Collections.emptyList();
+        List<Financiador> financiadorList = Collections.emptyList();
+        List<Accion> accionList = Collections.emptyList();
+        Date fechaInicio;
+        Date fechaFin;
+        List<SubLineaAccion> subLineaAccionList = Collections.emptyList();
 
+        idProyecto = 1L;
+        codigoProyecto = "01ESP / 0003";
+        nombreProyecto = "Prueba cojonuda";
+        pais = "España";
+        localizacion = "Baleares";
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String sFechaInicio = "2020-01-25";
+        String sFechaFin = "2020-01-25";
+        fechaInicio = format.parse(sFechaInicio);
+        fechaFin = format.parse(sFechaFin);
 
-        Ingreso ingreso = new Ingreso(1L, socio1, 20.0, new Date());
-        Ingreso ingreso1 = new Ingreso(2L, estatal1, 40.0, new Date());
+        List<Proyecto> proyectosSocioLocal1 = Collections.emptyList();
+        List<Proyecto> proyectosSocioLocal2 = Collections.emptyList();
 
-        System.out.println("El ingreso es publico: " + ingreso.getIngreso().isPublico());
-        System.out.println("El ingreso es publico: " + ingreso1.getIngreso().isPublico());
+        SocioLocal socioLocal1 = new SocioLocal(1L,"Socio Local Atemporal 1", "Marruecos","Tánger", "C/ de su casa, 1", "TangerSL", "C123456789L", "0034123456789", "tanger@tangersl.com", 1L,proyectosSocioLocal1 );
+        SocioLocal socioLocal2 = new SocioLocal(2L,"Socio Local Temporal 2", "Marruecos","Tánger", "C/ de su casa, 2", "Tanger2SL", "C987456321L", "0034987456321", "info@tanger2sl.com", 2L,proyectosSocioLocal2 );
 
-        XmlSocioDAO xmlSocioDao = new XmlSocioDAO();
-        xmlSocioDao.save(socio1);
-        Socio socio1Recuperado = xmlSocioDao.get(socio1.getIdSocio());
+        socioLocalList = new ArrayList<SocioLocal>();
+        socioLocalList.add(socioLocal1);
+        socioLocalList.add(socioLocal2);
 
-        System.out.println(socio1Recuperado.getIdSocio());
+        LineaAccion lineaAccion = new LineaAccion(1L, "Apoyo internacional");
+        Proyecto proyecto1 = new Proyecto(idProyecto, codigoProyecto, nombreProyecto, pais, localizacion, socioLocalList, trabajadorList, financiadorList, accionList, fechaInicio, fechaFin, lineaAccion, subLineaAccionList);
+
+        XmlProyectoDAO nuevoXML = new XmlProyectoDAO();
+        nuevoXML.save(proyecto1);
+
+         /***
+          * Cargamos listado de Proyectos
+          * ***/
+        List<Proyecto> listadoProyectos;
+        XmlProyectoDAO factoryProyectos = new XmlProyectoDAO();
+
+        listadoProyectos = factoryProyectos.getAll();
+
+        System.out.println(listadoProyectos.toString());
+
     }
 }

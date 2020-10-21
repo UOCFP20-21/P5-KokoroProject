@@ -2,8 +2,10 @@ package es.kokoro.dao.xml;
 
 import es.kokoro.dao.*;
 import es.kokoro.model.*;
+import org.w3c.dom.Element;
 
 public class XmlFactoryDAO {
+
     public static DAO getXmlFactoryDao(Class classInstance) throws Exception {
         if (classInstance.equals(Socio.class)) {
             return new XmlSocioDAO();
