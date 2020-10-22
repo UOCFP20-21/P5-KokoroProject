@@ -1,6 +1,8 @@
 package es.kokoro;
 
+import es.kokoro.dao.xml.XmlLineaAccionDAO;
 import es.kokoro.dao.xml.XmlProyectoDAO;
+import es.kokoro.dao.xml.XmlSubLineaAccionDAO;
 import es.kokoro.model.*;
 
 import java.text.ParseException;
@@ -16,7 +18,7 @@ import static es.kokoro.commons.FormatFecha.FFStringToDate;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-
+/*
         Long idProyecto;
         String codigoProyecto;
         String nombreProyecto;
@@ -30,9 +32,9 @@ public class Main {
         Date fechaFin;
         List<SubLineaAccion> subLineaAccionList = Collections.emptyList();
 
-        idProyecto = 1L;
-        codigoProyecto = "01ESP / 0001";
-        nombreProyecto = "Prueba cojonuda";
+        idProyecto = 4L;
+        codigoProyecto = "04ESP / 0004";
+        nombreProyecto = "Prueba cojonuda 4 - Con método incrustado";
         pais = "España";
         localizacion = "Baleares";
         fechaInicio = FFStringToDate("2020-01-25");
@@ -59,12 +61,48 @@ public class Main {
          /***
           * Cargamos listado de Proyectos
           * ***/
+        /*XmlProyectoDAO getProyecto = new XmlProyectoDAO();
+        Proyecto dameProyecto = getProyecto.get(2L);
+        System.out.println("Proyecto a eliminar: "+dameProyecto.toString());
+
+        getProyecto.delete(dameProyecto);
+        System.out.println("Proyecto eliminado");
+        */
+
         List<Proyecto> listadoProyectos;
         XmlProyectoDAO factoryProyectos = new XmlProyectoDAO();
 
         listadoProyectos = factoryProyectos.getAll();
 
         System.out.println(listadoProyectos.toString());
+
+
+        /***
+         * Creando Líneas de Acción
+         *
+        LineaAccion lineaPrueba = new LineaAccion(2L,"Linea de prueba 2 - Editada");
+        XmlLineaAccionDAO lineaPruebaXml = new XmlLineaAccionDAO();
+        LineaAccion lineaAEliminar = lineaPruebaXml.get(2L);
+        System.out.println("Linea de Acción a eliminar: "+lineaAEliminar.toString());
+        lineaPruebaXml.delete(lineaAEliminar);
+
+        List<LineaAccion> lineaAccionList = lineaPruebaXml.getAll();
+        System.out.println(lineaAccionList.toString());*/
+
+
+        /***
+         * Creando Sub Líneas de Acción
+         */
+         SubLineaAccion subLineaPrueba = new SubLineaAccion(2L,"Sub línea de Acción de prueba 2");
+         XmlSubLineaAccionDAO subLineaPruebaXml = new XmlSubLineaAccionDAO();
+         //LineaAccion subLineaAEliminar = subLineaPruebaXml.get(2L);
+         //System.out.println("Linea de Acción a eliminar: "+subLineaAEliminar.toString());
+         //subLineaPruebaXml.delete(subLineaAEliminar);
+
+         subLineaPruebaXml.save(subLineaPrueba);
+
+         List<SubLineaAccion> subLineaAccionList = subLineaPruebaXml.getAll();
+         System.out.println(subLineaAccionList.toString());
 
     }
 }
