@@ -50,25 +50,35 @@ public class Main {
         SocioLocal socioLocal1 = new SocioLocal(1L,"Socio Local Atemporal 1", "Marruecos","Tánger", "C/ de su casa, 1", "TangerSL", "C123456789L", "0034123456789", "tanger@tangersl.com", 1L,proyectosSocioLocal1 );
         SocioLocal socioLocal2 = new SocioLocal(2L,"Socio Local Temporal 2", "Marruecos","Tánger", "C/ de su casa, 2", "Tanger2SL", "C987456321L", "0034987456321", "info@tanger2sl.com", 2L,proyectosSocioLocal2 );
 */
-        Proyecto proyecto1 = factoryProyectos.get(4L);
+        //Proyecto proyecto1 = factoryProyectos.get(5L);
 
-        LineaAccion lineaAccion = lineaPruebaXml.get(3L);
-        proyecto1.setLineaAccion(lineaAccion);
-        SubLineaAccion subLineaAccion1 = subLineaPruebaXml.get(2L);
-        SubLineaAccion subLineaAccion2 = subLineaPruebaXml.get(3L);
+        //LineaAccion lineaAccion = lineaPruebaXml.get(3L);
+        //proyecto1.setLineaAccion(lineaAccion);
+        //SubLineaAccion subLineaAccion1 = subLineaPruebaXml.get(2L);
+        //SubLineaAccion subLineaAccion2 = subLineaPruebaXml.get(3L);
 
-        List<SubLineaAccion> subLineaAccionList = new ArrayList<SubLineaAccion>();
-        subLineaAccionList.add(subLineaAccion1);
-        subLineaAccionList.add(subLineaAccion2);
-        proyecto1.setSubLineaAccionList(subLineaAccionList);
+        //List<SubLineaAccion> subLineaAccionList = new ArrayList<SubLineaAccion>();
+        //subLineaAccionList.add(subLineaAccion1);
+        //subLineaAccionList.add(subLineaAccion2);
+        //proyecto1.setSubLineaAccionList(subLineaAccionList);
         //Proyecto proyecto1 = new Proyecto(idProyecto, codigoProyecto, nombreProyecto, pais, localizacion, socioLocalList, trabajadorList, financiadorList, accionList, fechaInicio, fechaFin, lineaAccion, subLineaAccionList);
-
+        //Date nuevaFechaInicio = FFStringToDate("2019-12-05");
+        //proyecto1.setFechaInicio(nuevaFechaInicio);
 
          /***
           * Cargamos listado de Proyectos
           * ***/
+        Proyecto proyecto4_v1 = factoryProyectos.get(5L);
+        System.out.println(proyecto4_v1.getLineaAccion().getLinea());
+        LineaAccion editada = lineaPruebaXml.get(2L);
+        editada.setLinea("Editamos la linea 2");
+        lineaPruebaXml.save(editada);
 
-        factoryProyectos.save(proyecto1);
+        Proyecto proyecto4_v2 = factoryProyectos.get(5L);
+        System.out.println(proyecto4_v2.getLineaAccion().getLinea());
+
+
+        //factoryProyectos.save(proyecto1);
 
 
         //Proyecto dameProyecto = getProyecto.get(2L);
@@ -119,8 +129,8 @@ public class Main {
         //subLineaPruebaXml.save(subLineaPrueba3);
         //subLineaPruebaXml.save(subLineaPrueba4);
 
-        subLineaAccionList = subLineaPruebaXml.getAll();
-        System.out.println(subLineaAccionList.toString());
+        //subLineaAccionList = subLineaPruebaXml.getAll();
+        //System.out.println(subLineaAccionList.toString());
 
     }
 }

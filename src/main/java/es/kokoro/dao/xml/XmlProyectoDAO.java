@@ -13,8 +13,7 @@ import java.util.*;
 
 import static es.kokoro.commons.FormatFecha.*;
 import static es.kokoro.commons.FormatFecha.FFStringToDate;
-import static es.kokoro.commons.fileBuilder.buildXmlDoc;
-import static es.kokoro.commons.fileBuilder.nuevoXmlDoc;
+import static es.kokoro.commons.fileXmlBuilder.*;
 import static java.lang.Long.parseLong;
 
 
@@ -24,21 +23,10 @@ public class XmlProyectoDAO implements ProyectoDAO {
     public XmlProyectoDAO() throws Exception {
 
         try {
-            File archivo = new File(xmlFile);
-            if(!archivo.exists())
-            {
-                Document doc = nuevoXmlDoc();
-                // definimos el elemento raíz del documento
-                Element xmlRoot = doc.createElement("Proyectos");
-                doc.appendChild(xmlRoot);
-
-                buildXmlDoc(doc, xmlFile);
-                System.out.println("Archivo creado");
-            }
-
+            xheckXmlExists(xmlFile, "Proyectos");
         } catch (Exception e){
             e.printStackTrace();
-            //System.out.println(e);
+            System.out.println(e);
             throw e;
         }
 
@@ -147,35 +135,6 @@ public class XmlProyectoDAO implements ProyectoDAO {
 
     }
 
-
-    private List subElemento(Element eParent, DAO xmlBuilderDao, String eList, String eItem) throws Exception {
-
-        List exitList = new ArrayList();
-        Node nNodeList = eParent.getElementsByTagName(eList).item(0); // Declaramos NODO
-        Element eNodeList = (Element) nNodeList;  // Convertimos nodo en Element
-
-        NodeList nNodeListChild = eNodeList.getElementsByTagName(eItem);   //Sacamos listado de nodos internos
-
-
-        for(int tempSubLinea = 0; tempSubLinea < nNodeListChild.getLength(); tempSubLinea++) {
-            Node nNodeChild = nNodeListChild.item(tempSubLinea);
-
-            if(nNodeChild.getNodeType() == Node.ELEMENT_NODE) // Comrpobamos si el nodo es == al tipo de nodo que hemos pedido
-            {
-                Element eNodeChild = (Element) nNodeChild;
-                Long id = parseLong(eNodeChild.getTextContent());
-                if(xmlBuilderDao.get(id) != null)
-                {
-                    exitList.add(xmlBuilderDao.get(id));
-                }
-
-            }
-        }
-        return exitList;
-    }
-
-
-
     @Override
     public Proyecto get(long id) throws Exception {
         List<Proyecto> listado = getAll();
@@ -211,35 +170,35 @@ public class XmlProyectoDAO implements ProyectoDAO {
                     /***
                      * Descomentar linea inferior si XmlSocioLocalDAO() Carga los datos
                      */
-                    //socioLocalList = subElemento(eProyecto, socioLocalData, "socioLocalList", "idSocioLocal");
+                    //socioLocalList = subElementoIdList(eProyecto, socioLocalData, "socioLocalList", "idSocioLocal");
 
                     List<Trabajador> trabajadorList = new ArrayList<Trabajador>();
                     XmlTrabajadorDAO trabajadorData = new XmlTrabajadorDAO();
                     /***
                      * Descomentar linea inferior si XmlTrabajadorDAO() Carga los datos
                      */
-                    //trabajadorList = subElemento(eProyecto, trabajadorData, "trabajadorList", "idTrabajador");
+                    //trabajadorList = subElementoIdList(eProyecto, trabajadorData, "trabajadorList", "idTrabajador");
 
                     List<Financiador> financiadorList = new ArrayList<Financiador>();
                     XmlFinanciadorDAO financiadorData = new XmlFinanciadorDAO();
                     /***
                      * Descomentar linea inferior si XmlTrabajadorDAO() Carga los datos
                      */
-                    //financiadorList = subElemento(eProyecto, financiadorData, "financiadorList", "idFinanciador");
+                    //financiadorList = subElementoIdList(eProyecto, financiadorData, "financiadorList", "idFinanciador");
 
                     List<Accion> accionList = new ArrayList<>();
                     XmlAccionDAO accionData = new XmlAccionDAO();
                     /***
                      * Descomentar linea inferior si XmlAccionDAO() Carga los datos
                      */
-                    //accionList = subElemento(eProyecto, accionData, "accionList", "idAccion");
+                    //accionList = subElementoIdList(eProyecto, accionData, "accionList", "idAccion");
 
                     XmlLineaAccionDAO lineaAccionData = new XmlLineaAccionDAO();
                     LineaAccion lineaAccion = lineaAccionData.get(parseLong(eProyecto.getElementsByTagName("lineaAccion").item(0).getTextContent()));
 
                     /** SubLineaAccion **/
                     XmlSubLineaAccionDAO subLineaAccionData = new XmlSubLineaAccionDAO();
-                    List<SubLineaAccion> subLineaAccionList = subElemento(eProyecto, subLineaAccionData, "subLineaAccionList", "idSubLineaAccion");
+                    List<SubLineaAccion> subLineaAccionList = subElementoIdList(eProyecto, subLineaAccionData, "subLineaAccionList", "idSubLineaAccion");
 
 
                     /***

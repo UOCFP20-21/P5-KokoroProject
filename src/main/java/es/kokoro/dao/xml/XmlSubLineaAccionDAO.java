@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static es.kokoro.commons.fileBuilder.buildXmlDoc;
-import static es.kokoro.commons.fileBuilder.nuevoXmlDoc;
+import static es.kokoro.commons.fileXmlBuilder.*;
 import static java.lang.Long.parseLong;
 
 public class XmlSubLineaAccionDAO implements SubLineaAccionDAO {
@@ -21,21 +20,11 @@ public class XmlSubLineaAccionDAO implements SubLineaAccionDAO {
 
     public XmlSubLineaAccionDAO() throws Exception {
         try {
-            File archivo = new File(xmlFile);
-            if(!archivo.exists())
-            {
-                Document doc = nuevoXmlDoc();
-                // definimos el elemento raíz del documento
-                Element xmlRoot = doc.createElement("SubLineasAccion");
-                doc.appendChild(xmlRoot);
-
-                buildXmlDoc(doc, xmlFile);
-                System.out.println("Archivo creado");
-            }
-
+            xheckXmlExists(xmlFile, "SubLineasAccion");
         } catch (Exception e){
             e.printStackTrace();
             System.out.println(e);
+            throw e;
         }
     }
 
