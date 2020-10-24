@@ -8,11 +8,9 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import static es.kokoro.commons.fileBuilder.buildXmlDoc;
-import static es.kokoro.commons.fileBuilder.nuevoXmlDoc;
+import static es.kokoro.commons.fileXmlBuilder.*;
 import static java.lang.Long.parseLong;
 
 public class XmlLineaAccionDAO implements LineaAccionDAO {
@@ -22,21 +20,11 @@ public class XmlLineaAccionDAO implements LineaAccionDAO {
     public XmlLineaAccionDAO() throws Exception {
 
         try {
-            File archivo = new File(xmlFile);
-            if(!archivo.exists())
-            {
-                Document doc = nuevoXmlDoc();
-                // definimos el elemento raíz del documento
-                Element xmlRoot = doc.createElement("LineasAccion");
-                doc.appendChild(xmlRoot);
-
-                buildXmlDoc(doc, xmlFile);
-                System.out.println("Archivo creado");
-            }
-
+            xheckXmlExists(xmlFile, "LineasAccion");
         } catch (Exception e){
             e.printStackTrace();
             System.out.println(e);
+            throw e;
         }
 
     }
@@ -71,7 +59,7 @@ public class XmlLineaAccionDAO implements LineaAccionDAO {
     }
 
     public List<LineaAccion> getAll() throws Exception {
-        List<LineaAccion> listLineaAccion = Collections.emptyList();
+        List<LineaAccion> listLineaAccion = new ArrayList<LineaAccion>();
         File proyectosDB = new File(xmlFile);
         Document doc;
         try {
@@ -81,9 +69,7 @@ public class XmlLineaAccionDAO implements LineaAccionDAO {
 
 
             NodeList listadoNodos = doc.getElementsByTagName("LineaAccion");
-            if(listadoNodos.getLength() > 0) {
-                listLineaAccion = new ArrayList<LineaAccion>();
-            }
+
             for(int temp = 0; temp < listadoNodos.getLength(); temp++) {
                 Node nNode = listadoNodos.item(temp);
 
