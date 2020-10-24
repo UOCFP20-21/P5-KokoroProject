@@ -23,13 +23,8 @@ public class XmlSocioDAO implements SocioDAO {
 
     public XmlSocioDAO() throws Exception {
 
-        try {
+
             checkXmlExists(xmlFile, "Socios");
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e);
-            throw e;
-        }
 
     }
 
@@ -182,7 +177,7 @@ public class XmlSocioDAO implements SocioDAO {
             doc.appendChild(xmlRoot);
 
             for (Socio itemSocio : socioList) {
-                if (itemSocio.getIdSocio().equals(socio.getIdSocio())) {
+                if (!itemSocio.getIdSocio().equals(socio.getIdSocio())) {
                     xmlRoot.appendChild(crearElemento(itemSocio, doc));
                 }
             }
