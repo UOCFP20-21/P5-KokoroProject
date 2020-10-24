@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SubLineasAccion>
+    <SubLineaAccion id="1">
+        <nombreSubLinea>Sub línea de Acción de prueba 1</nombreSubLinea>
+    </SubLineaAccion>
+    <SubLineaAccion id="2">
+        <nombreSubLinea>Sub línea de Acción de prueba 2</nombreSubLinea>
+    </SubLineaAccion>
+    <SubLineaAccion id="3">
+        <nombreSubLinea>Sub línea de Acción de prueba 3</nombreSubLinea>
+    </SubLineaAccion>
+    <SubLineaAccion id="4">
+        <nombreSubLinea>Sub línea de Acción de prueba 4</nombreSubLinea>
+    </SubLineaAccion>
+</SubLineasAccion>
