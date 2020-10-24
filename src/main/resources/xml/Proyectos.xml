@@ -1,20 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Proyectos>
-    <Proyecto id="1">
-        <codigoProyecto>01ESP / 0003</codigoProyecto>
-        <nombreProyecto>Prueba cojonuda</nombreProyecto>
+    <Proyecto id="4">
+        <codigoProyecto>06ESP / 0006</codigoProyecto>
+        <nombreProyecto>Prueba cojonuda 6</nombreProyecto>
         <pais>España</pais>
         <localizacion>Baleares</localizacion>
-        <socioLocalList>
-            <idSocioLocal>1</idSocioLocal>
-            <idSocioLocal>2</idSocioLocal>
-        </socioLocalList>
+        <socioLocalList/>
+        <trabajadorList/>
+        <financiadorList/>
+        <accionList/>
+        <fechaInicio>2020-01-01</fechaInicio>
+        <fechaFin>2020-09-28</fechaFin>
+        <lineaAccion>3</lineaAccion>
+        <subLineaAccionList>
+            <idSubLineaAccion>2</idSubLineaAccion>
+            <idSubLineaAccion>3</idSubLineaAccion>
+        </subLineaAccionList>
+    </Proyecto>
+    <Proyecto id="5">
+        <codigoProyecto>05ESP / 0005</codigoProyecto>
+        <nombreProyecto>Prueba cojonuda 5</nombreProyecto>
+        <pais>España</pais>
+        <localizacion>Baleares</localizacion>
+        <socioLocalList/>
         <trabajadorList/>
         <financiadorList/>
         <accionList/>
         <fechaInicio>2020-01-25</fechaInicio>
         <fechaFin>2020-07-08</fechaFin>
+        <lineaAccion>2</lineaAccion>
+        <subLineaAccionList>
+            <idSubLineaAccion>2</idSubLineaAccion>
+        </subLineaAccionList>
+    </Proyecto>
+    <Proyecto id="6">
+        <codigoProyecto>06ESP / 0006</codigoProyecto>
+        <nombreProyecto>Prueba cojonuda 6</nombreProyecto>
+        <pais>España</pais>
+        <localizacion>Baleares</localizacion>
+        <socioLocalList/>
+        <trabajadorList/>
+        <financiadorList/>
+        <accionList/>
+        <fechaInicio>2020-01-01</fechaInicio>
+        <fechaFin>2020-09-28</fechaFin>
         <lineaAccion>1</lineaAccion>
-        <subLineaAccionList/>
+        <subLineaAccionList>
+            <idSubLineaAccion>1</idSubLineaAccion>
+            <idSubLineaAccion>2</idSubLineaAccion>
+        </subLineaAccionList>
     </Proyecto>
 </Proyectos>

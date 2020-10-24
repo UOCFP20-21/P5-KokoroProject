@@ -1,5 +1,6 @@
 package es.kokoro.dao.xml;
 
+import es.kokoro.dao.DAO;
 import es.kokoro.dao.ProyectoDAO;
 import es.kokoro.model.*;
 import org.w3c.dom.*;
@@ -37,7 +38,8 @@ public class XmlProyectoDAO implements ProyectoDAO {
 
         } catch (Exception e){
             e.printStackTrace();
-            System.out.println(e);
+            //System.out.println(e);
+            throw e;
         }
 
     }
@@ -146,6 +148,34 @@ public class XmlProyectoDAO implements ProyectoDAO {
     }
 
 
+    private List subElemento(Element eParent, DAO xmlBuilderDao, String eList, String eItem) throws Exception {
+
+        List exitList = new ArrayList();
+        Node nNodeList = eParent.getElementsByTagName(eList).item(0); // Declaramos NODO
+        Element eNodeList = (Element) nNodeList;  // Convertimos nodo en Element
+
+        NodeList nNodeListChild = eNodeList.getElementsByTagName(eItem);   //Sacamos listado de nodos internos
+
+
+        for(int tempSubLinea = 0; tempSubLinea < nNodeListChild.getLength(); tempSubLinea++) {
+            Node nNodeChild = nNodeListChild.item(tempSubLinea);
+
+            if(nNodeChild.getNodeType() == Node.ELEMENT_NODE) // Comrpobamos si el nodo es == al tipo de nodo que hemos pedido
+            {
+                Element eNodeChild = (Element) nNodeChild;
+                Long id = parseLong(eNodeChild.getTextContent());
+                if(xmlBuilderDao.get(id) != null)
+                {
+                    exitList.add(xmlBuilderDao.get(id));
+                }
+
+            }
+        }
+        return exitList;
+    }
+
+
+
     @Override
     public Proyecto get(long id) throws Exception {
         List<Proyecto> listado = getAll();
@@ -156,7 +186,7 @@ public class XmlProyectoDAO implements ProyectoDAO {
     }
 
     public List<Proyecto> getAll() throws Exception {
-        List<Proyecto> listadoProyectos = Collections.emptyList();
+        List<Proyecto> listadoProyectos = new ArrayList<>();
         File proyectosDB = new File(xmlFile);
         Document doc;
         try {
@@ -166,32 +196,51 @@ public class XmlProyectoDAO implements ProyectoDAO {
 
 
             NodeList listadoNodos = doc.getElementsByTagName("Proyecto");
-            if(listadoNodos.getLength() > 0) {
+            /*if(listadoNodos.getLength() > 0) {
                 listadoProyectos = new ArrayList<Proyecto>();
-            }
+            }*/
             for(int temp = 0; temp < listadoNodos.getLength(); temp++) {
-                Node nNode = listadoNodos.item(temp);
+                Node nNode = listadoNodos.item(temp); // Proyecto
 
                 if(nNode.getNodeType() == Node.ELEMENT_NODE) // Comrpobamos si el nodo es == al tipo de nodo que hemos pedido
                 {
                     Element eProyecto = (Element) nNode;
+
+                    List<SocioLocal> socioLocalList = new ArrayList<>();
+                    XmlSocioLocalDAO socioLocalData = new XmlSocioLocalDAO();
                     /***
-                     * DESDE AQUÍ:
-                     * Se tienen que modificar buscando por ID de objeto en su correspondiente XML-DAO
+                     * Descomentar linea inferior si XmlSocioLocalDAO() Carga los datos
                      */
-                    List<SocioLocal> socioLocalList = new ArrayList<SocioLocal>();
+                    //socioLocalList = subElemento(eProyecto, socioLocalData, "socioLocalList", "idSocioLocal");
+
                     List<Trabajador> trabajadorList = new ArrayList<Trabajador>();
-                    List<Financiador> financiadorList = new ArrayList<Financiador>();
-                    List<Accion> accionList = new ArrayList<Accion>();
-
-                    List<SubLineaAccion> subLineaAccionList = new ArrayList<SubLineaAccion>();
-
+                    XmlTrabajadorDAO trabajadorData = new XmlTrabajadorDAO();
                     /***
-                     * HASTA AQUÍ
+                     * Descomentar linea inferior si XmlTrabajadorDAO() Carga los datos
                      */
+                    //trabajadorList = subElemento(eProyecto, trabajadorData, "trabajadorList", "idTrabajador");
+
+                    List<Financiador> financiadorList = new ArrayList<Financiador>();
+                    XmlFinanciadorDAO financiadorData = new XmlFinanciadorDAO();
+                    /***
+                     * Descomentar linea inferior si XmlTrabajadorDAO() Carga los datos
+                     */
+                    //financiadorList = subElemento(eProyecto, financiadorData, "financiadorList", "idFinanciador");
+
+                    List<Accion> accionList = new ArrayList<>();
+                    XmlAccionDAO accionData = new XmlAccionDAO();
+                    /***
+                     * Descomentar linea inferior si XmlAccionDAO() Carga los datos
+                     */
+                    //accionList = subElemento(eProyecto, accionData, "accionList", "idAccion");
 
                     XmlLineaAccionDAO lineaAccionData = new XmlLineaAccionDAO();
                     LineaAccion lineaAccion = lineaAccionData.get(parseLong(eProyecto.getElementsByTagName("lineaAccion").item(0).getTextContent()));
+
+                    /** SubLineaAccion **/
+                    XmlSubLineaAccionDAO subLineaAccionData = new XmlSubLineaAccionDAO();
+                    List<SubLineaAccion> subLineaAccionList = subElemento(eProyecto, subLineaAccionData, "subLineaAccionList", "idSubLineaAccion");
+
 
                     /***
                      * Configuramos la fecha
@@ -200,6 +249,7 @@ public class XmlProyectoDAO implements ProyectoDAO {
                     Date eFechaInicio = FFStringToDate(eProyecto.getElementsByTagName("fechaInicio").item(0).getTextContent());
                     Date eFechaFin = FFStringToDate(eProyecto.getElementsByTagName("fechaFin").item(0).getTextContent());
                     /*** FIN Configuracion de fecha ***/
+
                     Proyecto tmpProyecto = new Proyecto(
                             parseLong(eProyecto.getAttribute("id")),
                             eProyecto.getElementsByTagName("codigoProyecto").item(0).getTextContent(),
@@ -230,7 +280,7 @@ public class XmlProyectoDAO implements ProyectoDAO {
     public void save(Proyecto proyecto) throws Exception {
 
         /*File proyectosDB = new File(xmlFile);*/
-        Boolean isNew = true;
+        boolean isNew = true;
         List<Proyecto> proyectosList = getAll();
 
         try {
@@ -285,7 +335,7 @@ public class XmlProyectoDAO implements ProyectoDAO {
             doc.appendChild(xmlRoot);
 
             for (Proyecto itemProyecto: proyectosList) {
-                if(itemProyecto.getIdProyecto() != proyecto.getIdProyecto()){
+                if(itemProyecto.getIdProyecto().equals(proyecto.getIdProyecto())){
                     xmlRoot.appendChild(crearElemento(itemProyecto, doc));
                 }
             }
