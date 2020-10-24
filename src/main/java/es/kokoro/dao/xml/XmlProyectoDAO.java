@@ -1,6 +1,5 @@
 package es.kokoro.dao.xml;
 
-import es.kokoro.dao.DAO;
 import es.kokoro.dao.ProyectoDAO;
 import es.kokoro.model.*;
 import org.w3c.dom.*;
@@ -23,7 +22,7 @@ public class XmlProyectoDAO implements ProyectoDAO {
     public XmlProyectoDAO() throws Exception {
 
         try {
-            xheckXmlExists(xmlFile, "Proyectos");
+            checkXmlExists(xmlFile, "Proyectos");
         } catch (Exception e){
             e.printStackTrace();
             System.out.println(e);

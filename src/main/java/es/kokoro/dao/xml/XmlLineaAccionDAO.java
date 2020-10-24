@@ -20,7 +20,7 @@ public class XmlLineaAccionDAO implements LineaAccionDAO {
     public XmlLineaAccionDAO() throws Exception {
 
         try {
-            xheckXmlExists(xmlFile, "LineasAccion");
+            checkXmlExists(xmlFile, "LineasAccion");
         } catch (Exception e){
             e.printStackTrace();
             System.out.println(e);
