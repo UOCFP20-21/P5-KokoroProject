@@ -2,7 +2,9 @@ package es.kokoro;
 
 import es.kokoro.dao.xml.XmlLineaAccionDAO;
 import es.kokoro.dao.xml.XmlProyectoDAO;
+import es.kokoro.dao.xml.XmlSocioDAO;
 import es.kokoro.dao.xml.XmlSubLineaAccionDAO;
+import es.kokoro.enums.Periodo;
 import es.kokoro.model.*;
 
 import java.util.ArrayList;
@@ -20,6 +22,31 @@ public class Main {
         XmlProyectoDAO factoryProyectos = new XmlProyectoDAO();
         XmlLineaAccionDAO lineaPruebaXml = new XmlLineaAccionDAO();
         XmlSubLineaAccionDAO subLineaPruebaXml = new XmlSubLineaAccionDAO();
+        XmlSocioDAO xmlSocioDao = new XmlSocioDAO();
+
+       Socio socio1 = new Socio(2L, "hjkg", "jgg",
+                "677648268", "SP", "test",
+                "test", "test", "test@test.com", 2L,
+                Periodo.MES, 100.0, true);
+
+       xmlSocioDao.save(socio1);
+       System.out.println("creación de socio");
+        List<Socio> socioList = xmlSocioDao.getAll();
+       System.out.println(socioList.toString());
+          /*  Socio socio1Recuperado = xmlSocioDao.get(socio1.getIdSocio());
+            assert socio1Recuperado != null;
+            System.out.println(socio1Recuperado.getIdSocio());
+            System.out.println("Leer socio");
+            List<Socio> socioList = xmlSocioDao.getAll();
+            System.out.println(socioList);
+            System.out.println("listado de socio");*/
+       // socio1.setCuota(40.0);
+       /* xmlSocioDao.update(socio1);
+        System.out.println(socio1);
+        System.out.println("imprime actualización de socio");
+        xmlSocioDao.delete(socio1.getIdSocio());
+        System.out.println("socio borrado");*/
+
 /*
         Long idProyecto;
         String codigoProyecto;
@@ -64,18 +91,18 @@ public class Main {
         //Proyecto proyecto1 = new Proyecto(idProyecto, codigoProyecto, nombreProyecto, pais, localizacion, socioLocalList, trabajadorList, financiadorList, accionList, fechaInicio, fechaFin, lineaAccion, subLineaAccionList);
         //Date nuevaFechaInicio = FFStringToDate("2019-12-05");
         //proyecto1.setFechaInicio(nuevaFechaInicio);
-
+/*
          /***
           * Cargamos listado de Proyectos
           * ***/
-        Proyecto proyecto4_v1 = factoryProyectos.get(5L);
+       /* Proyecto proyecto4_v1 = factoryProyectos.get(5L);
         System.out.println(proyecto4_v1.getLineaAccion().getLinea());
         LineaAccion editada = lineaPruebaXml.get(2L);
         editada.setLinea("Editamos la linea 2");
         lineaPruebaXml.save(editada);
 
         Proyecto proyecto4_v2 = factoryProyectos.get(5L);
-        System.out.println(proyecto4_v2.getLineaAccion().getLinea());
+        System.out.println(proyecto4_v2.getLineaAccion().getLinea());*/
 
 
         //factoryProyectos.save(proyecto1);
@@ -87,7 +114,7 @@ public class Main {
         //getProyecto.delete(dameProyecto);
         //System.out.println("Proyecto eliminado");
 
-
+        /*
         List<Proyecto> listadoProyectos;
         listadoProyectos = factoryProyectos.getAll();
 
@@ -107,7 +134,7 @@ public class Main {
        // LineaAccion lineaAEliminar = lineaPruebaXml.get(2L);
         //System.out.println("Linea de Acción a eliminar: "+lineaAEliminar.toString());
         //lineaPruebaXml.delete(lineaAEliminar);
-
+/*
         List<LineaAccion> lineaAccionList = lineaPruebaXml.getAll();
         System.out.println(lineaAccionList.toString());
 
