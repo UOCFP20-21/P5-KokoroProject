@@ -8,7 +8,7 @@ public abstract class FactoryDAO {
     public static final int XML = 1;
     public static final int MYSQL = 2;
 
-    public static DAO getDAOFactory (int whichFactory, Class classInstance ) throws Exception {
+    public static DAO getFactoryDAO (int whichFactory, Class classInstance ) throws Exception {
         switch (whichFactory) {
             case XML:
                 return XmlFactoryDAO.getXmlFactoryDao(classInstance);
