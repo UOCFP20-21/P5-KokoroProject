@@ -19,7 +19,7 @@ import java.util.List;
 import static java.lang.Long.parseLong;
 
 public class fileXmlBuilder {
-    public static void xheckXmlExists(String xmlFile, String elemento) throws Exception {
+    public static void checkXmlExists(String xmlFile, String elemento) throws Exception {
         File archivo = new File(xmlFile);
         if(!archivo.exists())
         {

@@ -20,7 +20,7 @@ public class XmlSubLineaAccionDAO implements SubLineaAccionDAO {
 
     public XmlSubLineaAccionDAO() throws Exception {
         try {
-            xheckXmlExists(xmlFile, "SubLineasAccion");
+            checkXmlExists(xmlFile, "SubLineasAccion");
         } catch (Exception e){
             e.printStackTrace();
             System.out.println(e);
