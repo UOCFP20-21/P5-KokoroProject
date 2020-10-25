@@ -19,14 +19,8 @@ public class XmlLineaAccionDAO implements LineaAccionDAO {
 
     public XmlLineaAccionDAO() throws Exception {
 
-        try {
-            checkXmlExists(xmlFile, "LineasAccion");
-        } catch (Exception e){
-            e.printStackTrace();
-            System.out.println(e);
-            throw e;
-        }
 
+            checkXmlExists(xmlFile, "LineasAccion");
     }
 
     private Element crearElemento(LineaAccion itemLineaAccion, Document doc) throws Exception {

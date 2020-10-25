@@ -1,9 +1,6 @@
 package es.kokoro;
 
-import es.kokoro.dao.xml.XmlLineaAccionDAO;
-import es.kokoro.dao.xml.XmlProyectoDAO;
-import es.kokoro.dao.xml.XmlSocioDAO;
-import es.kokoro.dao.xml.XmlSubLineaAccionDAO;
+import es.kokoro.dao.xml.*;
 import es.kokoro.enums.Periodo;
 import es.kokoro.model.*;
 
@@ -23,8 +20,40 @@ public class Main {
         XmlLineaAccionDAO lineaPruebaXml = new XmlLineaAccionDAO();
         XmlSubLineaAccionDAO subLineaPruebaXml = new XmlSubLineaAccionDAO();
         XmlSocioDAO xmlSocioDao = new XmlSocioDAO();
+        XmlDelegacionDAO xmlDelegacionDAO = new XmlDelegacionDAO();
+        List<Trabajador> listTrabajador = new ArrayList<>();
 
-       Socio socio1 = new Socio(2L, "hjkg", "jgg",
+        List<Delegacion> delegacionLista = new ArrayList<>();
+        List<Socio> socioList =  new ArrayList<>();
+        List<Ingreso> ingresoList = new ArrayList<>();
+
+        XmlProyectoDAO proyectoData = new XmlProyectoDAO();
+        List<Proyecto> proyectoList = proyectoData.getAll();
+
+
+        Ong ong = new Ong(
+                1L,
+                "Kokoro Sin Fronteras",
+                delegacionLista,
+                ingresoList,
+                socioList,
+                proyectoList
+
+        );
+
+        Delegacion delegacion25 = new Delegacion(2L,"Amor, SA", "Francia", "Paris", "tttt", "tttt", "tttt",
+                "123456789Z", "937998877",2L,listTrabajador,ong,"Barcelona");
+
+      xmlDelegacionDAO.save(delegacion25);
+     // Delegacion delegacionBorrar = xmlDelegacionDAO.get(2L);
+    //  System.out.println(delegacionBorrar.toString());
+       // Delegacion delegacionBorrar = xmlDelegacionDAO.get(1L);
+       // System.out.println(delegacionBorrar.toString());
+        //xmlDelegacionDAO.delete(delegacionBorrar);
+        List<Delegacion> delegacionList = xmlDelegacionDAO.getAll();
+        System.out.println(delegacionList.toString());
+
+     /***  Socio socio1 = new Socio(2L, "hjkg", "jgg",
                 "677648268", "SP", "test",
                 "test", "test", "test@test.com", 2L,
                 Periodo.MES, 100.0, true);
@@ -32,7 +61,7 @@ public class Main {
        xmlSocioDao.save(socio1);
        System.out.println("creación de socio");
         List<Socio> socioList = xmlSocioDao.getAll();
-       System.out.println(socioList.toString());
+       System.out.println(socioList.toString()); ***/
           /*  Socio socio1Recuperado = xmlSocioDao.get(socio1.getIdSocio());
             assert socio1Recuperado != null;
             System.out.println(socio1Recuperado.getIdSocio());

@@ -19,13 +19,8 @@ public class XmlSubLineaAccionDAO implements SubLineaAccionDAO {
     private final String xmlFile = "src/main/resources/xml/SubLineasAccion.xml";
 
     public XmlSubLineaAccionDAO() throws Exception {
-        try {
+
             checkXmlExists(xmlFile, "SubLineasAccion");
-        } catch (Exception e){
-            e.printStackTrace();
-            System.out.println(e);
-            throw e;
-        }
     }
 
     private Element crearElemento(SubLineaAccion itemSubLineaAccion, Document doc) throws Exception {

@@ -9,7 +9,7 @@ public class Ong {
     private List<Ingreso> ingresoList;
     private List<Socio> socioList;
     private List<Proyecto> proyectoList;
-    private Sede sede;
+   // private Sede sede;
 
     /***
      *
@@ -18,16 +18,15 @@ public class Ong {
      * @param ingresoList Listado de Ingresos
      * @param socioList Listado de socios
      * @param proyectoList Listado de Proyectos
-     * @param sede Objeto de Tipo Sede
-     */
-    public Ong(Long idOng, String nombreOng, List<Delegacion> delegacionList, List<Ingreso> ingresoList, List<Socio> socioList, List<Proyecto> proyectoList, Sede sede) {
+      */
+    public Ong(Long idOng, String nombreOng, List<Delegacion> delegacionList, List<Ingreso> ingresoList, List<Socio> socioList, List<Proyecto> proyectoList) {
         this.idOng = idOng;
         this.nombreOng = nombreOng;
         this.delegacionList = delegacionList;
         this.ingresoList = ingresoList;
         this.socioList = socioList;
         this.proyectoList = proyectoList;
-        this.sede = sede;
+        //this.sede = sede;
     }
 
     /***
@@ -127,21 +126,6 @@ public class Ong {
         this.proyectoList = proyectoList;
     }
 
-    /***
-     *
-     * @return sede
-     */
-    public Sede getSede() {
-        return sede;
-    }
-
-    /***
-     *
-     * @param sede
-     */
-    public void setSede(Sede sede) {
-        this.sede = sede;
-    }
 
     @Override
     public String toString() {
@@ -151,7 +135,6 @@ public class Ong {
                 ", ingresoList=" + ingresoList.toString() +
                 ", socioList=" + socioList.toString() +
                 ", proyectoList=" + proyectoList.toString() +
-                ", sede=" + sede.toString() +
-                '}';
+               '}';
     }
 }

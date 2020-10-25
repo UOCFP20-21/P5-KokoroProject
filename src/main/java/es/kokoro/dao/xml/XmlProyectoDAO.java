@@ -21,13 +21,8 @@ public class XmlProyectoDAO implements ProyectoDAO {
     private final String xmlFile = "src/main/resources/xml/Proyectos.xml";
     public XmlProyectoDAO() throws Exception {
 
-        try {
+
             checkXmlExists(xmlFile, "Proyectos");
-        } catch (Exception e){
-            e.printStackTrace();
-            System.out.println(e);
-            throw e;
-        }
 
     }
 
@@ -293,7 +288,7 @@ public class XmlProyectoDAO implements ProyectoDAO {
             doc.appendChild(xmlRoot);
 
             for (Proyecto itemProyecto: proyectosList) {
-                if(itemProyecto.getIdProyecto().equals(proyecto.getIdProyecto())){
+                if(!itemProyecto.getIdProyecto().equals(proyecto.getIdProyecto())){
                     xmlRoot.appendChild(crearElemento(itemProyecto, doc));
                 }
             }
