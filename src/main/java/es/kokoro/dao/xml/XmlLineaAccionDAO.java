@@ -15,13 +15,14 @@ import static java.lang.Long.parseLong;
 
 public class XmlLineaAccionDAO implements LineaAccionDAO {
 
-    private final String xmlFile = "src/main/resources/xml/LineasAccion.xml";
+    private String xmlFile = "src/main/resources/xml/LineasAccion.xml";
 
     public XmlLineaAccionDAO() throws Exception {
         checkXmlExists(xmlFile, "LineasAccion");
     }
     public XmlLineaAccionDAO(String customXmlFile) throws Exception {
         checkXmlExists(customXmlFile, "LineasAccion");
+        xmlFile = customXmlFile;
     }
 
     private Element crearElemento(LineaAccion itemLineaAccion, Document doc) throws Exception {

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Delegaciones>
-    <Delegacion id="1">
-        <trabajadorList/>
-        <ong>1</ong>
-        <areaOperativa>Madrid</areaOperativa>
-        <idEmpresa>1</idEmpresa>
-    </Delegacion>
     <Delegacion id="3">
         <trabajadorList/>
         <ong>1</ong>
-        <areaOperativa>Madrid</areaOperativa>
+        <areaOperativa/>
         <idEmpresa>3</idEmpresa>
     </Delegacion>
     <Delegacion id="2">
         <trabajadorList/>
         <ong>1</ong>
-        <areaOperativa>Barcelona</areaOperativa>
+        <areaOperativa/>
         <idEmpresa>2</idEmpresa>
+    </Delegacion>
+    <Delegacion id="1">
+        <trabajadorList/>
+        <ong>1</ong>
+        <areaOperativa/>
+        <idEmpresa>1</idEmpresa>
     </Delegacion>
 </Delegaciones>

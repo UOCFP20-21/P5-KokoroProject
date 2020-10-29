@@ -1,1 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><Socios/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Socios>
+    <Socio id="1">
+        <tipoPeriodo>TRI</tipoPeriodo>
+        <cuota>200.0</cuota>
+        <estado>1</estado>
+        <idPersona>1</idPersona>
+    </Socio>
+    <Socio id="2">
+        <tipoPeriodo>MES</tipoPeriodo>
+        <cuota>30.0</cuota>
+        <estado>0</estado>
+        <idPersona>2</idPersona>
+    </Socio>
+    <Socio id="3">
+        <tipoPeriodo>ANU</tipoPeriodo>
+        <cuota>500.0</cuota>
+        <estado>0</estado>
+        <idPersona>3</idPersona>
+    </Socio>
+</Socios>

@@ -19,13 +19,14 @@ import static java.lang.Long.parseLong;
 
 public class XmlSocioDAO implements SocioDAO {
 
-    private final String xmlFile = "src/main/resources/xml/Socios.xml";
+    private String xmlFile = "src/main/resources/xml/Socios.xml";
 
     public XmlSocioDAO() throws Exception {
             checkXmlExists(xmlFile, "Socios");
     }
     public XmlSocioDAO(String customXmlFile) throws Exception {
         checkXmlExists(customXmlFile, "Socios");
+        xmlFile = customXmlFile;
     }
 
     private Element crearElemento(Socio itemSocio, Document doc) throws Exception {
