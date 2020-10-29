@@ -17,15 +17,15 @@ import static java.lang.Long.parseLong;
 
 public class XmlDelegacionDAO implements DelegacionDAO {
 
-    private final String xmlFile = "src/main/resources/xml/Delegacion.xml";
+    private String xmlFile = "src/main/resources/xml/Delegacion.xml";
 
     public XmlDelegacionDAO() throws Exception {
         checkXmlExists(xmlFile, "Delegaciones");
 
     }
-    public XmlDelegacionDAO(String cXmlFile) throws Exception {
-        checkXmlExists(xmlFile, "Delegaciones");
-
+    public XmlDelegacionDAO(String customXmlFile) throws Exception {
+        checkXmlExists(customXmlFile, "Delegaciones");
+        xmlFile = customXmlFile;
     }
     private Element crearElemento(Delegacion itemDelegacion, Document doc) throws  Exception {
 
