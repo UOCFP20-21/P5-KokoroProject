@@ -23,6 +23,10 @@ public class XmlDelegacionDAO implements DelegacionDAO {
         checkXmlExists(xmlFile, "Delegaciones");
 
     }
+    public XmlDelegacionDAO(String cXmlFile) throws Exception {
+        checkXmlExists(xmlFile, "Delegaciones");
+
+    }
     private Element crearElemento(Delegacion itemDelegacion, Document doc) throws  Exception {
 
         //definimmos el nodo que contendrá los elementos

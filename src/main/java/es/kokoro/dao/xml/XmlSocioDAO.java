@@ -22,18 +22,16 @@ public class XmlSocioDAO implements SocioDAO {
     private final String xmlFile = "src/main/resources/xml/Socios.xml";
 
     public XmlSocioDAO() throws Exception {
-
-
             checkXmlExists(xmlFile, "Socios");
-
     }
-
+    public XmlSocioDAO(String customXmlFile) throws Exception {
+        checkXmlExists(customXmlFile, "Socios");
+    }
 
     private Element crearElemento(Socio itemSocio, Document doc) throws Exception {
 
         // definimos el nodo que contendrá los elementos
         Element eSocio = doc.createElement("Socio");
-
 
         // atributo para el nodo socio
         Attr attr = doc.createAttribute("id");

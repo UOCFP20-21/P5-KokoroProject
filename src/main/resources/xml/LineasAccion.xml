@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <LineasAccion>
-    <LineaAccion id="1">
-        <linea>Linea de prueba</linea>
-    </LineaAccion>
     <LineaAccion id="2">
-        <linea>Editamos la linea 2</linea>
+        <linea>Linea de Acción de prueba para listado 2</linea>
     </LineaAccion>
     <LineaAccion id="3">
-        <linea>Linea de prueba 3</linea>
+        <linea>Linea de Acción de prueba para listado 3</linea>
     </LineaAccion>
 </LineasAccion>

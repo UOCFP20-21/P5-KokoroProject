@@ -12,9 +12,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SocioDaoTest {
 
+    private final String xmlFile = "src/test/resources/Socios.xml";
     @BeforeEach
     public void limpiarFichero() {
-        File fichero = new File("src/main/resources/xml/Socios.xml");
+        File fichero = new File(xmlFile);
 
         if (fichero.exists()) {
             fichero.delete();
@@ -23,7 +24,7 @@ public class SocioDaoTest {
     }
     @AfterEach
     public void limpiarFicheroDespues() {
-        File fichero = new File("src/main/resources/xml/Socios.xml");
+        File fichero = new File(xmlFile);
 
         if (fichero.exists()) {
             fichero.delete();
@@ -37,7 +38,7 @@ public class SocioDaoTest {
                 "12345678G", "española", "mi casa, 32",
                 "Barcelona", "933535353", "daniella@test.com", 1L,
                 Periodo.TRI, 200.0, true);
-        XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class);
+        XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class, xmlFile);
         xmlSocioDao.save(socio1);
         //Comprueba que socio no es nulo
         assertNotNull(socio1);
@@ -57,7 +58,7 @@ public class SocioDaoTest {
                 "12365478A", "francesa", "calle nou pins, 12",
                 "Barcelona", "654987123", "sara@test.com", 3L,
                 Periodo.ANU, 500.0, true);
-        XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class);
+        XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class, xmlFile);
         xmlSocioDao.save(socio1);
         xmlSocioDao.save(socio2);
         xmlSocioDao.save(socio3);
@@ -74,7 +75,7 @@ public class SocioDaoTest {
                 "12345678G", "española", "mi casa, 32",
                 "Barcelona", "933535353", "daniella@test.com", 1L,
                 Periodo.TRI, 200.0, true);
-        XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class);
+        XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class, xmlFile);
         xmlSocioDao.save(socio1);
         xmlSocioDao.get(1L);
         //Comprueba que socio no es nulo
@@ -88,7 +89,7 @@ public class SocioDaoTest {
                 "Barcelona", "933535353", "daniella@test.com", 1L,
                 Periodo.TRI, 200.0, true);
 
-        XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class);
+        XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class, xmlFile);
         xmlSocioDao.save(socio1);
         socio1.setCuota(50.0);
         xmlSocioDao.update(socio1);
@@ -106,7 +107,7 @@ public class SocioDaoTest {
                 "Barcelona", "933535353", "daniella@test.com", 1L,
                 Periodo.TRI, 200.0, true);
 
-        XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class);
+        XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class, xmlFile);
         xmlSocioDao.save(socio1);
         xmlSocioDao.delete(socio1);
         Socio socioBorrado = xmlSocioDao.get(1L);
