@@ -12,7 +12,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DelegacionDaoTest {
-    private final String xmlFile = "src/main/resources/xml/Delegaciones.xml";
+    private final String xmlFile = "src/test/resources/Delegaciones.xml";
 
     List<Trabajador> trabajadorList = new ArrayList<>();
     List<Delegacion> delegacionLista = new ArrayList<>();
