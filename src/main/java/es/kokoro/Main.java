@@ -21,7 +21,7 @@ public class Main {
         XmlSubLineaAccionDAO subLineaPruebaXml = new XmlSubLineaAccionDAO();
         XmlSocioDAO xmlSocioDao = new XmlSocioDAO();
         XmlDelegacionDAO xmlDelegacionDAO = new XmlDelegacionDAO();
-        List<Trabajador> listTrabajador = new ArrayList<>();
+        /*List<Trabajador> listTrabajador = new ArrayList<>();
 
         List<Delegacion> delegacionLista = new ArrayList<>();
         List<Socio> socioList =  new ArrayList<>();
@@ -163,10 +163,10 @@ public class Main {
        // LineaAccion lineaAEliminar = lineaPruebaXml.get(2L);
         //System.out.println("Linea de Acción a eliminar: "+lineaAEliminar.toString());
         //lineaPruebaXml.delete(lineaAEliminar);
-/*
+
         List<LineaAccion> lineaAccionList = lineaPruebaXml.getAll();
         System.out.println(lineaAccionList.toString());
-
+/*
 
         /***
          * Creando Sub Líneas de Acción

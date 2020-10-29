@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class LineaAccionDaoTest
 {
-    private final String xmlFile = "src/main/resources/xml/LineasAccion.xml";
+    private final String xmlFile = "src/test/resources/LineasAccion.xml";
 
     @BeforeEach
     public void limpiarFichero()
@@ -38,7 +38,7 @@ public class LineaAccionDaoTest
     public void testAgregarLineaAccion() throws Exception {
         LineaAccion lAccion1 = new LineaAccion(1L, "Linea de Acción de prueba");
 
-        XmlLineaAccionDAO xmlLineaAccionDao = (XmlLineaAccionDAO) XmlFactoryDAO.getXmlFactoryDao(LineaAccion.class);
+        XmlLineaAccionDAO xmlLineaAccionDao = (XmlLineaAccionDAO) XmlFactoryDAO.getXmlFactoryDao(LineaAccion.class, xmlFile);
         xmlLineaAccionDao.save(lAccion1);
         //Comprueba que socio no es nulo
         assertNotNull(lAccion1);
@@ -50,7 +50,7 @@ public class LineaAccionDaoTest
         LineaAccion lAccion1 = new LineaAccion(1L, "Linea de Acción de prueba para listado 1");
         LineaAccion lAccion2 = new LineaAccion(2L, "Linea de Acción de prueba para listado 2");
         LineaAccion lAccion3 = new LineaAccion(3L, "Linea de Acción de prueba para listado 3");
-        XmlLineaAccionDAO xmlLineaAccionDao = (XmlLineaAccionDAO) XmlFactoryDAO.getXmlFactoryDao(LineaAccion.class);
+        XmlLineaAccionDAO xmlLineaAccionDao = (XmlLineaAccionDAO) XmlFactoryDAO.getXmlFactoryDao(LineaAccion.class, xmlFile);
         xmlLineaAccionDao.save(lAccion1);
         xmlLineaAccionDao.save(lAccion2);
         xmlLineaAccionDao.save(lAccion3);
@@ -64,7 +64,7 @@ public class LineaAccionDaoTest
     @Test
     public void testLeerLineaAccion() throws Exception {
         LineaAccion lAccion1 = new LineaAccion(1L, "Linea de Acción de prueba para Leer 1");
-        XmlLineaAccionDAO xmlLineaAccionDao = (XmlLineaAccionDAO) XmlFactoryDAO.getXmlFactoryDao(LineaAccion.class);
+        XmlLineaAccionDAO xmlLineaAccionDao = (XmlLineaAccionDAO) XmlFactoryDAO.getXmlFactoryDao(LineaAccion.class, xmlFile);
         xmlLineaAccionDao.save(lAccion1);
         LineaAccion lAccionGuardada = xmlLineaAccionDao.get(1L);
 
@@ -75,7 +75,7 @@ public class LineaAccionDaoTest
     @Test
     public void testActualizarLineaAccion() throws Exception {
         LineaAccion lAccion1 = new LineaAccion(1L, "Linea de Acción de prueba para actualizar");
-        XmlLineaAccionDAO xmlLineaAccionDao = (XmlLineaAccionDAO) XmlFactoryDAO.getXmlFactoryDao(LineaAccion.class);
+        XmlLineaAccionDAO xmlLineaAccionDao = (XmlLineaAccionDAO) XmlFactoryDAO.getXmlFactoryDao(LineaAccion.class, xmlFile);
         xmlLineaAccionDao.save(lAccion1);
 
         lAccion1.setLinea("Linea de Acción actualizada");
@@ -93,7 +93,7 @@ public class LineaAccionDaoTest
     @Test
     public void testBorrarLineaAccuion() throws Exception {
         LineaAccion lAccion1 = new LineaAccion(1L, "Linea de Acción de prueba para borrar");
-        XmlLineaAccionDAO xmlLineaAccionDao = (XmlLineaAccionDAO) XmlFactoryDAO.getXmlFactoryDao(LineaAccion.class);
+        XmlLineaAccionDAO xmlLineaAccionDao = (XmlLineaAccionDAO) XmlFactoryDAO.getXmlFactoryDao(LineaAccion.class, xmlFile);
         xmlLineaAccionDao.save(lAccion1);
         xmlLineaAccionDao.delete(lAccion1);
         LineaAccion lAccionBorrado = xmlLineaAccionDao.get(1L);

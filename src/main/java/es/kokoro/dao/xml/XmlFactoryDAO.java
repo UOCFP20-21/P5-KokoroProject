@@ -2,7 +2,6 @@ package es.kokoro.dao.xml;
 
 import es.kokoro.dao.*;
 import es.kokoro.model.*;
-import org.w3c.dom.Element;
 
 public class XmlFactoryDAO {
 
@@ -57,6 +56,25 @@ public class XmlFactoryDAO {
             return new XmlLineaAccionDAO();
         } else if (classInstance.equals(SubLineaAccion.class)) {
             return new XmlSubLineaAccionDAO();
+        }
+        throw new Exception("Clase desconocida");
+
+    }
+
+    /***
+     * Método para definir el archivo XML de forma personalizada
+     * @param classInstance Clase a cargar
+     * @param customXmlFile Ruta del XML para trabajar
+     * @return instancia XML-DAO de la clase classInstance
+     * @throws Exception
+     */
+    public static DAO getXmlFactoryDao(Class classInstance, String customXmlFile) throws Exception {
+        if (classInstance.equals(Socio.class)) {
+            return new XmlSocioDAO(customXmlFile);
+        } else if (classInstance.equals(Delegacion.class)) {
+            return new XmlDelegacionDAO(customXmlFile);
+        } else if (classInstance.equals(LineaAccion.class)) {
+            return new XmlLineaAccionDAO(customXmlFile);
         }
         throw new Exception("Clase desconocida");
 
