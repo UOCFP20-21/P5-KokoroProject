@@ -11,6 +11,12 @@ public class Ong {
     private List<Proyecto> proyectoList;
    // private Sede sede;
 
+
+    public Ong(Long idOng, String nombreOng){
+        this.idOng = idOng;
+        this.nombreOng = nombreOng;
+    }
+
     /***
      *
      * @param nombreOng Nombre de la ONG

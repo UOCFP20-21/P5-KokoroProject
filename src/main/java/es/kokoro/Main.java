@@ -1,16 +1,12 @@
 package es.kokoro;
 
+import es.kokoro.dao.FactoryDAO;
+import es.kokoro.dao.mysql.SqlOngDAO;
 import es.kokoro.dao.xml.*;
-import es.kokoro.enums.Periodo;
-import es.kokoro.model.*;
+import es.kokoro.model.LineaAccion;
+import es.kokoro.model.Ong;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-
-import static es.kokoro.commons.FormatFecha.FFDateToString;
-import static es.kokoro.commons.FormatFecha.FFStringToDate;
 
 public class Main {
 
@@ -69,7 +65,7 @@ public class Main {
             List<Socio> socioList = xmlSocioDao.getAll();
             System.out.println(socioList);
             System.out.println("listado de socio");*/
-       // socio1.setCuota(40.0);
+        // socio1.setCuota(40.0);
        /* xmlSocioDao.update(socio1);
         System.out.println(socio1);
         System.out.println("imprime actualización de socio");
@@ -160,7 +156,7 @@ public class Main {
         //lineaPruebaXml.save(lineaPrueba1);
         //lineaPruebaXml.save(lineaPrueba2);
         //lineaPruebaXml.save(lineaPrueba3);
-       // LineaAccion lineaAEliminar = lineaPruebaXml.get(2L);
+        // LineaAccion lineaAEliminar = lineaPruebaXml.get(2L);
         //System.out.println("Linea de Acción a eliminar: "+lineaAEliminar.toString());
         //lineaPruebaXml.delete(lineaAEliminar);
 
@@ -176,9 +172,9 @@ public class Main {
         //SubLineaAccion subLineaPrueba3 = new SubLineaAccion(3L,"Sub línea de Acción de prueba 3");
         //SubLineaAccion subLineaPrueba4 = new SubLineaAccion(4L,"Sub línea de Acción de prueba 4");
 
-         //LineaAccion subLineaAEliminar = subLineaPruebaXml.get(2L);
-         //System.out.println("Linea de Acción a eliminar: "+subLineaAEliminar.toString());
-         //subLineaPruebaXml.delete(subLineaAEliminar);
+        //LineaAccion subLineaAEliminar = subLineaPruebaXml.get(2L);
+        //System.out.println("Linea de Acción a eliminar: "+subLineaAEliminar.toString());
+        //subLineaPruebaXml.delete(subLineaAEliminar);
 
         //subLineaPruebaXml.save(subLineaPrueba1);
         //subLineaPruebaXml.save(subLineaPrueba2);
@@ -188,5 +184,11 @@ public class Main {
         //subLineaAccionList = subLineaPruebaXml.getAll();
         //System.out.println(subLineaAccionList.toString());
 
+
+        SqlOngDAO ongDAO = (SqlOngDAO) FactoryDAO.getFactoryDAO(2, Ong.class);
+        List<Ong> all = ongDAO.getAll();
+        for (Ong ong : all) {
+            System.out.println(ong.getNombreOng());
+        }
     }
 }
