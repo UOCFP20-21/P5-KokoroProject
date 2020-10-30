@@ -22,7 +22,7 @@ public class XmlIngresoDAO implements IngresoDAO {
     }
 
     @Override
-    public void update(Ingreso ingreso, String[] params) {
+    public void update(Ingreso ingreso) throws Exception {
 
     }
 

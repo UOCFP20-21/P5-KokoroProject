@@ -23,7 +23,7 @@ public class XmlSocioLocalDAO implements SocioLocalDAO {
     }
 
     @Override
-    public void update(SocioLocal socioLocal, String[] params) {
+    public void update(SocioLocal socioLocal) {
 
     }
 

@@ -22,7 +22,7 @@ public class XmlExtraordinarioDAO implements ExtraordinarioDAO {
     }
 
     @Override
-    public void update(Extraordinario extraordinario, String[] params) {
+    public void update(Extraordinario extraordinario) {
 
     }
 

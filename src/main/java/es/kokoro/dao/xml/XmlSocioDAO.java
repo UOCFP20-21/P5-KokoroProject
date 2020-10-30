@@ -155,10 +155,6 @@ public class XmlSocioDAO implements SocioDAO {
     }
 
     @Override
-    public void update(Socio socio, String[] params) throws Exception {
-        save(socio);
-    }
-
     public void update(Socio socio) throws Exception {
         save(socio);
     }

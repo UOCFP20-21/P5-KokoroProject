@@ -22,7 +22,7 @@ public class XmlHerenciaDAO implements HerenciaDAO {
     }
 
     @Override
-    public void update(Herencia herencia, String[] params) {
+    public void update(Herencia herencia) {
 
     }
 

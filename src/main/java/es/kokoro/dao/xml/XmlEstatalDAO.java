@@ -22,7 +22,7 @@ public class XmlEstatalDAO implements EstatalDAO {
     }
 
     @Override
-    public void update(Estatal estatal, String[] params) {
+    public void update(Estatal estatal) {
 
     }
 

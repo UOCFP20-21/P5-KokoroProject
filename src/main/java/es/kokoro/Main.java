@@ -4,6 +4,8 @@ import es.kokoro.dao.xml.*;
 import es.kokoro.enums.Periodo;
 import es.kokoro.model.*;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -11,16 +13,37 @@ import java.util.List;
 
 import static es.kokoro.commons.FormatFecha.FFDateToString;
 import static es.kokoro.commons.FormatFecha.FFStringToDate;
+import static es.kokoro.commons.sqlConection.conectar;
+import static es.kokoro.commons.sqlConection.desconectar;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
+        Connection connection = null;
+        try{
+            connection = conectar();
+            LineaAccion nuevaLineaAccion = new LineaAccion(null, "Cooperación al Desarrollo");
 
-        XmlProyectoDAO factoryProyectos = new XmlProyectoDAO();
-        XmlLineaAccionDAO lineaPruebaXml = new XmlLineaAccionDAO();
-        XmlSubLineaAccionDAO subLineaPruebaXml = new XmlSubLineaAccionDAO();
-        XmlSocioDAO xmlSocioDao = new XmlSocioDAO();
-        XmlDelegacionDAO xmlDelegacionDAO = new XmlDelegacionDAO();
+
+        }catch (SQLException e)
+        {
+            e.printStackTrace();
+        }finally {
+
+            if(connection != null)
+            {
+                desconectar(connection);
+            }
+        }
+
+
+
+
+        //XmlProyectoDAO factoryProyectos = new XmlProyectoDAO();
+        //XmlLineaAccionDAO lineaPruebaXml = new XmlLineaAccionDAO();
+        //XmlSubLineaAccionDAO subLineaPruebaXml = new XmlSubLineaAccionDAO();
+        //XmlSocioDAO xmlSocioDao = new XmlSocioDAO();
+        //XmlDelegacionDAO xmlDelegacionDAO = new XmlDelegacionDAO();
         /*List<Trabajador> listTrabajador = new ArrayList<>();
 
         List<Delegacion> delegacionLista = new ArrayList<>();
@@ -164,8 +187,8 @@ public class Main {
         //System.out.println("Linea de Acción a eliminar: "+lineaAEliminar.toString());
         //lineaPruebaXml.delete(lineaAEliminar);
 
-        List<LineaAccion> lineaAccionList = lineaPruebaXml.getAll();
-        System.out.println(lineaAccionList.toString());
+        //List<LineaAccion> lineaAccionList = lineaPruebaXml.getAll();
+        //System.out.println(lineaAccionList.toString());
 /*
 
         /***

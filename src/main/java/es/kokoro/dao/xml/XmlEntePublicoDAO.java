@@ -22,7 +22,7 @@ public class XmlEntePublicoDAO implements EntePublicoDAO {
     }
 
     @Override
-    public void update(EntePublico entePublico, String[] params) {
+    public void update(EntePublico entePublico) {
 
     }
 
