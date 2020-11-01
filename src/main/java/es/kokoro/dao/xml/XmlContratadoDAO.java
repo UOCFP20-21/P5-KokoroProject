@@ -22,7 +22,7 @@ public class XmlContratadoDAO implements ContratadoDAO {
     }
 
     @Override
-    public void update(Contratado contratado, String[] params) {
+    public void update(Contratado contratado) {
 
     }
 

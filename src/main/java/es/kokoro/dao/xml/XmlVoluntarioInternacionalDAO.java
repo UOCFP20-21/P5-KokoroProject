@@ -22,7 +22,7 @@ public class XmlVoluntarioInternacionalDAO implements VoluntarioColaboradorDAO {
     }
 
     @Override
-    public void update(VoluntarioColaborador voluntarioColaborador, String[] params) {
+    public void update(VoluntarioColaborador voluntarioColaborador) {
 
     }
 

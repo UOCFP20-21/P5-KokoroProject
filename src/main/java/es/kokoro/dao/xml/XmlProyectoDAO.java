@@ -267,9 +267,7 @@ public class XmlProyectoDAO implements ProyectoDAO {
     }
 
     @Override
-    public void update(Proyecto proyecto, String[] params) throws Exception {
-        save(proyecto);
-    }
+
 
     public void update(Proyecto proyecto) throws Exception {
         save(proyecto);

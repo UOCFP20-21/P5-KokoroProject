@@ -123,9 +123,6 @@ public class XmlSubLineaAccionDAO implements SubLineaAccionDAO {
     }
 
     @Override
-    public void update(SubLineaAccion subLineaAccion, String[] params) throws Exception {
-        save(subLineaAccion);
-    }
     public void update(SubLineaAccion subLineaAccion) throws Exception {
         save(subLineaAccion);
     }

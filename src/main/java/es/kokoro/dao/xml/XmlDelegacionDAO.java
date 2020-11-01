@@ -181,9 +181,7 @@ public class XmlDelegacionDAO implements DelegacionDAO {
     }
 
 
-    public void update(Delegacion delegacion, String[] params) {
 
-    }
      public void update(Delegacion delegacion) throws  Exception{
         save(delegacion);
      }

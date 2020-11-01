@@ -22,7 +22,7 @@ public class XmlAccionDAO implements AccionDAO {
     }
 
     @Override
-    public void update(Accion accion, String[] params) {
+    public void update(Accion accion) {
 
     }
 

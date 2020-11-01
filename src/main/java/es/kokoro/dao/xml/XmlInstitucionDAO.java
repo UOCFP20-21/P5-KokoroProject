@@ -22,7 +22,7 @@ public class XmlInstitucionDAO implements InstitucionDAO {
     }
 
     @Override
-    public void update(Institucion institucion, String[] params) {
+    public void update(Institucion institucion) {
 
     }
 

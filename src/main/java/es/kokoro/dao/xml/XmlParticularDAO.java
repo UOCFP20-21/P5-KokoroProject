@@ -22,7 +22,7 @@ public class XmlParticularDAO implements ParticularDAO {
     }
 
     @Override
-    public void update(Particular particular, String[] params) {
+    public void update(Particular particular) {
 
     }
 

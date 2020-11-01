@@ -22,7 +22,7 @@ public class XmlInternacionalDAO implements InternacionalDAO {
     }
 
     @Override
-    public void update(Internacional internacional, String[] params) {
+    public void update(Internacional internacional) {
 
     }
 

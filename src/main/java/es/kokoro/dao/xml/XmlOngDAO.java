@@ -22,7 +22,7 @@ public class XmlOngDAO implements OngDAO {
     }
 
     @Override
-    public void update(Ong ong, String[] params) {
+    public void update(Ong ong) {
 
     }
 

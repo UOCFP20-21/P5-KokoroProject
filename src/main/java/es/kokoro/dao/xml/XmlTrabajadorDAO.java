@@ -22,7 +22,7 @@ public class XmlTrabajadorDAO implements TrabajadorDAO {
     }
 
     @Override
-    public void update(Trabajador trabajador, String[] params) {
+    public void update(Trabajador trabajador) {
 
     }
 

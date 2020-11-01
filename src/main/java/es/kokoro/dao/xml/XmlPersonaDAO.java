@@ -22,7 +22,7 @@ public class XmlPersonaDAO implements PersonaDAO {
     }
 
     @Override
-    public void update(Persona persona, String[] params) {
+    public void update(Persona persona) {
 
     }
 
