@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class sqlConection {
     private static Connection conexion;
-    private static String mysqlUrl = "jdbc:mysql://88.24.88.86:3307/mydb";
+    private static String mysqlUrl = "jdbc:mysql://88.24.90.50:3307/mydb";
     private static String usuario = "ongjaume";
     private static String password = "ong1234";
 
@@ -45,8 +45,12 @@ public class sqlConection {
         System.out.println("desconectado");
     }
 
-    public static void commitData(Connection conexion) throws SQLException
+    public static void commitData(Connection conexion)
     {
-        conexion.commit();
+        try {
+            conexion.commit();
+        } catch (SQLException throwables) {
+            System.out.println("Error realizando Commit del nuevo registro " + throwables);
+        }
     }
 }

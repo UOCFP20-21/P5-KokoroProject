@@ -1,5 +1,6 @@
 package es.kokoro;
 
+import es.kokoro.dao.mysql.MySQLParticularDAO;
 import es.kokoro.dao.xml.*;
 import es.kokoro.enums.Periodo;
 import es.kokoro.model.*;
@@ -13,28 +14,20 @@ import java.util.List;
 
 import static es.kokoro.commons.FormatFecha.FFDateToString;
 import static es.kokoro.commons.FormatFecha.FFStringToDate;
-import static es.kokoro.commons.sqlConection.conectar;
-import static es.kokoro.commons.sqlConection.desconectar;
+import static es.kokoro.commons.sqlConection.*;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        Connection connection = null;
-        try{
-            connection = conectar();
-            LineaAccion nuevaLineaAccion = new LineaAccion(null, "Cooperación al Desarrollo");
 
+        Connection cnn = conectar();
 
-        }catch (SQLException e)
-        {
-            e.printStackTrace();
-        }finally {
+        MySQLParticularDAO particular = new MySQLParticularDAO(cnn);
+        Particular nuevoParticular = new Particular(4L, "Jaume", "Calafat", "12345678T","española", "mi casa, 1, izq", "Lloseta", "+34123456789", "test@test.com", 4L);
+        particular.update(nuevoParticular);
 
-            if(connection != null)
-            {
-                desconectar(connection);
-            }
-        }
+        desconectar(cnn);
+
 
 
 

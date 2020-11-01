@@ -1,7 +1,6 @@
 package es.kokoro.dao.mysql;
 
 import es.kokoro.dao.*;
-import es.kokoro.dao.xml.*;
 import es.kokoro.model.*;
 
 import java.sql.Connection;
@@ -26,8 +25,8 @@ public class MySqlFactoryDAO {
             return new XmlDelegacionDAO();
         } else if (classInstance.equals(Empresa.class)) {
             return new XmlEmpresaDAO();
-        } else if (classInstance.equals(Particular.class)) {
-            return new XmlParticularDAO();
+        } else */if (classInstance.equals(Particular.class)) {
+            return new MySQLParticularDAO();/*
         } else if (classInstance.equals(Herencia.class)) {
             return new XmlHerenciaDAO();
         } else if (classInstance.equals(Sociedad.class)) {
@@ -51,14 +50,14 @@ public class MySqlFactoryDAO {
         } else if (classInstance.equals(Internacional.class)) {
             return new XmlInternacionalDAO();
         } else if (classInstance.equals(EntePublico.class)) {
-            return new XmlEntePublicoDAO();
+            return new XmlEntePublicoDAO();*/
         } else if (classInstance.equals(Accion.class)) {
-            return new XmlAccionDAO();
-        } else*/ if (classInstance.equals(LineaAccion.class)) {
+            return new MySQLAccionDAO();
+        } else if (classInstance.equals(LineaAccion.class)) {
             return new MySQLLineaAccionDAO();
-        }/* else if (classInstance.equals(SubLineaAccion.class)) {
-            return new XmlSubLineaAccionDAO();
-        }*/
+        } else if (classInstance.equals(SubLineaAccion.class)) {
+            return new MySQLSubLineaAccionDAO();
+        }
         throw new Exception("Clase desconocida");
 
     }
@@ -71,8 +70,14 @@ public class MySqlFactoryDAO {
      * @throws Exception
      */
     public static DAO getMySqlFactoryDAO(Class classInstance, Connection cnn) throws Exception {
-        if (classInstance.equals(LineaAccion.class)) {
+        if (classInstance.equals(Particular.class)) {
+            return new MySQLParticularDAO(cnn);
+        } else if (classInstance.equals(Accion.class)) {
+            return new MySQLAccionDAO(cnn);
+        } else if (classInstance.equals(LineaAccion.class)) {
             return new MySQLLineaAccionDAO(cnn);
+        } else if (classInstance.equals(SubLineaAccion.class)) {
+            return new MySQLSubLineaAccionDAO(cnn);
         }
         throw new Exception("Clase desconocida");
 

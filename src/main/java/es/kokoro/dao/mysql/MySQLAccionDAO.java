@@ -1,7 +1,7 @@
 package es.kokoro.dao.mysql;
 
-import es.kokoro.dao.LineaAccionDAO;
-import es.kokoro.model.LineaAccion;
+import es.kokoro.dao.AccionDAO;
+import es.kokoro.model.Accion;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,20 +12,18 @@ import java.util.List;
 
 import static es.kokoro.commons.sqlConection.conectar;
 
-public class MySQLLineaAccionDAO implements LineaAccionDAO {
+public class MySQLAccionDAO implements AccionDAO {
 
     private Connection conexion = null;
 
-    public MySQLLineaAccionDAO() {
+    public MySQLAccionDAO() {
         setConexion(conexion);
     }
-    public MySQLLineaAccionDAO(Connection conexion) {
+    public MySQLAccionDAO(Connection conexion) {
         setConexion(conexion);
     }
 
-    public Connection getConexion() {
-        return conexion;
-    }
+    public Connection getConexion() { return conexion; }
 
     public void setConexion(Connection cnn)
     {
@@ -41,26 +39,30 @@ public class MySQLLineaAccionDAO implements LineaAccionDAO {
         }
     }
 
-    private LineaAccion setObject(ResultSet set)
+    private Accion setObject(ResultSet set)
     {
-        LineaAccion tmpEntrada = null;
+
+        Accion tmpEntrada = null;
         try {
-            long idLineaAccion = set.getLong("idLineaAccion");
-            String linea = set.getString("linea");
-            tmpEntrada = new LineaAccion(idLineaAccion, linea);
+            long idAccion = set.getLong("idAccion");
+            String nombre = set.getString("nombre");
+            String descripcion = set.getString("descripcion");
+            Double coste = set.getDouble("coste");
+            tmpEntrada = new Accion(idAccion, nombre, descripcion, coste);
         } catch (SQLException throwables) {
             System.out.println("Error creando la instancia " + throwables);
         } finally {
             return tmpEntrada;
         }
+
     }
 
     @Override
-    public LineaAccion get(long id) {
+    public Accion get(long id) {
 
-        String query = "SELECT * FROM lineasaccion WHERE idLineaAccion = ?";
+        String query = "SELECT * FROM acciones WHERE idAccion = ?";
         PreparedStatement statement;
-        LineaAccion tmpEntrada = null;
+        Accion tmpEntrada = null;
         try {
             statement = conexion.prepareStatement(query);
             statement.setLong(1, id);
@@ -73,20 +75,21 @@ public class MySQLLineaAccionDAO implements LineaAccionDAO {
         } finally {
             return tmpEntrada;
         }
+
     }
 
     @Override
-    public List<LineaAccion> getAll() {
+    public List<Accion> getAll() throws Exception {
 
-        List<LineaAccion> entradasList = new ArrayList<>();
-        String query = "SELECT * FROM lineasaccion";
+        List<Accion> entradasList = new ArrayList<>();
+        String query = "SELECT * FROM acciones";
         PreparedStatement statement;
         try {
             statement = conexion.prepareStatement(query);
             ResultSet set = statement.executeQuery();
             while (set.next())
             {
-                LineaAccion tmpEntrada = setObject(set);
+                Accion tmpEntrada = setObject(set);
                 entradasList.add(tmpEntrada);
             }
         } catch (SQLException throwables) {
@@ -98,13 +101,16 @@ public class MySQLLineaAccionDAO implements LineaAccionDAO {
     }
 
     @Override
-    public void save(LineaAccion lineaAccion) {
+    public void save(Accion accion) {
 
-        String query = "INSERT INTO lineasaccion(linea) VALUES(?)";
+        String query = "INSERT INTO acciones(nombre, descripcion, coste) VALUES(?,?,?)";
         PreparedStatement nuevaEntrada;
+
         try {
             nuevaEntrada = conexion.prepareStatement(query);
-            nuevaEntrada.setString(1,lineaAccion.getLinea());
+            nuevaEntrada.setString(1,accion.getNombre());
+            nuevaEntrada.setString(2,accion.getDescripcion());
+            nuevaEntrada.setDouble(3,accion.getCoste());
             nuevaEntrada.executeUpdate();
             System.out.println("Ejecutamos Save MySQLAccionDAO");
         } catch (SQLException throwables) {
@@ -114,20 +120,22 @@ public class MySQLLineaAccionDAO implements LineaAccionDAO {
     }
 
     @Override
-    public void update(LineaAccion lineaAccion) {
+    public void update(Accion accion) {
 
         boolean isUpdate = false;
         try {
-            if(lineaAccion.getIdLineaAccion() != null ) { // Estamos pasando un ID
+            if(accion.getIdAccion() != null ) { // Estamos pasando un ID
 
-                if(get(lineaAccion.getIdLineaAccion()) != null) // El objeto pasado existe en nuestra DDBB
+                if(get(accion.getIdAccion()) != null) // El objeto pasado existe en nuestra DDBB
                 {
-                    String query = "UPDATE lineasaccion SET linea = ? WHERE idLineaAccion = ?";
+                    String query = "UPDATE acciones SET nombre = ?, descripcion = ?, coste = ? WHERE idAccion = ?";
                     PreparedStatement updateEntrada = null;
 
                     updateEntrada = conexion.prepareStatement(query);
-                    updateEntrada.setString(1,lineaAccion.getLinea());
-                    updateEntrada.setLong(2,lineaAccion.getIdLineaAccion());
+                    updateEntrada.setString(1,accion.getNombre());
+                    updateEntrada.setString(2,accion.getDescripcion());
+                    updateEntrada.setDouble(3,accion.getCoste());
+                    updateEntrada.setLong(4,accion.getIdAccion());
                     updateEntrada.executeUpdate();
                     isUpdate = true;
                 }
@@ -137,7 +145,7 @@ public class MySQLLineaAccionDAO implements LineaAccionDAO {
         }finally {
             if(!isUpdate)   // Si no existe en nuestra DDBB o no facilitan un ID guardamos en lugar de actualizar
             {
-                save(lineaAccion);
+                save(accion);
                 System.out.println("El registro que se quería actualizar no exitste: Se ha guardado como nuevo registro");
             }
         }
@@ -145,19 +153,19 @@ public class MySQLLineaAccionDAO implements LineaAccionDAO {
     }
 
     @Override
-    public void delete(LineaAccion lineaAccion) {
+    public void delete(Accion accion) {
 
         boolean existe = false;
         try {
-            if(lineaAccion.getIdLineaAccion() != null ) { // Estamos pasando un ID
+            if(accion.getIdAccion() != null ) { // Estamos pasando un ID
 
-                if(get(lineaAccion.getIdLineaAccion()) != null) // El objeto pasado existe en nuestra DDBB
+                if(get(accion.getIdAccion()) != null) // El objeto pasado existe en nuestra DDBB
                 {
-                    String query = " DELETE FROM lineasaccion WHERE idLineaAccion = ?";
+                    String query = " DELETE FROM acciones WHERE idAccion = ?";
                     PreparedStatement borrarEntrada = null;
 
                     borrarEntrada = conexion.prepareStatement(query);
-                    borrarEntrada.setLong(1,lineaAccion.getIdLineaAccion());
+                    borrarEntrada.setLong(1,accion.getIdAccion());
                     borrarEntrada.executeUpdate();
                     existe = true;
                 }
