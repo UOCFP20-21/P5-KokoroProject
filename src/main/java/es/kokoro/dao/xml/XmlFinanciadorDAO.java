@@ -22,7 +22,7 @@ public class XmlFinanciadorDAO implements FinanciadorDAO {
     }
 
     @Override
-    public void update(Financiador financiador, String[] params) {
+    public void update(Financiador financiador) {
 
     }
 

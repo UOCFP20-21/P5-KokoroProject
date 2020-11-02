@@ -126,10 +126,6 @@ public class XmlLineaAccionDAO implements LineaAccionDAO {
     }
 
     @Override
-    public void update(LineaAccion lineaAccion, String[] params) throws Exception {
-        save(lineaAccion);
-    }
-
     public void update(LineaAccion lineaAccion) throws Exception {
         save(lineaAccion);
     }

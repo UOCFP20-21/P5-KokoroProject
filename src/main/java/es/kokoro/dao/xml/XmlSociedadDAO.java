@@ -22,7 +22,7 @@ public class XmlSociedadDAO implements SociedadDAO {
     }
 
     @Override
-    public void update(Sociedad sociedad, String[] params) {
+    public void update(Sociedad sociedad) {
 
     }
 

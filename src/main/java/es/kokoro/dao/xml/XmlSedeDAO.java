@@ -23,7 +23,7 @@ public class XmlSedeDAO implements SedeDAO {
     }
 
     @Override
-    public void update(Sede sede, String[] params) {
+    public void update(Sede sede) {
 
     }
 
