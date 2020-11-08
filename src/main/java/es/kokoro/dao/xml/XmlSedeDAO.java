@@ -18,12 +18,14 @@ public class XmlSedeDAO implements SedeDAO {
     }
 
     @Override
-    public void save(Sede sede) {
+    public Sede save(Sede sede) {
+        return sede;
 
     }
 
     @Override
-    public void update(Sede sede) {
+    public Sede update(Sede sede) {
+        return sede;
 
     }
 

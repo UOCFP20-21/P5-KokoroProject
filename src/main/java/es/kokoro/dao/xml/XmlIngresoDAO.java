@@ -17,13 +17,13 @@ public class XmlIngresoDAO implements IngresoDAO {
     }
 
     @Override
-    public void save(Ingreso ingreso) {
-
+    public Ingreso save(Ingreso ingreso) {
+        return ingreso;
     }
 
     @Override
-    public void update(Ingreso ingreso) throws Exception {
-
+    public Ingreso update(Ingreso ingreso) throws Exception {
+        return ingreso;
     }
 
     @Override

@@ -17,13 +17,13 @@ public class XmlAccionDAO implements AccionDAO {
     }
 
     @Override
-    public void save(Accion accion) {
-
+    public Accion save(Accion accion) {
+return accion;
     }
 
     @Override
-    public void update(Accion accion) {
-
+    public Accion update(Accion accion) {
+return accion;
     }
 
     @Override

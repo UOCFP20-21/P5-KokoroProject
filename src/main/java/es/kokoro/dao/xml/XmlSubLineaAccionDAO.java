@@ -88,7 +88,7 @@ public class XmlSubLineaAccionDAO implements SubLineaAccionDAO {
     }
 
     @Override
-    public void save(SubLineaAccion subLineaAccion) throws Exception {
+    public SubLineaAccion save(SubLineaAccion subLineaAccion) throws Exception {
         ;
         Boolean isNew = true;
         List<SubLineaAccion> subLineaAccionList = getAll();
@@ -119,12 +119,15 @@ public class XmlSubLineaAccionDAO implements SubLineaAccionDAO {
 
         } catch(Exception e) {
             e.printStackTrace();
-        }
+        }        return subLineaAccion;
+
     }
 
     @Override
-    public void update(SubLineaAccion subLineaAccion) throws Exception {
+    public SubLineaAccion update(SubLineaAccion subLineaAccion) throws Exception {
         save(subLineaAccion);
+        return subLineaAccion;
+
     }
 
     @Override

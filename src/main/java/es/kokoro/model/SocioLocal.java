@@ -1,12 +1,14 @@
 package es.kokoro.model;
 
+import es.kokoro.model.interfaces.IIngreso;
+
 import java.util.List;
 
 /**
  * Clase de Socio Local
  * Contiene información del socio local
  */
-public class SocioLocal extends Empresa {
+public class SocioLocal extends Empresa implements IIngreso {
 
     //Atributos
     /**
@@ -32,12 +34,13 @@ public class SocioLocal extends Empresa {
      * @param telefono @see Empresa
      * @param email @see Empresa
      * @param idSocioLocal Índice de SocioLocal.
-     * @param proyectoList Listado de Proyectos en los que ha participado
+    //* @param proyectoList Listado de Proyectos en los que ha participado
      */
-    public SocioLocal(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, String telefono, String email, Long idSocioLocal, List<Proyecto> proyectoList) {
+    //TODO meter proyectoList de nuevo?
+    public SocioLocal(Long idEmpresa, String nombre, String pais, String poblacion, String direccionSocial, String razonSocial, String identificacionSocial, String telefono, String email, Long idSocioLocal/*List<Proyecto> proyectoList*/) {
         super(idEmpresa, nombre, pais, poblacion, direccionSocial, razonSocial, identificacionSocial, telefono, email);
         this.idSocioLocal = idSocioLocal;
-        this.proyectoList = proyectoList;
+      /*  this.proyectoList = proyectoList;*/
     }
 
 
@@ -86,4 +89,8 @@ public class SocioLocal extends Empresa {
                 '}';
     }
 
+    @Override
+    public boolean isPublico() {
+        return false;
+    }
 }

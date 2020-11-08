@@ -17,12 +17,14 @@ public class XmlTrabajadorDAO implements TrabajadorDAO {
     }
 
     @Override
-    public void save(Trabajador trabajador) {
+    public Trabajador save(Trabajador trabajador) {
+        return trabajador;
 
     }
 
     @Override
-    public void update(Trabajador trabajador) {
+    public Trabajador update(Trabajador trabajador) {
+        return trabajador;
 
     }
 

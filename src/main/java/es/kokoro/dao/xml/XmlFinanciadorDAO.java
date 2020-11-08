@@ -17,13 +17,13 @@ public class XmlFinanciadorDAO implements FinanciadorDAO {
     }
 
     @Override
-    public void save(Financiador financiador) {
-
+    public Financiador save(Financiador financiador) {
+        return financiador;
     }
 
     @Override
-    public void update(Financiador financiador) {
-
+    public Financiador update(Financiador financiador) {
+        return financiador;
     }
 
     @Override

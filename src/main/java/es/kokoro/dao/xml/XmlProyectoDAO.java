@@ -230,7 +230,7 @@ public class XmlProyectoDAO implements ProyectoDAO {
     }
 
     @Override
-    public void save(Proyecto proyecto) throws Exception {
+    public Proyecto save(Proyecto proyecto) throws Exception {
 
         /*File proyectosDB = new File(xmlFile);*/
         boolean isNew = true;
@@ -262,13 +262,16 @@ public class XmlProyectoDAO implements ProyectoDAO {
         } catch(Exception e) {
             e.printStackTrace();
         }
+        return proyecto;
 
 
     }
 
     @Override
-    public void update(Proyecto proyecto) throws Exception {
+    public Proyecto update(Proyecto proyecto) throws Exception {
         save(proyecto);
+        return proyecto;
+
     }
 
     @Override

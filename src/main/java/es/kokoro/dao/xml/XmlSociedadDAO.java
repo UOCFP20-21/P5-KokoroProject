@@ -17,12 +17,14 @@ public class XmlSociedadDAO implements SociedadDAO {
     }
 
     @Override
-    public void save(Sociedad sociedad) {
+    public Sociedad save(Sociedad sociedad) {
+        return sociedad;
 
     }
 
     @Override
-    public void update(Sociedad sociedad) {
+    public Sociedad update(Sociedad sociedad) {
+        return sociedad;
 
     }
 

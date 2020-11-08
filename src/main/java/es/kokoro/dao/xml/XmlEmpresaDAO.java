@@ -17,13 +17,13 @@ public class XmlEmpresaDAO implements EmpresaDAO {
     }
 
     @Override
-    public void save(Empresa empresa) {
-
+    public Empresa save(Empresa empresa) {
+        return empresa;
     }
 
     @Override
-    public void update(Empresa empresa) {
-
+    public Empresa update(Empresa empresa) {
+        return empresa;
     }
 
     @Override

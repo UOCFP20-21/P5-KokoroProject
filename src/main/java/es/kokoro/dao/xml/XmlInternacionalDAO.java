@@ -17,13 +17,13 @@ public class XmlInternacionalDAO implements InternacionalDAO {
     }
 
     @Override
-    public void save(Internacional internacional) {
-
+    public Internacional save(Internacional internacional) {
+        return internacional;
     }
 
     @Override
-    public void update(Internacional internacional) {
-
+    public Internacional update(Internacional internacional) {
+        return internacional;
     }
 
     @Override

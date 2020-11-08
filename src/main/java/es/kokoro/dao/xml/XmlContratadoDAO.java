@@ -17,13 +17,13 @@ public class XmlContratadoDAO implements ContratadoDAO {
     }
 
     @Override
-    public void save(Contratado contratado) {
-
+    public Contratado save(Contratado contratado) {
+        return contratado;
     }
 
     @Override
-    public void update(Contratado contratado) {
-
+    public Contratado update(Contratado contratado) {
+        return contratado;
     }
 
     @Override

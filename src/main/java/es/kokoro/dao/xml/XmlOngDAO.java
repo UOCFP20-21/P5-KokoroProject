@@ -17,12 +17,14 @@ public class XmlOngDAO implements OngDAO {
     }
 
     @Override
-    public void save(Ong ong) {
-
+    public Ong save(Ong ong) {
+        return ong;
     }
 
     @Override
-    public void update(Ong ong) {
+    public Ong update(Ong ong) {
+
+        return ong;
 
     }
 

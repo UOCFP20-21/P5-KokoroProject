@@ -90,7 +90,7 @@ public class XmlLineaAccionDAO implements LineaAccionDAO {
 
 
     @Override
-    public void save(LineaAccion lineaAccion) throws Exception {
+    public LineaAccion save(LineaAccion lineaAccion) throws Exception {
 
         Boolean isNew = true;
         List<LineaAccion> lineaAccionList = getAll();
@@ -122,12 +122,13 @@ public class XmlLineaAccionDAO implements LineaAccionDAO {
             e.printStackTrace();
         }
 
-
+return lineaAccion;
     }
 
     @Override
-    public void update(LineaAccion lineaAccion) throws Exception {
+    public LineaAccion update(LineaAccion lineaAccion) throws Exception {
         save(lineaAccion);
+        return lineaAccion;
     }
 
     @Override

@@ -4,5 +4,4 @@ import es.kokoro.model.Persona;
 import es.kokoro.model.Socio;
 
 public interface PersonaDAO extends DAO<Persona> {
-    Persona buscarDNI(String dni);
 }

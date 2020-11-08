@@ -17,13 +17,13 @@ public class XmlHerenciaDAO implements HerenciaDAO {
     }
 
     @Override
-    public void save(Herencia herencia) {
-
+    public Herencia save(Herencia herencia) {
+        return herencia;
     }
 
     @Override
-    public void update(Herencia herencia) {
-
+    public Herencia update(Herencia herencia) {
+        return herencia;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package es.kokoro.dao.xml;
 
 import es.kokoro.dao.InstitucionDAO;
+import es.kokoro.model.Ingreso;
 import es.kokoro.model.Institucion;
 
 import java.util.List;
@@ -17,13 +18,13 @@ public class XmlInstitucionDAO implements InstitucionDAO {
     }
 
     @Override
-    public void save(Institucion institucion) {
-
+    public Institucion save(Institucion institucion) {
+        return institucion;
     }
 
     @Override
-    public void update(Institucion institucion) {
-
+    public Institucion update(Institucion institucion) {
+        return institucion;
     }
 
     @Override

@@ -17,12 +17,14 @@ public class XmlVoluntarioColaboradorDAO implements VoluntarioColaboradorDAO {
     }
 
     @Override
-    public void save(VoluntarioColaborador voluntarioColaborador) {
+    public VoluntarioColaborador save(VoluntarioColaborador voluntarioColaborador) {
+        return voluntarioColaborador;
 
     }
 
     @Override
-    public void update(VoluntarioColaborador voluntarioColaborador) {
+    public VoluntarioColaborador update(VoluntarioColaborador voluntarioColaborador) {
+        return voluntarioColaborador;
 
     }
 

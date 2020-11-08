@@ -1,33 +1,35 @@
 package es.kokoro.dao.xml;
 
-import es.kokoro.dao.VoluntarioColaboradorDAO;
-import es.kokoro.model.VoluntarioColaborador;
+import es.kokoro.dao.VoluntarioInternacionalDAO;
+import es.kokoro.model.VoluntarioInternacional;
 
 import java.util.List;
 
-public class XmlVoluntarioInternacionalDAO implements VoluntarioColaboradorDAO {
+public class XmlVoluntarioInternacionalDAO implements VoluntarioInternacionalDAO {
     @Override
-    public VoluntarioColaborador get(long id) {
+    public VoluntarioInternacional get(long id) {
         return null;
     }
 
     @Override
-    public List<VoluntarioColaborador> getAll() {
+    public List<VoluntarioInternacional> getAll() {
         return null;
     }
 
     @Override
-    public void save(VoluntarioColaborador voluntarioColaborador) {
+    public VoluntarioInternacional save(VoluntarioInternacional voluntarioInternacional) {
+        return voluntarioInternacional;
 
     }
 
     @Override
-    public void update(VoluntarioColaborador voluntarioColaborador) {
+    public VoluntarioInternacional update(VoluntarioInternacional voluntarioInternacional) {
+        return voluntarioInternacional;
 
     }
 
     @Override
-    public void delete(VoluntarioColaborador voluntarioColaborador) {
+    public void delete(VoluntarioInternacional voluntarioInternacional) {
 
     }
 }

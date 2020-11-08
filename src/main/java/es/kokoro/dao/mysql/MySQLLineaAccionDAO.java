@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static es.kokoro.commons.sqlConection.conectar;
+import static es.kokoro.commons.SqlConnection.conectar;
 
 public class MySQLLineaAccionDAO implements LineaAccionDAO {
 
@@ -98,7 +98,7 @@ public class MySQLLineaAccionDAO implements LineaAccionDAO {
     }
 
     @Override
-    public void save(LineaAccion lineaAccion) {
+    public LineaAccion save(LineaAccion lineaAccion) {
 
         String query = "INSERT INTO lineasaccion(linea) VALUES(?)";
         PreparedStatement nuevaEntrada;
@@ -110,11 +110,11 @@ public class MySQLLineaAccionDAO implements LineaAccionDAO {
         } catch (SQLException throwables) {
             System.out.println("Error guardando el nuevo registro " + throwables);
         }
-
+return lineaAccion;
     }
 
     @Override
-    public void update(LineaAccion lineaAccion) {
+    public LineaAccion update(LineaAccion lineaAccion) {
 
         boolean isUpdate = false;
         try {
@@ -141,7 +141,7 @@ public class MySQLLineaAccionDAO implements LineaAccionDAO {
                 System.out.println("El registro que se quería actualizar no exitste: Se ha guardado como nuevo registro");
             }
         }
-
+return lineaAccion;
     }
 
     @Override

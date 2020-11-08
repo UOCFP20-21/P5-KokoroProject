@@ -18,12 +18,14 @@ public class XmlSocioLocalDAO implements SocioLocalDAO {
     }
 
     @Override
-    public void save(SocioLocal socioLocal) {
+    public SocioLocal save(SocioLocal socioLocal) {
+        return socioLocal;
 
     }
 
     @Override
-    public void update(SocioLocal socioLocal) {
+    public SocioLocal update(SocioLocal socioLocal) {
+        return socioLocal;
 
     }
 

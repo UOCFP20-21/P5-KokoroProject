@@ -6,7 +6,7 @@ import es.kokoro.model.interfaces.IFinanciador;
  * Clase empresa
  * Contiene información de la empresa
  */
-public abstract class Empresa implements IFinanciador {
+public class Empresa implements IFinanciador {
     //Atributos
     private Long idEmpresa;
     private String nombre;
@@ -40,6 +40,11 @@ public abstract class Empresa implements IFinanciador {
         this.identificacionSocial = identificacionSocial;
         this.telefono = telefono;
         this.email = email;
+    }
+
+    public Empresa(Long idEmpresa) {
+        this.idEmpresa = idEmpresa;
+
     }
     //Metodos publicos
     /**

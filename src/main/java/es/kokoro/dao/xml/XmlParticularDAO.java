@@ -17,12 +17,14 @@ public class XmlParticularDAO implements ParticularDAO {
     }
 
     @Override
-    public void save(Particular particular) {
+    public Particular save(Particular particular) {
+        return particular;
 
     }
 
     @Override
-    public void update(Particular particular) {
+    public Particular update(Particular particular) {
+        return particular;
 
     }
 

@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-import static es.kokoro.commons.sqlConection.*;
+import static es.kokoro.commons.SqlConnection.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MySQLLineaAccionDaoTest {

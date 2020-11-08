@@ -1,7 +1,9 @@
 package es.kokoro.dao.mysql;
 
-import es.kokoro.dao.DelegacionDAO;
-import es.kokoro.model.*;
+import es.kokoro.commons.SqlConnection;
+import es.kokoro.dao.ExtraordinarioDAO;
+import es.kokoro.model.Empresa;
+import es.kokoro.model.Extraordinario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,46 +13,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static es.kokoro.commons.SqlConnection.commitData;
-import static es.kokoro.commons.SqlConnection.conectar;
 
-public class MySQLDelegacionDAO extends MySQLEmpresaDAO {
+public class MySQLExtraordinarioDAO extends MySQLEmpresaDAO {
 
-    public MySQLDelegacionDAO() {
+    public MySQLExtraordinarioDAO() {
         setConexion(conexion);
     }
 
-    public MySQLDelegacionDAO(Connection conexion) {
+    public MySQLExtraordinarioDAO(Connection conexion) {
         setConexion(conexion);
     }
 
-    public Delegacion get(long id) {
-
-        String query = "SELECT * FROM delegaciones WHERE idDelegacion = ?";
+    public Extraordinario get(long id) {
+        String query = "SELECT * FROM extraordinarios WHERE idExtraordinario = ?";
         PreparedStatement statement;
         try {
             statement = conexion.prepareStatement(query);
             statement.setLong(1, id);
             ResultSet set = statement.executeQuery();
             set.next();
-//TODO Añadir ONg y trabajador LIst
-            //TODO lo mismo que con sede, porque tenemos el campo en workbench, sin clave foranea?, porque no hay delegacion
-            long idDelegacion = set.getLong("idDelegacion");
+            long idExtraordinario = set.getLong("idExtraordinario");
             long idEmpresa = set.getLong("idEmpresa");
-            String areaOperativa = set.getString("areaOperativa");
+            String concepto = set.getString("concepto");
             Empresa empresa = super.get(idEmpresa);
-            return new Delegacion(idEmpresa, empresa.getNombre(), empresa.getPais(), empresa.getPoblacion(), empresa.getRazonSocial(),
-                    empresa.getIdentificacionSocial(), empresa.getEmail(), empresa.getTelefono(), empresa.getEmail(), idDelegacion, null,
-                    null, areaOperativa);
+            return new Extraordinario(idEmpresa, empresa.getNombre(), empresa.getPais(), empresa.getPoblacion(), empresa.getRazonSocial(),
+                    empresa.getIdentificacionSocial(), empresa.getEmail(), empresa.getTelefono(), empresa.getEmail(), idExtraordinario, concepto);
         } catch (Exception throwables) {
             System.out.println("Error obteniendo la instancia " + throwables);
         }
         return null;
     }
 
+    //aunque el método devuelva List<Empresa>, en esa lista puede haber cualquier clase que extienda de empresa
     public List<Empresa> getAll() {
 
         List<Empresa> empresaList = new ArrayList<>();
-        String query = "SELECT * FROM delegaciones";
+        String query = "SELECT * FROM extraordinarios";
         PreparedStatement statement;
         try {
             statement = conexion.prepareStatement(query);
@@ -66,84 +64,86 @@ public class MySQLDelegacionDAO extends MySQLEmpresaDAO {
         return empresaList;
     }
 
-    public Delegacion save(Delegacion delegacion) {
+    public Extraordinario save(Extraordinario extraordinario) {
 
-        String query = "INSERT INTO delegaciones (idEmpresa, areaOperativa) VALUES(?,?)";
+        String query = "INSERT INTO extraordinarios (idEmpresa) VALUES(?)";
         PreparedStatement nuevaEntrada;
         Empresa empresa = null;
         try {
             conexion.setAutoCommit(false);
-            if (delegacion.getIdEmpresa() == null)   // No facilitamos ID empresa
+            if (extraordinario.getIdEmpresa() == null)   // No facilitamos ID extraordinario
             {
-                if (checkIdentificadorSocial(delegacion.getIdentificacionSocial()) == 0)  // No existe el Identificador en nuestra DDBB
+                if (checkIdentificadorSocial(extraordinario.getIdentificacionSocial()) == 0)  // No existe el Identificador en nuestra DDBB
                 {
-                    empresa = super.save(delegacion);
+                    empresa = super.save(extraordinario);
                     System.out.println("El ID de Empresa nuevo es: " + empresa.getIdEmpresa());
                 } else {
                     System.out.println("El CIF que intentas introducir ya existe.");
                 }
-            } else // Facilitamos un ID de Persona
+            } else // Facilitamos un ID de extraordinario
             {
-                empresa = super.update(delegacion);
+                empresa = super.update(extraordinario);
             }
             nuevaEntrada = conexion.prepareStatement(query);
             nuevaEntrada.setLong(1, empresa.getIdEmpresa());
             nuevaEntrada.executeUpdate();
             commitData(conexion);
-            System.out.println("Ejecutamos Save MySQLDelegacionDAO");
+            System.out.println("Ejecutamos Save MySQLExtraordinarioDAO");
         } catch (SQLException throwables) {
             try {
                 conexion.rollback();
             } catch (SQLException e) {
                 System.out.println("Error realizando RollBack del nuevo registro " + e);
             }
-            System.out.println("Error guardando el nuevo registro  (Save.Delegacion)" + throwables);
+            System.out.println("Error guardando el nuevo registro  (Save.Extraordinario)" + throwables);
         }
-        return delegacion;
+        return extraordinario;
     }
 
-    public Delegacion update(Delegacion delegacion) {
+    public Extraordinario update(Extraordinario extraordinario) {
 
-        String query = "UPDATE delegaciones SET idEmpresa = ?, areaOperativa = ? WHERE idDelegacion = ?";
+        String query = "UPDATE extraordinarios SET idEmpresa = ?, concepto = ?, WHERE idExtraordinario = ?";
         PreparedStatement updateEntrada;
         try {
             conexion.setAutoCommit(false);
-            if (delegacion.getIdEmpresa() == null || delegacion.getIdDelegacion() == null)   // No facilitamos IDs
+            if (extraordinario.getIdEmpresa() == null || extraordinario.getIdExtraordinario() == null)   // No facilitamos IDs
             {
                 System.out.println("No se ha indicado la entrada a modificar");
             } else // Facilitamos los IDs
             {
-                Empresa empresa = super.update(delegacion);
+                Empresa empresa = super.update(extraordinario);
                 updateEntrada = conexion.prepareStatement(query);
                 updateEntrada.setLong(1, empresa.getIdEmpresa());
-                updateEntrada.setLong(2, delegacion.getIdDelegacion());
+                updateEntrada.setLong(2, extraordinario.getIdExtraordinario());
                 updateEntrada.executeUpdate();
             }
             commitData(conexion);
-            System.out.println("Ejecutamos Update MySQLDelegacionDAO");
+            System.out.println("Ejecutamos Update MySQLExtraordinarioDAO");
         } catch (SQLException throwables) {
             try {
                 conexion.rollback();
             } catch (SQLException e) {
-                System.out.println("Error realizando RollBack del update del registro (Update.Delegacion) " + throwables);
+                System.out.println("Error realizando RollBack del update del registro (Update.Extraordinario) " + throwables);
             } finally {
-                System.out.println("Error Actualizando el nuevo registro (Update.Delegacion) " + throwables);
+                System.out.println("Error Actualizando el nuevo registro (Update.Extraordinario) " + throwables);
             }
         }
-        return delegacion;
+        return extraordinario;
     }
 
-    public void delete(Delegacion delegacion) {
+    public void delete(Extraordinario extraordinario) {
 
         boolean existe = false;
         try {
-            if (delegacion.getIdDelegacion() != null) { // Estamos pasando un ID
-                if (get(delegacion.getIdDelegacion()) != null) // El objeto pasado existe en nuestra DDBB
+            if (extraordinario.getIdExtraordinario() != null) { // Estamos pasando un ID
+
+                if (get(extraordinario.getIdExtraordinario()) != null) // El objeto pasado existe en nuestra DDBB
                 {
-                    String query = " DELETE FROM delegaciones WHERE idDelegacion = ?";
+                    String query = " DELETE FROM extraordinarios WHERE idExtraordinario = ?";
                     PreparedStatement borrarEntrada;
+
                     borrarEntrada = conexion.prepareStatement(query);
-                    borrarEntrada.setLong(1, delegacion.getIdDelegacion());
+                    borrarEntrada.setLong(1, extraordinario.getIdExtraordinario());
                     borrarEntrada.executeUpdate();
                     existe = true;
                 }
@@ -157,4 +157,7 @@ public class MySQLDelegacionDAO extends MySQLEmpresaDAO {
             }
         }
     }
+
+
 }
+

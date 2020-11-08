@@ -1,6 +1,6 @@
 package es.kokoro.dao.mysql;
 
-import es.kokoro.model.Particular;
+import es.kokoro.model.Herencia;
 import es.kokoro.model.Persona;
 
 import java.sql.Connection;
@@ -12,29 +12,29 @@ import java.util.List;
 
 import static es.kokoro.commons.SqlConnection.commitData;
 
-public class MySQLParticularDAO extends MySQLPersonaDAO {
+public class MySQLHerenciaDAO extends MySQLPersonaDAO {
 
-    public MySQLParticularDAO() {
+    public MySQLHerenciaDAO() {
         setConexion(conexion);
     }
 
-    public MySQLParticularDAO(Connection conexion) {
+    public MySQLHerenciaDAO(Connection conexion) {
         setConexion(conexion);
     }
 
-    public Particular get(long id) {
-        String query = "SELECT * FROM particulares WHERE idParticular = ?";
+    public Herencia get(long id) {
+        String query = "SELECT * FROM herencias WHERE idHerencia = ?";
         PreparedStatement statement;
         try {
             statement = conexion.prepareStatement(query);
             statement.setLong(1, id);
             ResultSet set = statement.executeQuery();
             set.next();
-            long idParticular = set.getLong("idParticular");
+            long idHerencia = set.getLong("idHerencia");
             long idPersona = set.getLong("idPersona");
             Persona persona = super.get(idPersona);
-            return new Particular(idPersona, persona.getNombre(), persona.getApellidos(), persona.getIdentificador(), persona.getNacionalidad(), persona.getDireccion(),
-                    persona.getPoblacion(), persona.getTelefono(), persona.getEmail(), idParticular, persona.getFechaNac());
+            return new Herencia(idPersona, persona.getNombre(), persona.getApellidos(), persona.getIdentificador(), persona.getNacionalidad(), persona.getDireccion(),
+                    persona.getPoblacion(), persona.getTelefono(), persona.getEmail(), idHerencia, persona.getFechaNac());
         } catch (Exception throwables) {
             System.out.println("Error obteniendo la instancia " + throwables);
         }
@@ -45,7 +45,7 @@ public class MySQLParticularDAO extends MySQLPersonaDAO {
     public List<Persona> getAll() {
 
         List<Persona> personaList = new ArrayList<>();
-        String query = "SELECT * FROM particulares";
+        String query = "SELECT * FROM herencias";
         PreparedStatement statement;
         try {
             statement = conexion.prepareStatement(query);
@@ -61,84 +61,84 @@ public class MySQLParticularDAO extends MySQLPersonaDAO {
         return personaList;
     }
 
-    public Particular save(Particular particular) {
+    public Herencia save(Herencia Herencia) {
 
-        String query = "INSERT INTO particulares (idPersona) VALUES(?)";
+        String query = "INSERT INTO herencias (idPersona) VALUES(?)";
         PreparedStatement nuevaEntrada;
         Persona persona = null;
         try {
             conexion.setAutoCommit(false);
-            if (particular.getIdPersona() == null)   // No facilitamos ID persona
+            if (Herencia.getIdPersona() == null)   // No facilitamos ID persona
             {
-                if (checkDNI(particular.getIdentificador()) == 0)  // No existe el Identificador en nuestra DDBB
+                if (checkDNI(Herencia.getIdentificador()) == 0)  // No existe el Identificador en nuestra DDBB
                 {
-                    persona = super.save(particular);
+                    persona = super.save(Herencia);
                     System.out.println("El ID de Persona nuevo es: " + persona.getIdPersona());
                 } else {
                     System.out.println("El DNI que intentas introducir ya existe.");
                 }
             } else // Facilitamos un ID de Persona
             {
-                persona = super.update(particular);
+                persona = super.update(Herencia);
             }
             nuevaEntrada = conexion.prepareStatement(query);
             nuevaEntrada.setLong(1, persona.getIdPersona());
             nuevaEntrada.executeUpdate();
             commitData(conexion);
-            System.out.println("Ejecutamos Save MySQLParticularDAO");
+            System.out.println("Ejecutamos Save MySQLHerenciaDAO");
         } catch (SQLException throwables) {
             try {
                 conexion.rollback();
             } catch (SQLException e) {
                 System.out.println("Error realizando RollBack del nuevo registro " + e);
             }
-            System.out.println("Error guardando el nuevo registro  (Save.Particular)" + throwables);
+            System.out.println("Error guardando el nuevo registro  (Save.Herencia)" + throwables);
         }
-        return particular;
+        return Herencia;
     }
 
-    public Particular update(Particular particular) {
+    public Herencia update(Herencia Herencia) {
 
-        String query = "UPDATE particulares SET idPersona = ? WHERE idParticular = ?";
+        String query = "UPDATE herencias SET idPersona = ? WHERE idHerencia = ?";
         PreparedStatement updateEntrada;
         try {
             conexion.setAutoCommit(false);
-            if (particular.getIdPersona() == null || particular.getIdParticular() == null)   // No facilitamos IDs
+            if (Herencia.getIdPersona() == null || Herencia.getIdHerencia() == null)   // No facilitamos IDs
             {
                 System.out.println("No se ha indicado la entrada a modificar");
             } else // Facilitamos los IDs
             {
-                Persona persona = super.update(particular);
+                Persona persona = super.update(Herencia);
                 updateEntrada = conexion.prepareStatement(query);
                 updateEntrada.setLong(1, persona.getIdPersona());
-                updateEntrada.setLong(2, particular.getIdParticular());
+                updateEntrada.setLong(2, Herencia.getIdHerencia());
                 updateEntrada.executeUpdate();
             }
             commitData(conexion);
-            System.out.println("Ejecutamos Update MySQLParticularDAO");
+            System.out.println("Ejecutamos Update MySQLHerenciaDAO");
         } catch (SQLException throwables) {
             try {
                 conexion.rollback();
             } catch (SQLException e) {
-                System.out.println("Error realizando RollBack del update del registro (Update.Particular) " + throwables);
+                System.out.println("Error realizando RollBack del update del registro (Update.Herencia) " + throwables);
             } finally {
-                System.out.println("Error Actualizando el nuevo registro (Update.Particular) " + throwables);
+                System.out.println("Error Actualizando el nuevo registro (Update.Herencia) " + throwables);
             }
         }
-        return particular;
+        return Herencia;
     }
 
-    public void delete(Particular particular) {
+    public void delete(Herencia Herencia) {
 
         boolean existe = false;
         try {
-            if (particular.getIdParticular() != null) { // Estamos pasando un ID
-                if (get(particular.getIdParticular()) != null) // El objeto pasado existe en nuestra DDBB
+            if (Herencia.getIdHerencia() != null) { // Estamos pasando un ID
+                if (get(Herencia.getIdHerencia()) != null) // El objeto pasado existe en nuestra DDBB
                 {
-                    String query = " DELETE FROM particulares WHERE idParticular = ?";
+                    String query = " DELETE FROM herencias WHERE idHerencia = ?";
                     PreparedStatement borrarEntrada;
                     borrarEntrada = conexion.prepareStatement(query);
-                    borrarEntrada.setLong(1, particular.getIdParticular());
+                    borrarEntrada.setLong(1, Herencia.getIdHerencia());
                     borrarEntrada.executeUpdate();
                     existe = true;
                 }

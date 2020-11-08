@@ -1,9 +1,11 @@
 package es.kokoro.model;
 
+import java.util.Date;
+
 /***
  * @author Kokoro
  */
-public abstract class Persona {
+public class Persona {
     private Long idPersona;
     private String nombre;
     private String apellidos;
@@ -13,6 +15,7 @@ public abstract class Persona {
     private String poblacion;
     private String telefono;
     private String email;
+    private Date fechaNac;
 
     /***
      * Constructor de la clase Persona
@@ -26,7 +29,7 @@ public abstract class Persona {
      * @param telefono
      * @param email
      */
-    public Persona(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email) {
+    public Persona(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Date fechaNac) {
         this.idPersona = idPersona;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -36,6 +39,15 @@ public abstract class Persona {
         this.poblacion = poblacion;
         this.telefono = telefono;
         this.email = email;
+        this.fechaNac = fechaNac;
+    }
+
+    public Date getFechaNac() {
+        return fechaNac;
+    }
+
+    public void setFechaNac(Date fechaNac) {
+        this.fechaNac = fechaNac;
     }
 
     /***
@@ -207,7 +219,7 @@ public abstract class Persona {
         if (o == null || getClass() != o.getClass()) return false;
 
         Persona persona = (Persona) o;
-
+        Persona that = (Persona) o;
         if (idPersona != null ? !idPersona.equals(persona.idPersona) : persona.idPersona != null) return false;
         if (nombre != null ? !nombre.equals(persona.nombre) : persona.nombre != null) return false;
         if (apellidos != null ? !apellidos.equals(persona.apellidos) : persona.apellidos != null) return false;
@@ -218,7 +230,8 @@ public abstract class Persona {
         if (direccion != null ? !direccion.equals(persona.direccion) : persona.direccion != null) return false;
         if (poblacion != null ? !poblacion.equals(persona.poblacion) : persona.poblacion != null) return false;
         if (telefono != null ? !telefono.equals(persona.telefono) : persona.telefono != null) return false;
-        return email != null ? email.equals(persona.email) : persona.email == null;
+        if (email != null ? !email.equals(persona.email) : persona.email != null) return false;
+        return fechaNac != null ? fechaNac.equals(that.fechaNac) : that.fechaNac == null;
     }
 
     @Override
@@ -232,6 +245,7 @@ public abstract class Persona {
         result = 31 * result + (poblacion != null ? poblacion.hashCode() : 0);
         result = 31 * result + (telefono != null ? telefono.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (fechaNac != null ? fechaNac.hashCode() : 0);
         return result;
     }
 }

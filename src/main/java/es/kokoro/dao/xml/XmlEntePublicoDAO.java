@@ -17,13 +17,13 @@ public class XmlEntePublicoDAO implements EntePublicoDAO {
     }
 
     @Override
-    public void save(EntePublico entePublico) {
-
+    public EntePublico save(EntePublico entePublico) {
+        return entePublico;
     }
 
     @Override
-    public void update(EntePublico entePublico) {
-
+    public EntePublico update(EntePublico entePublico) {
+        return entePublico;
     }
 
     @Override

@@ -150,7 +150,7 @@ public class XmlDelegacionDAO implements DelegacionDAO {
     }
 
 
-    public void save(Delegacion delegacion) throws Exception {
+    public Delegacion save(Delegacion delegacion) throws Exception {
 
         boolean isNew = true;
         List<Delegacion> delegacionList = getAll();
@@ -178,12 +178,14 @@ public class XmlDelegacionDAO implements DelegacionDAO {
         } catch (Exception e){
             e.printStackTrace();
         }
+        return delegacion;
     }
 
 
 
-    public void update(Delegacion delegacion) throws  Exception{
+    public Delegacion update(Delegacion delegacion) throws  Exception{
         save(delegacion);
+        return delegacion;
     }
 
 

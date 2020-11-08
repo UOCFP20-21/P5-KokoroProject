@@ -3,6 +3,8 @@ package es.kokoro.model;
 import es.kokoro.enums.Periodo;
 import es.kokoro.model.interfaces.IIngreso;
 
+import java.util.Date;
+
 /***
  * @author Kokoro
  */
@@ -28,8 +30,8 @@ public class Socio extends Persona implements IIngreso {
      * @param cuota Cantidad a pagar
      * @param estado Estado del Socio (activo o no)
      */
-    public Socio(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idSocio, Periodo periodo, double cuota, boolean estado) {
-        super(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email);
+    public Socio(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idSocio, Periodo periodo, double cuota, boolean estado, Date fechaNac) {
+        super(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, fechaNac);
         this.idSocio = idSocio;
         this.periodo = periodo;
         this.cuota = cuota;

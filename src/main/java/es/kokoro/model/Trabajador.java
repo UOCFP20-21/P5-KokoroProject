@@ -2,11 +2,10 @@ package es.kokoro.model;
 
 import java.util.Date;
 
-public abstract class Trabajador extends Persona{
+public class Trabajador extends Persona{
     private Long idTrabajador;
     private Delegacion delegacion;
-    private Date fechaNac;
-    private boolean activo;
+   private boolean activo;
 
     /***
      *
@@ -25,11 +24,10 @@ public abstract class Trabajador extends Persona{
      * @param activo Boolean para definir si el trabajador está activo o no [true|false]
      */
     public Trabajador(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idTrabajador, Delegacion delegacion, Date fechaNac, boolean activo) {
-        super(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email);
+        super(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, fechaNac);
         this.idTrabajador = idTrabajador;
         this.delegacion = delegacion;
-        this.fechaNac = fechaNac;
-        this.activo = activo;
+             this.activo = activo;
     }
 
     /***
@@ -64,21 +62,6 @@ public abstract class Trabajador extends Persona{
         this.delegacion = delegacion;
     }
 
-    /***
-     *
-     * @return fechaNac
-     */
-    public Date getFechaNac() {
-        return fechaNac;
-    }
-
-    /***
-     *
-     * @param fechaNac
-     */
-    public void setFechaNac(Date fechaNac) {
-        this.fechaNac = fechaNac;
-    }
 
     /***
      *
@@ -101,7 +84,7 @@ public abstract class Trabajador extends Persona{
         return "Trabajador{" +
                 "idTrabajador=" + idTrabajador +
                 ", delegacion=" + delegacion +
-                ", fechaNac=" + fechaNac +
+
                 ", activo=" + activo +
                 "} " + super.toString();
     }
@@ -116,8 +99,8 @@ public abstract class Trabajador extends Persona{
 
         if (activo != that.activo) return false;
         if (idTrabajador != null ? !idTrabajador.equals(that.idTrabajador) : that.idTrabajador != null) return false;
-        if (delegacion != null ? !delegacion.equals(that.delegacion) : that.delegacion != null) return false;
-        return fechaNac != null ? fechaNac.equals(that.fechaNac) : that.fechaNac == null;
+        return delegacion != null ? delegacion.equals(that.delegacion) : that.delegacion == null;
+
     }
 
     @Override
@@ -125,7 +108,6 @@ public abstract class Trabajador extends Persona{
         int result = super.hashCode();
         result = 31 * result + (idTrabajador != null ? idTrabajador.hashCode() : 0);
         result = 31 * result + (delegacion != null ? delegacion.hashCode() : 0);
-        result = 31 * result + (fechaNac != null ? fechaNac.hashCode() : 0);
         result = 31 * result + (activo ? 1 : 0);
         return result;
     }

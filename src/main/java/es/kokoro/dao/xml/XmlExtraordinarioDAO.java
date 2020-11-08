@@ -17,13 +17,13 @@ public class XmlExtraordinarioDAO implements ExtraordinarioDAO {
     }
 
     @Override
-    public void save(Extraordinario extraordinario) {
-
+    public Extraordinario save(Extraordinario extraordinario) {
+        return extraordinario;
     }
 
     @Override
-    public void update(Extraordinario extraordinario) {
-
+    public Extraordinario update(Extraordinario extraordinario) {
+        return extraordinario;
     }
 
     @Override

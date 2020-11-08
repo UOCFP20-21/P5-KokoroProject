@@ -17,13 +17,13 @@ public class XmlEstatalDAO implements EstatalDAO {
     }
 
     @Override
-    public void save(Estatal estatal) {
-
+    public Estatal save(Estatal estatal) {
+        return estatal;
     }
 
     @Override
-    public void update(Estatal estatal) {
-
+    public Estatal update(Estatal estatal) {
+        return estatal;
     }
 
     @Override

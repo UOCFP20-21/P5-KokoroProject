@@ -1,11 +1,12 @@
 package es.kokoro.dao.xml;
 
 
-
 import es.kokoro.dao.SocioDAO;
 import es.kokoro.enums.Periodo;
 import es.kokoro.model.*;
 import org.w3c.dom.*;
+
+import static es.kokoro.commons.FormatFecha.FFStringToDate;
 
 import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
@@ -22,8 +23,9 @@ public class XmlSocioDAO implements SocioDAO {
     private String xmlFile = "src/main/resources/xml/Socios.xml";
 
     public XmlSocioDAO() throws Exception {
-            checkXmlExists(xmlFile, "Socios");
+        checkXmlExists(xmlFile, "Socios");
     }
+
     public XmlSocioDAO(String customXmlFile) throws Exception {
         checkXmlExists(customXmlFile, "Socios");
         xmlFile = customXmlFile;
@@ -95,6 +97,14 @@ public class XmlSocioDAO implements SocioDAO {
                     Element eSocio = (Element) nNode;
 
                     /***
+                    * Configuramos la fecha
+                    */
+
+                    Date eFechaNac = FFStringToDate(eSocio.getElementsByTagName("fechaNac").item(0).getTextContent());
+
+                    /*** FIN Configuracion de fecha ***/
+
+                    /***
                      * Persona de prueba
                      */
 
@@ -102,11 +112,8 @@ public class XmlSocioDAO implements SocioDAO {
                     Socio tmpSocio = new Socio(
                             parseLong(eSocio.getElementsByTagName("idPersona").item(0).getTextContent()), "Sara", "Planas", "44455578A",
                             "Española", "calle", "Bcn", "65644846", "fajuh@sdfhaui.conm",
-                            parseLong(eSocio.getAttribute("id")),
-                            tmpPeriodo,
-                            Double.parseDouble(eSocio.getElementsByTagName("cuota").item(0).getTextContent()),
-                            Boolean.parseBoolean(eSocio.getElementsByTagName("estado").item(0).getTextContent())
-                    );
+                            parseLong(eSocio.getAttribute("id")), tmpPeriodo, Double.parseDouble(eSocio.getElementsByTagName("cuota").item(0).getTextContent()),
+                            Boolean.parseBoolean(eSocio.getElementsByTagName("estado").item(0).getTextContent()), eFechaNac);
                     socioList.add(tmpSocio);
                 }
             }
@@ -120,7 +127,7 @@ public class XmlSocioDAO implements SocioDAO {
 
 
     @Override
-    public void save(Socio socio) throws Exception {
+    public Socio save(Socio socio) throws Exception {
 
 
         boolean isNew = true;
@@ -151,12 +158,15 @@ public class XmlSocioDAO implements SocioDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return socio;
 
     }
 
     @Override
-    public void update(Socio socio) throws Exception {
+    public Socio update(Socio socio) throws Exception {
         save(socio);
+        return socio;
+
     }
 
     @Override

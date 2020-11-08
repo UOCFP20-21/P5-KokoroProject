@@ -1,6 +1,7 @@
 package es.kokoro.dao.xml;
 
 import es.kokoro.dao.PersonaDAO;
+import es.kokoro.enums.Periodo;
 import es.kokoro.model.Persona;
 
 import java.util.List;
@@ -17,12 +18,14 @@ public class XmlPersonaDAO implements PersonaDAO {
     }
 
     @Override
-    public void save(Persona persona) {
+    public Persona save(Persona persona) {
+        return persona;
 
     }
 
     @Override
-    public void update(Persona persona) {
+    public Persona update(Persona persona) {
+        return persona;
 
     }
 
@@ -30,7 +33,7 @@ public class XmlPersonaDAO implements PersonaDAO {
     public void delete(Persona persona) {
 
     }
-    @Override
+
     public Persona buscarDNI(String dni) {
         return null;
     }

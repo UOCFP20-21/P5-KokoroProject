@@ -29,6 +29,9 @@ public class Ong {
         //this.sede = sede;
     }
 
+    public Ong(Long idOngs, String nombre) {
+    }
+
     /***
      *
      * @return idOng
