@@ -4,7 +4,6 @@ import es.kokoro.model.Persona;
 
 import java.sql.*;
 
-import static es.kokoro.commons.sqlConection.commitData;
 import static es.kokoro.commons.sqlConection.conectar;
 
 public class MySQLPersonaDAO /*implements PersonaDAO */{
@@ -69,6 +68,7 @@ public class MySQLPersonaDAO /*implements PersonaDAO */{
             nuevoIdPersona = resultSet.getLong(1);
             System.out.println("Ejecutamos Save MySQLPersonaDAO");
         } catch (SQLException throwables) {
+            conexion.rollback();
             System.out.println("Error guardando el nuevo registro (Save.Persona) " + throwables);
         } finally {
             return nuevoIdPersona;
