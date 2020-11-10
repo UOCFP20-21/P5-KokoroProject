@@ -14,6 +14,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.util.*;
 
 
+import static es.kokoro.commons.FormatFecha.FFStringToDate;
 import static es.kokoro.commons.fileXmlBuilder.*;
 import static java.lang.Long.parseLong;
 
@@ -97,7 +98,7 @@ public class XmlSocioDAO implements SocioDAO {
                     /***
                      * Persona de prueba
                      */
-
+                    Date tmpDate = FFStringToDate("1983-07-24");
                     Periodo tmpPeriodo = Periodo.valueOf(eSocio.getElementsByTagName("tipoPeriodo").item(0).getTextContent());
                     Socio tmpSocio = new Socio(
                             parseLong(eSocio.getElementsByTagName("idPersona").item(0).getTextContent()), "Sara", "Planas", "44455578A",
@@ -105,7 +106,7 @@ public class XmlSocioDAO implements SocioDAO {
                             parseLong(eSocio.getAttribute("id")),
                             tmpPeriodo,
                             Double.parseDouble(eSocio.getElementsByTagName("cuota").item(0).getTextContent()),
-                            Boolean.parseBoolean(eSocio.getElementsByTagName("estado").item(0).getTextContent())
+                            Boolean.parseBoolean(eSocio.getElementsByTagName("estado").item(0).getTextContent()), tmpDate
                     );
                     socioList.add(tmpSocio);
                 }

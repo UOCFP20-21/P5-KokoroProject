@@ -1,5 +1,7 @@
 package es.kokoro.model;
 
+import java.util.Date;
+
 /***
  * @author Kokoro
  */
@@ -13,6 +15,7 @@ public abstract class Persona {
     private String poblacion;
     private String telefono;
     private String email;
+    private Date fechaNac;
 
     /***
      * Constructor de la clase Persona
@@ -26,7 +29,7 @@ public abstract class Persona {
      * @param telefono
      * @param email
      */
-    public Persona(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email) {
+    public Persona(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Date fechaNac) {
         this.idPersona = idPersona;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -36,6 +39,7 @@ public abstract class Persona {
         this.poblacion = poblacion;
         this.telefono = telefono;
         this.email = email;
+        this.fechaNac = fechaNac;
     }
 
     /***
@@ -182,10 +186,20 @@ public abstract class Persona {
         this.email = email;
     }
 
+    public Date getFechaNac() {
+        return fechaNac;
+    }
+
+    public void setFechaNac(Date fechaNac) {
+        this.fechaNac = fechaNac;
+    }
+
     /***
      *
      * @return String con los datos de persona
      */
+
+
     @Override
     public String toString() {
         return "Persona{" +

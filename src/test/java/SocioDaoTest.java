@@ -8,6 +8,7 @@ import es.kokoro.dao.xml.XmlSocioDAO;
 import java.io.File;
 import java.util.List;
 
+import static es.kokoro.commons.FormatFecha.FFStringToDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SocioDaoTest {
@@ -37,7 +38,7 @@ public class SocioDaoTest {
         Socio socio1 = new Socio(1L, "Daniella", "Robles",
                 "12345678G", "española", "mi casa, 32",
                 "Barcelona", "933535353", "daniella@test.com", 1L,
-                Periodo.TRI, 200.0, true);
+                Periodo.TRI, 200.0, true, FFStringToDate("1983-07-24"));
         XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class, xmlFile);
         xmlSocioDao.save(socio1);
         //Comprueba que socio no es nulo
@@ -49,15 +50,15 @@ public class SocioDaoTest {
         Socio socio1 = new Socio(1L, "Daniella", "Robles",
                 "12345678G", "española", "mi casa, 32",
                 "Barcelona", "933535353", "daniella@test.com", 1L,
-                Periodo.TRI, 200.0, true);
+                Periodo.TRI, 200.0, true, FFStringToDate("1983-07-24"));
         Socio socio2 = new Socio(2L, "Alex", "Robles",
                 "98765432G", "española", "Calle rio mora, 25",
                 "Barcelona", "678145555", "alex@test.com", 2L,
-                Periodo.MES, 30.0, true);
+                Periodo.MES, 30.0, true, FFStringToDate("1983-07-24"));
         Socio socio3 = new Socio(3L, "Sara", "Planas",
                 "12365478A", "francesa", "calle nou pins, 12",
                 "Barcelona", "654987123", "sara@test.com", 3L,
-                Periodo.ANU, 500.0, true);
+                Periodo.ANU, 500.0, true, FFStringToDate("1983-07-24"));
         XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class, xmlFile);
         xmlSocioDao.save(socio1);
         xmlSocioDao.save(socio2);
@@ -74,7 +75,7 @@ public class SocioDaoTest {
         Socio socio1 = new Socio(1L, "Daniella", "Robles",
                 "12345678G", "española", "mi casa, 32",
                 "Barcelona", "933535353", "daniella@test.com", 1L,
-                Periodo.TRI, 200.0, true);
+                Periodo.TRI, 200.0, true, FFStringToDate("1983-07-24"));
         XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class, xmlFile);
         xmlSocioDao.save(socio1);
         xmlSocioDao.get(1L);
@@ -87,7 +88,7 @@ public class SocioDaoTest {
         Socio socio1 = new Socio(1L, "Daniella", "Robles",
                 "12345678G", "española", "mi casa, 32",
                 "Barcelona", "933535353", "daniella@test.com", 1L,
-                Periodo.TRI, 200.0, true);
+                Periodo.TRI, 200.0, true, FFStringToDate("1983-07-24"));
 
         XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class, xmlFile);
         xmlSocioDao.save(socio1);
@@ -105,7 +106,7 @@ public class SocioDaoTest {
         Socio socio1 = new Socio(1L, "Daniella", "Robles",
                 "12345678G", "española", "mi casa, 32",
                 "Barcelona", "933535353", "daniella@test.com", 1L,
-                Periodo.TRI, 200.0, true);
+                Periodo.TRI, 200.0, true, FFStringToDate("1983-07-24"));
 
         XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class, xmlFile);
         xmlSocioDao.save(socio1);

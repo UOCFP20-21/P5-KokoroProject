@@ -4,11 +4,19 @@ import es.kokoro.model.Persona;
 
 import java.sql.*;
 
+import static es.kokoro.commons.FormatFecha.FFDateToString;
 import static es.kokoro.commons.sqlConection.conectar;
 
 public class MySQLPersonaDAO /*implements PersonaDAO */{
 
     protected Connection conexion = null;
+
+    public MySQLPersonaDAO() {
+        setConexion(conexion);
+    }
+    public MySQLPersonaDAO(Connection conexion) {
+        setConexion(conexion);
+    }
 
     public Connection getConexion() { return conexion; }
 
@@ -49,7 +57,7 @@ public class MySQLPersonaDAO /*implements PersonaDAO */{
     protected long save(Persona persona)
     {
         long nuevoIdPersona = 0;
-        String queryPersona = "INSERT INTO personas(nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email) VALUES(?,?,?,?,?,?,?,?)";
+        String queryPersona = "INSERT INTO personas(nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, fechaNac) VALUES(?,?,?,?,?,?,?,?,?)";
         PreparedStatement nuevaEntrada;
 
         try {
@@ -62,6 +70,7 @@ public class MySQLPersonaDAO /*implements PersonaDAO */{
             nuevaEntrada.setString(6,persona.getPoblacion());
             nuevaEntrada.setString(7,persona.getTelefono());
             nuevaEntrada.setString(8,persona.getEmail());
+            nuevaEntrada.setString(9,FFDateToString(persona.getFechaNac()));
             nuevaEntrada.executeUpdate();
             ResultSet resultSet = nuevaEntrada.getGeneratedKeys();
             resultSet.next();
@@ -77,7 +86,7 @@ public class MySQLPersonaDAO /*implements PersonaDAO */{
 
     protected long update(Persona persona)
     {
-        String queryPersona = "UPDATE personas SET nombre = ?, apellidos = ?, identificador = ?, nacionalidad = ?, direccion = ?, poblacion = ?, telefono = ?, email = ? WHERE idPersona = ?";
+        String queryPersona = "UPDATE personas SET nombre = ?, apellidos = ?, identificador = ?, nacionalidad = ?, direccion = ?, poblacion = ?, telefono = ?, email = ?, fechaNac = ? WHERE idPersona = ?";
         PreparedStatement updateEntrada;
         long idPersona = 0;
         try {
@@ -92,7 +101,8 @@ public class MySQLPersonaDAO /*implements PersonaDAO */{
                 updateEntrada.setString(6, persona.getPoblacion());
                 updateEntrada.setString(7, persona.getTelefono());
                 updateEntrada.setString(8, persona.getEmail());
-                updateEntrada.setLong(9, idPersona);
+                updateEntrada.setString(9,FFDateToString(persona.getFechaNac()));
+                updateEntrada.setLong(10, idPersona);
                 updateEntrada.executeUpdate();
                 System.out.println("Ejecutamos Update MySQLPersonaDAO");
             }

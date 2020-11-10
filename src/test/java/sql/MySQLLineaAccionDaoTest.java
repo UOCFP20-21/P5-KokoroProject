@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MySQLLineaAccionDaoTest {
 
-    private final String hosturl= "jdbc:mysql://88.24.89.159:3307/mydbtest";
+    private final String hosturl= "jdbc:mysql://81.35.210.195:3307/mydbtest";
     private static String usuario = "ongjaume";
     private static String password = "ong1234";
     private Connection cnn;

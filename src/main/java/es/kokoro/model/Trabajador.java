@@ -2,11 +2,11 @@ package es.kokoro.model;
 
 import java.util.Date;
 
-public abstract class Trabajador extends Persona{
+public class Trabajador extends Persona{
     private Long idTrabajador;
     private Delegacion delegacion;
-    private Date fechaNac;
     private boolean activo;
+    private Ong ong;
 
     /***
      *
@@ -24,12 +24,12 @@ public abstract class Trabajador extends Persona{
      * @param fechaNac Fecha de Nacimiento
      * @param activo Boolean para definir si el trabajador está activo o no [true|false]
      */
-    public Trabajador(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idTrabajador, Delegacion delegacion, Date fechaNac, boolean activo) {
-        super(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email);
+    public Trabajador(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idTrabajador, Delegacion delegacion, Date fechaNac, boolean activo, Ong ong) {
+        super(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, fechaNac);
         this.idTrabajador = idTrabajador;
         this.delegacion = delegacion;
-        this.fechaNac = fechaNac;
         this.activo = activo;
+        this.ong = ong;
     }
 
     /***
@@ -66,22 +66,6 @@ public abstract class Trabajador extends Persona{
 
     /***
      *
-     * @return fechaNac
-     */
-    public Date getFechaNac() {
-        return fechaNac;
-    }
-
-    /***
-     *
-     * @param fechaNac
-     */
-    public void setFechaNac(Date fechaNac) {
-        this.fechaNac = fechaNac;
-    }
-
-    /***
-     *
      * @return  isActivo
      */
     public boolean isActivo() {
@@ -96,13 +80,21 @@ public abstract class Trabajador extends Persona{
         this.activo = activo;
     }
 
+    public Ong getOng() {
+        return ong;
+    }
+
+    public void setOng(Ong ong) {
+        this.ong = ong;
+    }
+
     @Override
     public String toString() {
         return "Trabajador{" +
                 "idTrabajador=" + idTrabajador +
                 ", delegacion=" + delegacion +
-                ", fechaNac=" + fechaNac +
                 ", activo=" + activo +
+                ", ong=" + ong.toString() +
                 "} " + super.toString();
     }
 
@@ -117,7 +109,7 @@ public abstract class Trabajador extends Persona{
         if (activo != that.activo) return false;
         if (idTrabajador != null ? !idTrabajador.equals(that.idTrabajador) : that.idTrabajador != null) return false;
         if (delegacion != null ? !delegacion.equals(that.delegacion) : that.delegacion != null) return false;
-        return fechaNac != null ? fechaNac.equals(that.fechaNac) : that.fechaNac == null;
+        return ong != null ? ong.equals(that.ong) : that.ong == null;
     }
 
     @Override
@@ -125,8 +117,8 @@ public abstract class Trabajador extends Persona{
         int result = super.hashCode();
         result = 31 * result + (idTrabajador != null ? idTrabajador.hashCode() : 0);
         result = 31 * result + (delegacion != null ? delegacion.hashCode() : 0);
-        result = 31 * result + (fechaNac != null ? fechaNac.hashCode() : 0);
         result = 31 * result + (activo ? 1 : 0);
+        result = 31 * result + (ong != null ? ong.hashCode() : 0);
         return result;
     }
 }

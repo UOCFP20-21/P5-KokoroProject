@@ -10,8 +10,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import static es.kokoro.commons.FormatFecha.FFStringToDate;
 import static es.kokoro.commons.sqlConection.commitData;
 
 public class MySQLSocioDAO extends MySQLPersonaDAO implements SocioDAO {
@@ -42,7 +44,8 @@ public class MySQLSocioDAO extends MySQLPersonaDAO implements SocioDAO {
             Periodo periodo = Periodo.valueOf(personaData.getString("periodo"));
             Double cuota = personaData.getDouble("cuota");
             Boolean estado = personaData.getBoolean("estado");
-            tmpEntrada = new Socio(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, idSocio, periodo, cuota, estado);
+            Date fechaNac = FFStringToDate(personaData.getString("fechaNac"));
+            tmpEntrada = new Socio(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, idSocio, periodo, cuota, estado, fechaNac);
         } catch (SQLException throwables) {
             System.out.println("Error creando la instancia " + throwables);
         } finally {

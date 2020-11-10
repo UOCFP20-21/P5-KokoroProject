@@ -34,7 +34,8 @@ public class MySQLParticularDAO extends MySQLPersonaDAO implements ParticularDAO
             String poblacion = personaData.getString("poblacion");
             String telefono = personaData.getString("telefono");
             String email = personaData.getString("email");
-            tmpEntrada = new Particular(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, idParticular);
+            Date fechaNac = personaData.getDate("fechaNac");
+            tmpEntrada = new Particular(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, idParticular, fechaNac);
         } catch (SQLException throwables) {
             System.out.println("Error creando la instancia " + throwables);
         } finally {
