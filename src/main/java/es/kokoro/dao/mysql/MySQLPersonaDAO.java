@@ -4,8 +4,8 @@ import es.kokoro.model.Persona;
 
 import java.sql.*;
 
-import static es.kokoro.commons.FormatFecha.FFDateToString;
 import static es.kokoro.commons.sqlConection.conectar;
+import static es.kokoro.commons.sqlConection.convertirFecha;
 
 public class MySQLPersonaDAO /*implements PersonaDAO */{
 
@@ -70,7 +70,7 @@ public class MySQLPersonaDAO /*implements PersonaDAO */{
             nuevaEntrada.setString(6,persona.getPoblacion());
             nuevaEntrada.setString(7,persona.getTelefono());
             nuevaEntrada.setString(8,persona.getEmail());
-            nuevaEntrada.setString(9,FFDateToString(persona.getFechaNac()));
+            nuevaEntrada.setDate(9,convertirFecha(persona.getFechaNac()));
             nuevaEntrada.executeUpdate();
             ResultSet resultSet = nuevaEntrada.getGeneratedKeys();
             resultSet.next();
@@ -101,7 +101,7 @@ public class MySQLPersonaDAO /*implements PersonaDAO */{
                 updateEntrada.setString(6, persona.getPoblacion());
                 updateEntrada.setString(7, persona.getTelefono());
                 updateEntrada.setString(8, persona.getEmail());
-                updateEntrada.setString(9,FFDateToString(persona.getFechaNac()));
+                updateEntrada.setDate(9,convertirFecha(persona.getFechaNac()));
                 updateEntrada.setLong(10, idPersona);
                 updateEntrada.executeUpdate();
                 System.out.println("Ejecutamos Update MySQLPersonaDAO");
