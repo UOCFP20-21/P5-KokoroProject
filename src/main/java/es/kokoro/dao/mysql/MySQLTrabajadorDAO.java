@@ -12,13 +12,11 @@ import static es.kokoro.commons.sqlConection.conectar;
 
 public class MySQLTrabajadorDAO extends MySQLPersonaDAO implements TrabajadorDAO {
 
-    protected Connection conexion = null;
-
     public MySQLTrabajadorDAO() {
-        setConexion(conexion);
+        super();
     }
     public MySQLTrabajadorDAO(Connection conexion) {
-        setConexion(conexion);
+        super(conexion);
     }
 
     public Connection getConexion() { return conexion; }

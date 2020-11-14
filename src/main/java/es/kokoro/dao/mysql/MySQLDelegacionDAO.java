@@ -14,12 +14,11 @@ import static es.kokoro.commons.sqlConection.conectar;
 
 public class MySQLDelegacionDAO extends MySQLEmpresaDAO implements DelegacionDAO  {
 
-    private Connection conexion = null;
     public MySQLDelegacionDAO() {
-        setConexion(conexion);
+        super();
     }
     public MySQLDelegacionDAO(Connection conexion) {
-        setConexion(conexion);
+        super(conexion);
     }
 
     public Connection getConexion() {

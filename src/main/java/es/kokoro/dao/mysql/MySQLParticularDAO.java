@@ -12,10 +12,10 @@ import static es.kokoro.commons.sqlConection.commitData;
 public class MySQLParticularDAO extends MySQLPersonaDAO implements ParticularDAO {
 
     public MySQLParticularDAO() {
-        setConexion(conexion);
+        super();
     }
     public MySQLParticularDAO(Connection conexion) {
-        setConexion(conexion);
+        super(conexion);
     }
 
     private Particular setObject(ResultSet set)

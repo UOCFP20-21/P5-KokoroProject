@@ -2,7 +2,6 @@ package es.kokoro.dao.mysql;
 
 import es.kokoro.dao.SocioDAO;
 import es.kokoro.enums.Periodo;
-import es.kokoro.model.Particular;
 import es.kokoro.model.Socio;
 
 import java.sql.Connection;
@@ -19,10 +18,10 @@ import static es.kokoro.commons.sqlConection.commitData;
 public class MySQLSocioDAO extends MySQLPersonaDAO implements SocioDAO {
 
     public MySQLSocioDAO() {
-        setConexion(conexion);
+        super();
     }
     public MySQLSocioDAO(Connection conexion) {
-        setConexion(conexion);
+        super(conexion);
     }
 
     private Socio setObject(ResultSet set)
@@ -41,13 +40,13 @@ public class MySQLSocioDAO extends MySQLPersonaDAO implements SocioDAO {
             String poblacion = personaData.getString("poblacion");
             String telefono = personaData.getString("telefono");
             String email = personaData.getString("email");
-            Periodo periodo = Periodo.valueOf(personaData.getString("periodo"));
-            Double cuota = personaData.getDouble("cuota");
-            Boolean estado = personaData.getBoolean("estado");
+            Periodo periodo = Periodo.valueOf(set.getString("periodo"));
+            Double cuota = set.getDouble("cuota");
+            Boolean estado = set.getBoolean("estado");
             Date fechaNac = FFStringToDate(personaData.getString("fechaNac"));
             tmpEntrada = new Socio(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, idSocio, periodo, cuota, estado, fechaNac);
         } catch (SQLException throwables) {
-            System.out.println("Error creando la instancia " + throwables);
+            System.out.println("Error creando la instancia en Socio setObject " + throwables);
         } finally {
             return tmpEntrada;
         }
@@ -98,7 +97,7 @@ public class MySQLSocioDAO extends MySQLPersonaDAO implements SocioDAO {
     @Override
     public void save(Socio socio)  {
 
-        String query = "INSERT INTO socios (periodo, cuota, estado, idPersona, idOng) VALUES(?,?,?,?,?)";
+        String query2 = "INSERT INTO socios (periodo, cuota, estado, idPersona) VALUES(?,?,?,?)";
         //String queryPersona = "INSERT INTO personas(nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email) VALUES(?,?,?,?,?,?,?,?)";
 
         PreparedStatement nuevaEntrada;
@@ -121,12 +120,12 @@ public class MySQLSocioDAO extends MySQLPersonaDAO implements SocioDAO {
             {
                 idPersona = super.update(socio);
             }
-            nuevaEntrada = conexion.prepareStatement(query);
-            nuevaEntrada.setString(1,socio.getPeriodo().getNombrePeriodo());
+            nuevaEntrada = conexion.prepareStatement(query2);
+            nuevaEntrada.setString(1, socio.getPeriodo().name());
             nuevaEntrada.setDouble(2,socio.getCuota());
             nuevaEntrada.setBoolean(3,socio.isEstado());
             nuevaEntrada.setLong(4,idPersona);
-            nuevaEntrada.setLong(5,1L);
+            //System.out.println("Valor Periodo (toString): " + socio.getPeriodo().toString() + " Vs (Name): " + socio.getPeriodo().name());
             nuevaEntrada.executeUpdate();
             commitData(conexion);
             System.out.println("Ejecutamos Save MySQLSocioDAO");
@@ -152,10 +151,78 @@ public class MySQLSocioDAO extends MySQLPersonaDAO implements SocioDAO {
     @Override
     public void update(Socio socio)  {
 
+        String query = "UPDATE socios SET idPersona = ?, periodo = ?, cuota = ?, estado = ?  WHERE idSocio = ?";
+        PreparedStatement updateEntrada;
+        Long idPersona = null;
+        try {
+            conexion.setAutoCommit(false);
+            if(socio.getIdPersona() == null || socio.getIdSocio() == null)   // No facilitamos IDs
+            {
+                System.out.println("No se ha indicado la entrada a modificar");
+            }
+            else // Facilitamos los IDs
+            {
+                idPersona = super.update(socio);
+                updateEntrada = conexion.prepareStatement(query);
+                updateEntrada.setLong(1,socio.getIdPersona());
+                updateEntrada.setString(2,socio.getPeriodo().toString());
+                updateEntrada.setDouble(3,socio.getCuota());
+                updateEntrada.setBoolean(4,socio.isEstado());
+                updateEntrada.setLong(5,socio.getIdSocio());
+                updateEntrada.executeUpdate();
+            }
+
+            commitData(conexion);
+            System.out.println("Ejecutamos Update MySQLSocioDAO");
+        } catch (SQLException throwables) {
+            try {
+                conexion.rollback();
+            } catch (SQLException e) {
+                System.out.println("Error realizando RollBack del update del registro (Update.Socio) " + throwables);
+            }finally {
+                System.out.println("Error Actualizando el nuevo registro (Update.Socio) " + throwables);
+            }
+
+        }finally {
+            if(idPersona == null || idPersona == 0)
+            {
+                try {
+                    conexion.rollback();
+                } catch (SQLException throwables) {
+                    System.out.println("Error realizando RollBack del nuevo registro " + throwables);
+                }finally {
+                    System.out.println("Error Actualizando el nuevo registro  (Update.Socio)");
+                }
+            }
+        }
     }
 
     @Override
     public void delete(Socio socio)  {
 
+        boolean existe = false;
+        try {
+            if(socio.getIdSocio() != null ) { // Estamos pasando un ID
+
+                if(get(socio.getIdSocio()) != null) // El objeto pasado existe en nuestra DDBB
+                {
+                    String query = " DELETE FROM socios WHERE idSocio = ?";
+                    PreparedStatement borrarEntrada;
+
+                    borrarEntrada = conexion.prepareStatement(query);
+                    borrarEntrada.setLong(1,socio.getIdSocio());
+                    borrarEntrada.executeUpdate();
+                    existe = true;
+                }
+            }
+        } catch (SQLException throwables) {
+            System.out.println("Error Eliminando el registro " + throwables);
+        }finally
+        {
+            if(!existe)   // Si no existe en nuestra DDBB o no facilitan un ID guardamos en lugar de actualizar
+            {
+                System.out.println("Registro no encontrado: No existe ningún registro con los datos facilitados.");
+            }
+        }
     }
 }

@@ -58,23 +58,23 @@ public class MySQLPersonaDAO /*implements PersonaDAO */{
     {
         long nuevoIdPersona = 0;
         String queryPersona = "INSERT INTO personas(nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, fechaNac) VALUES(?,?,?,?,?,?,?,?,?)";
-        PreparedStatement nuevaEntrada;
+        PreparedStatement nuevaPersona;
 
         try {
-            nuevaEntrada = conexion.prepareStatement(queryPersona,Statement.RETURN_GENERATED_KEYS);
-            nuevaEntrada.setString(1,persona.getNombre());
-            nuevaEntrada.setString(2,persona.getApellidos());
-            nuevaEntrada.setString(3,persona.getIdentificador());
-            nuevaEntrada.setString(4,persona.getNacionalidad());
-            nuevaEntrada.setString(5,persona.getDireccion());
-            nuevaEntrada.setString(6,persona.getPoblacion());
-            nuevaEntrada.setString(7,persona.getTelefono());
-            nuevaEntrada.setString(8,persona.getEmail());
-            nuevaEntrada.setDate(9,convertirFecha(persona.getFechaNac()));
-            nuevaEntrada.executeUpdate();
-            ResultSet resultSet = nuevaEntrada.getGeneratedKeys();
-            resultSet.next();
-            nuevoIdPersona = resultSet.getLong(1);
+            nuevaPersona = conexion.prepareStatement(queryPersona,Statement.RETURN_GENERATED_KEYS);
+            nuevaPersona.setString(1,persona.getNombre());
+            nuevaPersona.setString(2,persona.getApellidos());
+            nuevaPersona.setString(3,persona.getIdentificador());
+            nuevaPersona.setString(4,persona.getNacionalidad());
+            nuevaPersona.setString(5,persona.getDireccion());
+            nuevaPersona.setString(6,persona.getPoblacion());
+            nuevaPersona.setString(7,persona.getTelefono());
+            nuevaPersona.setString(8,persona.getEmail());
+            nuevaPersona.setDate(9,convertirFecha(persona.getFechaNac()));
+            nuevaPersona.executeUpdate();
+            ResultSet resultSetPersona = nuevaPersona.getGeneratedKeys();
+            resultSetPersona.next();
+            nuevoIdPersona = resultSetPersona.getLong(1);
             System.out.println("Ejecutamos Save MySQLPersonaDAO");
         } catch (SQLException throwables) {
             conexion.rollback();
