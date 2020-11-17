@@ -47,6 +47,7 @@ public class MySQLDelegacionDAO extends MySQLEmpresaDAO implements DelegacionDAO
 
             String query = "SELECT d.*, e.* FROM delegaciones AS d LEFT JOIN empresas AS e ON d.idEmpresa = e.idEmpresa WHERE idDelegacion = ?";
             PreparedStatement statement = conexion.prepareStatement(query);
+
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
@@ -65,8 +66,8 @@ public class MySQLDelegacionDAO extends MySQLEmpresaDAO implements DelegacionDAO
 
             Ong ong = null;
 
-
             delegacion = new Delegacion(idEmpresa, nombre, pais, poblacion, direccionSocial, razonSocial, identificacionSocial, telefono, email, idDelegacion, trabajadorList, ong, areaOperativa);
+
 
 
         } catch (Exception exception) {
@@ -82,7 +83,6 @@ public class MySQLDelegacionDAO extends MySQLEmpresaDAO implements DelegacionDAO
 
         List<Delegacion> delegacionList = new ArrayList<>();
         try{
-
             PreparedStatement statement = conexion.prepareStatement("select * from delegaciones");
             ResultSet resultSet = statement.executeQuery();
 
@@ -112,13 +112,11 @@ public class MySQLDelegacionDAO extends MySQLEmpresaDAO implements DelegacionDAO
         } finally {
             return delegacionList;
         }
-
     }
 
     @Override
     public void save(Delegacion delegacion) throws Exception {
         try {
-
             PreparedStatement statement = conexion.prepareStatement("INSERT INTO delegaciones (nombre) VALUES (?)");
 
             statement.setLong(1, delegacion.getIdDelegacion());
