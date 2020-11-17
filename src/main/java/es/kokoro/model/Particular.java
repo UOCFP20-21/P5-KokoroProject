@@ -3,6 +3,8 @@ package es.kokoro.model;
 import es.kokoro.model.interfaces.IFinanciador;
 import es.kokoro.model.interfaces.IIngreso;
 
+import java.util.Date;
+
 public class Particular extends Persona implements IIngreso, IFinanciador {
     private Long idParticular;
 
@@ -20,8 +22,8 @@ public class Particular extends Persona implements IIngreso, IFinanciador {
      * @param email -
      * @param idParticular Índice de Particular
      */
-    public Particular(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idParticular) {
-        super(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email);
+    public Particular(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idParticular, Date fechaNac) {
+        super(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, fechaNac);
         this.idParticular = idParticular;
     }
 

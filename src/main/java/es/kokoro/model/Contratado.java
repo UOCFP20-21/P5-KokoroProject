@@ -30,8 +30,8 @@ public class Contratado extends Trabajador{
      * @param salario Cantidad que cobra el trabajador al mes.
      * @param puestoTrabajo Puesto de trabajo del Trabajador
      */
-    public Contratado(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idTrabajador, Delegacion delegacion, Date fechaNac, boolean activo, Long idContratado, Date inicioContract, String finalContract, float salario, String puestoTrabajo) {
-        super(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, idTrabajador, delegacion, fechaNac, activo);
+    public Contratado(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idTrabajador, Delegacion delegacion, Date fechaNac, boolean activo, Long idContratado, Date inicioContract, String finalContract, float salario, String puestoTrabajo, Ong ong) {
+        super(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, idTrabajador, delegacion, fechaNac, activo, ong);
         this.setIdContratado(idContratado);
         this.setInicioContract(inicioContract);
         this.setFinalContract(finalContract);

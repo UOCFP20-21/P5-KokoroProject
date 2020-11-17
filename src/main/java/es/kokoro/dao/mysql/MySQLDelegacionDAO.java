@@ -9,14 +9,45 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLDelegacionDAO implements DelegacionDAO {
-    private Connection connection = null;
+import static es.kokoro.commons.sqlConection.commitData;
+import static es.kokoro.commons.sqlConection.conectar;
+
+public class MySQLDelegacionDAO extends MySQLEmpresaDAO implements DelegacionDAO  {
+
+    public MySQLDelegacionDAO() {
+        super();
+    }
+    public MySQLDelegacionDAO(Connection conexion) {
+        super(conexion);
+    }
+
+    public Connection getConexion() {
+        return conexion;
+    }
+
+    public void setConexion(Connection cnn)
+    {
+        if(cnn == null){
+            try {
+                this.conexion = conectar();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }else
+        {
+            this.conexion = cnn;
+        }
+    }
 
     @Override
     public Delegacion get(long id) throws Exception {
+        Delegacion delegacion = null;
+
         try {
-            connection = sqlConection.conectar();
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM delegaciones WHERE idDelegaciones = ?");
+
+            String query = "SELECT d.*, e.* FROM delegaciones AS d LEFT JOIN empresas AS e ON d.idEmpresa = e.idEmpresa WHERE idDelegacion = ?";
+            PreparedStatement statement = conexion.prepareStatement(query);
+
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
@@ -33,31 +64,18 @@ public class MySQLDelegacionDAO implements DelegacionDAO {
             String email = resultSet.getString("email");
             List<Trabajador> trabajadorList = new ArrayList<>();
 
-            List<Delegacion> delegacionLista = new ArrayList<>();
-            List<Ingreso> ingresoList = new ArrayList<>();
-            List<Socio> socioList = new ArrayList<>();
-            List<Proyecto> proyectoList = new ArrayList<>();
+            Ong ong = null;
 
-            Ong ong = new Ong(
-                    1L,
-                    "Kokoro Sin Fronteras",
-                    delegacionLista,
-                    ingresoList,
-                    socioList,
-                    proyectoList
+            delegacion = new Delegacion(idEmpresa, nombre, pais, poblacion, direccionSocial, razonSocial, identificacionSocial, telefono, email, idDelegacion, trabajadorList, ong, areaOperativa);
 
-            );
-            return new Delegacion(idEmpresa, nombre, pais, poblacion, direccionSocial, razonSocial, identificacionSocial, telefono, email, idDelegacion, trabajadorList, ong, areaOperativa);
 
 
         } catch (Exception exception) {
             System.out.println("Error recuperando la Delegacion " + exception);
         } finally {
-            if (connection != null) {
-                sqlConection.desconectar(connection);
-            }
+            return delegacion;
         }
-        return null;
+
     }
 
     @Override
@@ -65,8 +83,7 @@ public class MySQLDelegacionDAO implements DelegacionDAO {
 
         List<Delegacion> delegacionList = new ArrayList<>();
         try{
-            connection = sqlConection.conectar();
-            PreparedStatement statement = connection.prepareStatement("select * from delegaciones");
+            PreparedStatement statement = conexion.prepareStatement("select * from delegaciones");
             ResultSet resultSet = statement.executeQuery();
 
             while(resultSet.next()){
@@ -83,21 +100,7 @@ public class MySQLDelegacionDAO implements DelegacionDAO {
                 String email = resultSet.getString("email");
                 List<Trabajador> trabajadorList = new ArrayList<>();
 
-                List<Delegacion> delegacionLista = new ArrayList<>();
-                List<Ingreso> ingresoList = new ArrayList<>();
-                List<Socio> socioList = new ArrayList<>();
-                List<Proyecto> proyectoList = new ArrayList<>();
-
-                Ong ong = new Ong(
-                        1L,
-                        "Kokoro Sin Fronteras",
-                        delegacionLista,
-                        ingresoList,
-                        socioList,
-                        proyectoList
-
-                );
-
+                Ong ong = null;
 
                 Delegacion delegacion = new Delegacion(idEmpresa, nombre, pais, poblacion, direccionSocial, razonSocial, identificacionSocial, telefono, email, idDelegacion, trabajadorList, ong, areaOperativa);
                 delegacionList.add(delegacion);
@@ -107,20 +110,14 @@ public class MySQLDelegacionDAO implements DelegacionDAO {
         catch (Exception exception) {
             System.out.println("Error recuperando todas las delegaciones " + exception);
         } finally {
-            if (connection != null) {
-                sqlConection.desconectar(connection);
-            }
+            return delegacionList;
         }
-
-
-        return delegacionList;
     }
 
     @Override
     public void save(Delegacion delegacion) throws Exception {
         try {
-            connection = sqlConection.conectar();
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO delegaciones (nombre) VALUES (?)");
+            PreparedStatement statement = conexion.prepareStatement("INSERT INTO delegaciones (nombre) VALUES (?)");
 
             statement.setLong(1, delegacion.getIdDelegacion());
             statement.setLong(2, delegacion.getOng().getIdOng());
@@ -131,75 +128,82 @@ public class MySQLDelegacionDAO implements DelegacionDAO {
 
         } catch (SQLException throwables) {
             System.out.println("Error guardando delegacion " + throwables);
-        } finally {
-            if (connection != null) {
-                sqlConection.desconectar(connection);
-            }
         }
-
     }
 
     @Override
-    public void update(Delegacion delegacion) throws Exception {
+    public void update(Delegacion delegacion)  {
+        String query = "UPDATE delegaciones SET idEmpresa = ?, areaOperativa = ?, idOng = ? WHERE idDelegacion = ?";
+        PreparedStatement updateEntrada;
+        Long idEmpresa = null;
 
         try {
-            boolean isUpdate = false;
-            connection = sqlConection.conectar();
-            PreparedStatement statement = connection.prepareStatement("UPDATE delegaciones WHERE idDelegaciones = ? ");
-
-            delegacion.getIdDelegacion();
-            if (get(delegacion.getIdDelegacion()) != null) {
-
-                statement.setLong(1, delegacion.getIdDelegacion());
-                statement.setLong(2, delegacion.getOng().getIdOng());
-                statement.setLong(3, delegacion.getIdEmpresa());
-                statement.executeUpdate();
-                isUpdate = true;
-
+            conexion.setAutoCommit(false);
+            if(delegacion.getIdEmpresa() == null || delegacion.getIdEmpresa() == null)   // No facilitamos IDs
+            {
+                System.out.println("No se ha indicado la entrada a modificar");
             }
-            if (!isUpdate) {
-                save(delegacion);
+            else // Facilitamos los IDs
+            {
+                idEmpresa = super.update(delegacion);
+                updateEntrada = conexion.prepareStatement(query);
+                updateEntrada.setLong(4, delegacion.getIdDelegacion());
+                updateEntrada.setLong(3, delegacion.getOng().getIdOng());
+                updateEntrada.setLong(1, idEmpresa);
+                updateEntrada.setString(2, delegacion.getAreaOperativa());
+                updateEntrada.executeUpdate();
+            }
+            commitData(conexion);
+            System.out.println("Ejecutamos Update MyDQLDelegacionDAO");
+
+        } catch (SQLException throwables) {
+            try {
+                conexion.rollback();
+            } catch (SQLException e) {
+                System.out.println("Error realizando RollBack del update del registro (Update.Delegacion) " + throwables);
+            }finally {
+                System.out.println("Error Actualizando el nuevo registro (Update.Delegacion) " + throwables);
             }
 
-        } catch (Exception exception) {
-            System.out.println("Error recuperando la delegacion " + exception);
-        } finally {
-            if (connection != null) {
-                sqlConection.desconectar(connection);
+        }finally {
+            if(idEmpresa == null || idEmpresa == 0)
+            {
+                try {
+                    conexion.rollback();
+                } catch (SQLException throwables) {
+                    System.out.println("Error realizando RollBack del nuevo registro " + throwables);
+                }finally {
+                    System.out.println("Error Actualizando el nuevo registro  (Update.Delegacion)");
+                }
             }
         }
-
     }
-
 
 
     @Override
     public void delete(Delegacion delegacion) throws Exception {
+        boolean existe = false;
         try {
-            boolean isExist = false;
-            connection = sqlConection.conectar();
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM delegaciones WHERE idDelegaciones = ?");
-
-            delegacion.getIdDelegacion();
             if (get(delegacion.getIdDelegacion()) != null) {
+                if(get(delegacion.getIdDelegacion()) != null)
+                {
+                    String query = " DELETE FROM delegaciones WHERE idDelegacion = ?";
+                    PreparedStatement borrarEntrada;
 
-                statement.setLong(1, delegacion.getIdDelegacion());
-                statement.executeUpdate();
-                isExist = true;
-
+                    borrarEntrada = conexion.prepareStatement(query);
+                    borrarEntrada.setLong(1,delegacion.getIdDelegacion());
+                    borrarEntrada.executeUpdate();
+                    existe = true;
+                }
             }
-
-            if (!isExist) {
-                System.out.println("Delegacion no encontrada");
-            }
-
-        } catch (Exception exception) {
-            System.out.println("Error recuperando la Delegacion " + exception);
-        } finally {
-            if (connection != null) {
-                sqlConection.desconectar(connection);
+        } catch (SQLException throwables) {
+            System.out.println("Error Eliminando el registro " + throwables);
+        }finally
+        {
+            if(!existe)   // Si no existe en nuestra DDBB o no facilitan un ID guardamos en lugar de actualizar
+            {
+                System.out.println("Registro no encontrado: No existe ningún registro con los datos facilitados.");
             }
         }
     }
-
 }

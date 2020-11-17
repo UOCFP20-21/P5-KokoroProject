@@ -1,12 +1,13 @@
 package es.kokoro.commons;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class sqlConection {
     private static Connection conexion;
-    private static String mysqlUrl = "jdbc:mysql://88.24.90.50:3307/mydb";
+    private static String mysqlUrl = "jdbc:mysql://81.35.210.195:3307/mydb";
     private static String usuario = "ongjaume";
     private static String password = "ong1234";
 
@@ -52,5 +53,18 @@ public class sqlConection {
         } catch (SQLException throwables) {
             System.out.println("Error realizando Commit del nuevo registro " + throwables);
         }
+    }
+    //conversor java.util -> java.sql
+    public static Date convertirFecha(java.util.Date uFecha) {
+        Date sqlDate = new Date (uFecha.getTime());
+
+        return sqlDate;
+    }
+
+    //conversor java.sql -> java.util
+    public static java.util.Date convertirFecha(Date sqlDate) {
+        java.util.Date uDate = new java.util.Date (sqlDate.getTime());
+
+        return uDate;
     }
 }

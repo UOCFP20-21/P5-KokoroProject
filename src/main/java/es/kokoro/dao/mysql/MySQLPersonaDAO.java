@@ -4,12 +4,19 @@ import es.kokoro.model.Persona;
 
 import java.sql.*;
 
-import static es.kokoro.commons.sqlConection.commitData;
 import static es.kokoro.commons.sqlConection.conectar;
+import static es.kokoro.commons.sqlConection.convertirFecha;
 
 public class MySQLPersonaDAO /*implements PersonaDAO */{
 
     protected Connection conexion = null;
+
+    public MySQLPersonaDAO() {
+        setConexion(conexion);
+    }
+    public MySQLPersonaDAO(Connection conexion) {
+        setConexion(conexion);
+    }
 
     public Connection getConexion() { return conexion; }
 
@@ -50,25 +57,27 @@ public class MySQLPersonaDAO /*implements PersonaDAO */{
     protected long save(Persona persona)
     {
         long nuevoIdPersona = 0;
-        String queryPersona = "INSERT INTO personas(nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email) VALUES(?,?,?,?,?,?,?,?)";
-        PreparedStatement nuevaEntrada;
+        String queryPersona = "INSERT INTO personas(nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, fechaNac) VALUES(?,?,?,?,?,?,?,?,?)";
+        PreparedStatement nuevaPersona;
 
         try {
-            nuevaEntrada = conexion.prepareStatement(queryPersona,Statement.RETURN_GENERATED_KEYS);
-            nuevaEntrada.setString(1,persona.getNombre());
-            nuevaEntrada.setString(2,persona.getApellidos());
-            nuevaEntrada.setString(3,persona.getIdentificador());
-            nuevaEntrada.setString(4,persona.getNacionalidad());
-            nuevaEntrada.setString(5,persona.getDireccion());
-            nuevaEntrada.setString(6,persona.getPoblacion());
-            nuevaEntrada.setString(7,persona.getTelefono());
-            nuevaEntrada.setString(8,persona.getEmail());
-            nuevaEntrada.executeUpdate();
-            ResultSet resultSet = nuevaEntrada.getGeneratedKeys();
-            resultSet.next();
-            nuevoIdPersona = resultSet.getLong(1);
+            nuevaPersona = conexion.prepareStatement(queryPersona,Statement.RETURN_GENERATED_KEYS);
+            nuevaPersona.setString(1,persona.getNombre());
+            nuevaPersona.setString(2,persona.getApellidos());
+            nuevaPersona.setString(3,persona.getIdentificador());
+            nuevaPersona.setString(4,persona.getNacionalidad());
+            nuevaPersona.setString(5,persona.getDireccion());
+            nuevaPersona.setString(6,persona.getPoblacion());
+            nuevaPersona.setString(7,persona.getTelefono());
+            nuevaPersona.setString(8,persona.getEmail());
+            nuevaPersona.setDate(9,convertirFecha(persona.getFechaNac()));
+            nuevaPersona.executeUpdate();
+            ResultSet resultSetPersona = nuevaPersona.getGeneratedKeys();
+            resultSetPersona.next();
+            nuevoIdPersona = resultSetPersona.getLong(1);
             System.out.println("Ejecutamos Save MySQLPersonaDAO");
         } catch (SQLException throwables) {
+            conexion.rollback();
             System.out.println("Error guardando el nuevo registro (Save.Persona) " + throwables);
         } finally {
             return nuevoIdPersona;
@@ -77,7 +86,7 @@ public class MySQLPersonaDAO /*implements PersonaDAO */{
 
     protected long update(Persona persona)
     {
-        String queryPersona = "UPDATE personas SET nombre = ?, apellidos = ?, identificador = ?, nacionalidad = ?, direccion = ?, poblacion = ?, telefono = ?, email = ? WHERE idPersona = ?";
+        String queryPersona = "UPDATE personas SET nombre = ?, apellidos = ?, identificador = ?, nacionalidad = ?, direccion = ?, poblacion = ?, telefono = ?, email = ?, fechaNac = ? WHERE idPersona = ?";
         PreparedStatement updateEntrada;
         long idPersona = 0;
         try {
@@ -92,7 +101,8 @@ public class MySQLPersonaDAO /*implements PersonaDAO */{
                 updateEntrada.setString(6, persona.getPoblacion());
                 updateEntrada.setString(7, persona.getTelefono());
                 updateEntrada.setString(8, persona.getEmail());
-                updateEntrada.setLong(9, idPersona);
+                updateEntrada.setDate(9,convertirFecha(persona.getFechaNac()));
+                updateEntrada.setLong(10, idPersona);
                 updateEntrada.executeUpdate();
                 System.out.println("Ejecutamos Update MySQLPersonaDAO");
             }

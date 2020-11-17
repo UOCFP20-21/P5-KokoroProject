@@ -1,29 +1,35 @@
 package es.kokoro.dao.mysql;
 
-import es.kokoro.dao.ParticularDAO;
-import es.kokoro.model.Particular;
+import es.kokoro.dao.SocioDAO;
+import es.kokoro.enums.Periodo;
+import es.kokoro.model.Socio;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import static es.kokoro.commons.FormatFecha.FFStringToDate;
 import static es.kokoro.commons.sqlConection.commitData;
 
-public class MySQLParticularDAO extends MySQLPersonaDAO implements ParticularDAO {
+public class MySQLSocioDAO extends MySQLPersonaDAO implements SocioDAO {
 
-    public MySQLParticularDAO() {
+    public MySQLSocioDAO() {
         super();
     }
-    public MySQLParticularDAO(Connection conexion) {
+    public MySQLSocioDAO(Connection conexion) {
         super(conexion);
     }
 
-    private Particular setObject(ResultSet set)
+    private Socio setObject(ResultSet set)
     {
-        Particular tmpEntrada = null;
+        Socio tmpEntrada = null;
         ResultSet personaData;
         try {
-            long idParticular = set.getLong("idParticular");
+            long idSocio = set.getLong("idSocio");
             long idPersona = set.getLong("idPersona");
             personaData = super.getResult(idPersona);
             String nombre = personaData.getString("nombre");
@@ -34,21 +40,25 @@ public class MySQLParticularDAO extends MySQLPersonaDAO implements ParticularDAO
             String poblacion = personaData.getString("poblacion");
             String telefono = personaData.getString("telefono");
             String email = personaData.getString("email");
-            Date fechaNac = personaData.getDate("fechaNac");
-            tmpEntrada = new Particular(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, idParticular, fechaNac);
+            Periodo periodo = Periodo.valueOf(set.getString("periodo"));
+            Double cuota = set.getDouble("cuota");
+            Boolean estado = set.getBoolean("estado");
+            Date fechaNac = FFStringToDate(personaData.getString("fechaNac"));
+            tmpEntrada = new Socio(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, idSocio, periodo, cuota, estado, fechaNac);
         } catch (SQLException throwables) {
-            System.out.println("Error creando la instancia " + throwables);
+            System.out.println("Error creando la instancia en Socio setObject " + throwables);
         } finally {
             return tmpEntrada;
         }
 
     }
 
+
     @Override
-    public Particular get(long id) {
-        String query = "SELECT * FROM particulares WHERE idParticular = ?";
+    public Socio get(long id) {
+        String query = "SELECT * FROM socios WHERE idSocio = ?";
         PreparedStatement statement;
-        Particular tmpEntrada = null;
+        Socio tmpEntrada = null;
         try {
             statement = conexion.prepareStatement(query);
             statement.setLong(1, id);
@@ -64,17 +74,17 @@ public class MySQLParticularDAO extends MySQLPersonaDAO implements ParticularDAO
     }
 
     @Override
-    public List<Particular> getAll() {
+    public List<Socio> getAll() {
 
-        List<Particular> entradasList = new ArrayList<>();
-        String query = "SELECT * FROM particulares";
+        List<Socio> entradasList = new ArrayList<>();
+        String query = "SELECT * FROM socios";
         PreparedStatement statement;
         try {
             statement = conexion.prepareStatement(query);
             ResultSet set = statement.executeQuery();
             while (set.next())
             {
-                Particular tmpEntrada = setObject(set);
+                Socio tmpEntrada = setObject(set);
                 entradasList.add(tmpEntrada);
             }
         } catch (SQLException throwables) {
@@ -85,20 +95,20 @@ public class MySQLParticularDAO extends MySQLPersonaDAO implements ParticularDAO
     }
 
     @Override
-    public void save(Particular particular) {
+    public void save(Socio socio)  {
 
-        String query = "INSERT INTO particulares (idPersona) VALUES(?)";
+        String query2 = "INSERT INTO socios (periodo, cuota, estado, idPersona) VALUES(?,?,?,?)";
         //String queryPersona = "INSERT INTO personas(nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email) VALUES(?,?,?,?,?,?,?,?)";
 
         PreparedStatement nuevaEntrada;
         Long idPersona = null;
         try {
             conexion.setAutoCommit(false);
-            if(particular.getIdPersona() == null)   // No facilitamos ID persona
+            if(socio.getIdPersona() == null)   // No facilitamos ID persona
             {
-                if(checkDNI(particular.getIdentificador()) == 0)  // No existe el Identificador en nuestra DDBB
+                if(checkDNI(socio.getIdentificador()) == 0)  // No existe el Identificador en nuestra DDBB
                 {
-                    idPersona = super.save(particular);
+                    idPersona = super.save(socio);
                     System.out.println("El ID de Persona nuevo es: " + idPersona);
                 }
                 else
@@ -108,21 +118,24 @@ public class MySQLParticularDAO extends MySQLPersonaDAO implements ParticularDAO
             }
             else // Facilitamos un ID de Persona
             {
-                idPersona = super.update(particular);
+                idPersona = super.update(socio);
             }
-
-            nuevaEntrada = conexion.prepareStatement(query);
-            nuevaEntrada.setLong(1,idPersona);
+            nuevaEntrada = conexion.prepareStatement(query2);
+            nuevaEntrada.setString(1, socio.getPeriodo().name());
+            nuevaEntrada.setDouble(2,socio.getCuota());
+            nuevaEntrada.setBoolean(3,socio.isEstado());
+            nuevaEntrada.setLong(4,idPersona);
+            //System.out.println("Valor Periodo (toString): " + socio.getPeriodo().toString() + " Vs (Name): " + socio.getPeriodo().name());
             nuevaEntrada.executeUpdate();
             commitData(conexion);
-            System.out.println("Ejecutamos Save MySQLParticularDAO");
+            System.out.println("Ejecutamos Save MySQLSocioDAO");
         } catch (SQLException throwables) {
             try {
                 conexion.rollback();
             } catch (SQLException e) {
                 System.out.println("Error realizando RollBack del nuevo registro " + e);
             }
-            System.out.println("Error guardando el nuevo registro  (Save.Particular)" + throwables);
+            System.out.println("Error guardando el nuevo registro  (Save.Socio)" + throwables);
         }finally {
             if(idPersona == null || idPersona == 0)
             {
@@ -133,40 +146,41 @@ public class MySQLParticularDAO extends MySQLPersonaDAO implements ParticularDAO
                 }
             }
         }
-
     }
 
-
     @Override
-    public void update(Particular particular) {
+    public void update(Socio socio)  {
 
-        String query = "UPDATE particulares SET idPersona = ? WHERE idParticular = ?";
+        String query = "UPDATE socios SET idPersona = ?, periodo = ?, cuota = ?, estado = ?  WHERE idSocio = ?";
         PreparedStatement updateEntrada;
         Long idPersona = null;
         try {
             conexion.setAutoCommit(false);
-            if(particular.getIdPersona() == null || particular.getIdParticular() == null)   // No facilitamos IDs
+            if(socio.getIdPersona() == null || socio.getIdSocio() == null)   // No facilitamos IDs
             {
                 System.out.println("No se ha indicado la entrada a modificar");
             }
             else // Facilitamos los IDs
             {
-                idPersona = super.update(particular);
+                idPersona = super.update(socio);
                 updateEntrada = conexion.prepareStatement(query);
-                updateEntrada.setLong(1,particular.getIdPersona());
-                updateEntrada.setLong(2,particular.getIdParticular());
+                updateEntrada.setLong(1,socio.getIdPersona());
+                updateEntrada.setString(2,socio.getPeriodo().toString());
+                updateEntrada.setDouble(3,socio.getCuota());
+                updateEntrada.setBoolean(4,socio.isEstado());
+                updateEntrada.setLong(5,socio.getIdSocio());
                 updateEntrada.executeUpdate();
             }
 
             commitData(conexion);
-            System.out.println("Ejecutamos Update MySQLParticularDAO");
+            System.out.println("Ejecutamos Update MySQLSocioDAO");
         } catch (SQLException throwables) {
             try {
                 conexion.rollback();
             } catch (SQLException e) {
-                System.out.println("Error realizando RollBack del update del registro (Update.Particular) " + throwables);
+                System.out.println("Error realizando RollBack del update del registro (Update.Socio) " + throwables);
             }finally {
-                System.out.println("Error Actualizando el nuevo registro (Update.Particular) " + throwables);
+                System.out.println("Error Actualizando el nuevo registro (Update.Socio) " + throwables);
             }
 
         }finally {
@@ -177,27 +191,26 @@ public class MySQLParticularDAO extends MySQLPersonaDAO implements ParticularDAO
                 } catch (SQLException throwables) {
                     System.out.println("Error realizando RollBack del nuevo registro " + throwables);
                 }finally {
-                    System.out.println("Error Actualizando el nuevo registro  (Update.Particular)");
+                    System.out.println("Error Actualizando el nuevo registro  (Update.Socio)");
                 }
             }
         }
-
     }
 
     @Override
-    public void delete(Particular particular)  {
+    public void delete(Socio socio)  {
 
         boolean existe = false;
         try {
-            if(particular.getIdParticular() != null ) { // Estamos pasando un ID
+            if(socio.getIdSocio() != null ) { // Estamos pasando un ID
 
-                if(get(particular.getIdParticular()) != null) // El objeto pasado existe en nuestra DDBB
+                if(get(socio.getIdSocio()) != null) // El objeto pasado existe en nuestra DDBB
                 {
-                    String query = " DELETE FROM particulares WHERE idParticular = ?";
+                    String query = " DELETE FROM socios WHERE idSocio = ?";
                     PreparedStatement borrarEntrada;
 
                     borrarEntrada = conexion.prepareStatement(query);
-                    borrarEntrada.setLong(1,particular.getIdParticular());
+                    borrarEntrada.setLong(1,socio.getIdSocio());
                     borrarEntrada.executeUpdate();
                     existe = true;
                 }

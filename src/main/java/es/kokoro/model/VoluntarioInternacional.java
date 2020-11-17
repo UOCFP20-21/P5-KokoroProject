@@ -27,8 +27,8 @@ public class VoluntarioInternacional extends Trabajador {
      * @param idVoluntarioInternacional Índice de VoluntarioInternacional
      * @param inicioVoluntario Fecha de inicio del voluntariado
      */
-    public VoluntarioInternacional(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idTrabajador, Delegacion delegacion, Date fechaNac, boolean activo, Long idVoluntarioInternacional, Date inicioVoluntario) {
-        super(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, idTrabajador, delegacion, fechaNac, activo);
+    public VoluntarioInternacional(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idTrabajador, Delegacion delegacion, Date fechaNac, boolean activo, Long idVoluntarioInternacional, Date inicioVoluntario, Ong ong) {
+        super(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, idTrabajador, delegacion, fechaNac, activo, ong);
         this.idVoluntarioInternacional = idVoluntarioInternacional;
         this.inicioVoluntario = inicioVoluntario;
     }
