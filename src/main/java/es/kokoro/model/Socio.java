@@ -5,13 +5,29 @@ import es.kokoro.model.interfaces.IIngreso;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "socios")
+
 /***
  * @author Kokoro
  */
 public class Socio extends Persona implements IIngreso {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idSocio")
     private Long idSocio;
+    @Column(name = "periodo")
     private Periodo periodo;
-    private double cuota;
+    @Column(name = "cuota")
+    private Double cuota;
+    @Column(name = "estado")
     private boolean estado = false;
 
     /***
@@ -30,7 +46,9 @@ public class Socio extends Persona implements IIngreso {
      * @param cuota Cantidad a pagar
      * @param estado Estado del Socio (activo o no)
      */
-    public Socio(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idSocio, Periodo periodo, double cuota, boolean estado, Date fechaNac) {
+    public Socio(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad,
+                 String direccion, String poblacion, String telefono, String email, Long idSocio, Periodo periodo,
+                 double cuota, boolean estado, Date fechaNac) {
         super(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, fechaNac);
         this.idSocio = idSocio;
         this.periodo = periodo;
@@ -109,7 +127,7 @@ public class Socio extends Persona implements IIngreso {
                 ", periodo=" + periodo.getNombrePeriodo() +
                 ", cuota=" + cuota +
                 ", estado=" + estado +
-                "} " +  super.toString();
+                "} " + super.toString();
     }
 
     // Métodos de Interface

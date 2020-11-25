@@ -1,21 +1,41 @@
 package es.kokoro.model;
 
+import es.kokoro.enums.Periodo;
+
+import javax.persistence.*;
 import java.util.Date;
+
+@Entity
+@Table(name = "personas")
 
 /***
  * @author Kokoro
  */
 public abstract class Persona {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+      @Column(name = "idPersona")
     private Long idPersona;
+    @Column(name = "nombre")
     private String nombre;
+    @Column(name = "apellidos")
     private String apellidos;
+    @Column(name = "identificador")
     private String identificador;
+    @Column(name = "nacionalidad")
     private String nacionalidad;
+    @Column(name = "direccion")
     private String direccion;
+    @Column(name = "poblacion")
     private String poblacion;
+    @Column(name = "telefono")
     private String telefono;
+    @Column(name = "email")
     private String email;
+    @Column(name = "fechaNac")
     private Date fechaNac;
+
 
     /***
      * Constructor de la clase Persona
