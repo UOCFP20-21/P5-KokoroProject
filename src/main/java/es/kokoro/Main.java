@@ -20,16 +20,16 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        /*Connection cnn = conectar();
+        Connection cnn = conectar();
 
         MySQLParticularDAO particular = new MySQLParticularDAO(cnn);
-        Particular nuevoParticular = new Particular(4L, "Jaume", "Calafat", "12345678T","española", "mi casa, 1, izq", "Lloseta", "+34123456789", "test@test.com", 4L);
+        Particular nuevoParticular = new Particular(4L, "Jaume", "Calafat", "12345678T","española", "mi casa, 1, izq", "Lloseta", "+34123456789", "test@test.com",4L, FFStringToDate("2020-10-12"));
         particular.update(nuevoParticular);
 
         desconectar(cnn);
 
 
-*/
+
 
 
         //XmlProyectoDAO factoryProyectos = new XmlProyectoDAO();

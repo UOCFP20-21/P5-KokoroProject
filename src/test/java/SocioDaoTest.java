@@ -37,7 +37,7 @@ public class SocioDaoTest {
     public void testAgregarSocio() throws Exception {
         Socio socio1 = new Socio(1L, "Daniella", "Robles",
                 "12345678G", "española", "mi casa, 32",
-                "Barcelona", "933535353", "daniella@test.com", 1L,
+                "Barcelona", "933535353", "daniella@test.com", 1,
                 Periodo.TRI, 200.0, true, FFStringToDate("1983-07-24"));
         XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class, xmlFile);
         xmlSocioDao.save(socio1);
@@ -49,15 +49,15 @@ public class SocioDaoTest {
     public void testListadoSocio() throws Exception {
         Socio socio1 = new Socio(1L, "Daniella", "Robles",
                 "12345678G", "española", "mi casa, 32",
-                "Barcelona", "933535353", "daniella@test.com", 1L,
+                "Barcelona", "933535353", "daniella@test.com", 1,
                 Periodo.TRI, 200.0, true, FFStringToDate("1983-07-24"));
         Socio socio2 = new Socio(2L, "Alex", "Robles",
                 "98765432G", "española", "Calle rio mora, 25",
-                "Barcelona", "678145555", "alex@test.com", 2L,
+                "Barcelona", "678145555", "alex@test.com", 2,
                 Periodo.MES, 30.0, true, FFStringToDate("1983-07-24"));
         Socio socio3 = new Socio(3L, "Sara", "Planas",
                 "12365478A", "francesa", "calle nou pins, 12",
-                "Barcelona", "654987123", "sara@test.com", 3L,
+                "Barcelona", "654987123", "sara@test.com", 3,
                 Periodo.ANU, 500.0, true, FFStringToDate("1983-07-24"));
         XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class, xmlFile);
         xmlSocioDao.save(socio1);
@@ -74,7 +74,7 @@ public class SocioDaoTest {
     public void testLeerSocio() throws Exception {
         Socio socio1 = new Socio(1L, "Daniella", "Robles",
                 "12345678G", "española", "mi casa, 32",
-                "Barcelona", "933535353", "daniella@test.com", 1L,
+                "Barcelona", "933535353", "daniella@test.com", 1,
                 Periodo.TRI, 200.0, true, FFStringToDate("1983-07-24"));
         XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class, xmlFile);
         xmlSocioDao.save(socio1);
@@ -87,7 +87,7 @@ public class SocioDaoTest {
     public void testActualizarSocio() throws Exception {
         Socio socio1 = new Socio(1L, "Daniella", "Robles",
                 "12345678G", "española", "mi casa, 32",
-                "Barcelona", "933535353", "daniella@test.com", 1L,
+                "Barcelona", "933535353", "daniella@test.com", 1,
                 Periodo.TRI, 200.0, true, FFStringToDate("1983-07-24"));
 
         XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class, xmlFile);
@@ -105,7 +105,7 @@ public class SocioDaoTest {
     public void testBorrarSocio() throws Exception {
         Socio socio1 = new Socio(1L, "Daniella", "Robles",
                 "12345678G", "española", "mi casa, 32",
-                "Barcelona", "933535353", "daniella@test.com", 1L,
+                "Barcelona", "933535353", "daniella@test.com", 1,
                 Periodo.TRI, 200.0, true, FFStringToDate("1983-07-24"));
 
         XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class, xmlFile);

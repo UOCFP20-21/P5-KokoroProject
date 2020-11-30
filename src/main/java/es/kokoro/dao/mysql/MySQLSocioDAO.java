@@ -29,7 +29,7 @@ public class MySQLSocioDAO extends MySQLPersonaDAO implements SocioDAO {
         Socio tmpEntrada = null;
         ResultSet personaData;
         try {
-            long idSocio = set.getLong("idSocio");
+            Integer idSocio = set.getInt("idSocio");
             long idPersona = set.getLong("idPersona");
             personaData = super.getResult(idPersona);
             String nombre = personaData.getString("nombre");

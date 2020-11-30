@@ -3,7 +3,7 @@ package es.kokoro.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "subLineasAccion")
+@Table(name = "sublineasaccion")
 
 public class SubLineaAccion {
 

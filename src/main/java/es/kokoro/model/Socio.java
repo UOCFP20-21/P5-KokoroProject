@@ -3,14 +3,10 @@ package es.kokoro.model;
 import es.kokoro.enums.Periodo;
 import es.kokoro.model.interfaces.IIngreso;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "socios")
@@ -18,11 +14,11 @@ import javax.persistence.Table;
 /***
  * @author Kokoro
  */
-public class Socio extends Persona implements IIngreso {
+public class Socio extends Persona implements IIngreso, Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idSocio")
-    private Long idSocio;
+    private Integer idSocio;
     @Column(name = "periodo")
     private Periodo periodo;
     @Column(name = "cuota")
@@ -47,7 +43,7 @@ public class Socio extends Persona implements IIngreso {
      * @param estado Estado del Socio (activo o no)
      */
     public Socio(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad,
-                 String direccion, String poblacion, String telefono, String email, Long idSocio, Periodo periodo,
+                 String direccion, String poblacion, String telefono, String email, Integer idSocio, Periodo periodo,
                  double cuota, boolean estado, Date fechaNac) {
         super(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, fechaNac);
         this.idSocio = idSocio;
@@ -60,7 +56,7 @@ public class Socio extends Persona implements IIngreso {
      *
      * @return idSocio
      */
-    public Long getIdSocio() {
+    public Integer getIdSocio() {
         return idSocio;
     }
 
@@ -68,7 +64,7 @@ public class Socio extends Persona implements IIngreso {
      * Definimos el valor de idSocio
      * @param idSocio
      */
-    public void setIdSocio(Long idSocio) {
+    public void setIdSocio(Integer idSocio) {
         this.idSocio = idSocio;
     }
 

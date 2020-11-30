@@ -5,7 +5,7 @@ import es.kokoro.enums.Periodo;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
+@MappedSuperclass
 @Table(name = "personas")
 
 /***
@@ -14,7 +14,7 @@ import java.util.Date;
 public abstract class Persona {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
       @Column(name = "idPersona")
     private Long idPersona;
     @Column(name = "nombre")

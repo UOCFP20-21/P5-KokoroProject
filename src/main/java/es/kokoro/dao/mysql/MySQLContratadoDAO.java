@@ -76,8 +76,25 @@ public class MySQLContratadoDAO extends MySQLTrabajadorDAO {
             MySQLOngDAO mysqlOngDAO = new MySQLOngDAO(conexion);
             Ong ong = mysqlOngDAO.get(set.getLong("idOng"));
             tmpEntrada = new Contratado(
-                    idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, idTrabajador, delegacion, fechaNac, set.getBoolean("activo"),
-                    idContratado, FFStringToDate(set.getString("inicioContrato")), set.getString("fincontrato"), set.getFloat("salario"), set.getString("puestoTrabajo"), ong);
+                    idPersona,
+                    nombre,
+                    apellidos,
+                    identificador,
+                    nacionalidad,
+                    direccion,
+                    poblacion,
+                    telefono,
+                    email,
+                    idTrabajador,
+                    delegacion,
+                    fechaNac,
+                    set.getBoolean("activo"),
+                    idContratado,
+                    FFStringToDate(set.getString("inicioContrato")),
+                    set.getString("fincontrato"),
+                    set.getFloat("salario"),
+                    set.getString("puestoTrabajo"),
+                    ong);
         } catch (SQLException throwables) {
             System.out.println("Error creando la instancia " + throwables);
         } finally {

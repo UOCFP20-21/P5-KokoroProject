@@ -5,8 +5,6 @@ import es.kokoro.model.interfaces.IFinanciador;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-@Table(name = "empresas")
 
 
 /**
@@ -15,25 +13,23 @@ import java.util.Date;
  */
 public abstract class Empresa implements IFinanciador {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idEmpresa")
+
     private Long idEmpresa;
-    @Column(name = "nombre")
+
     private String nombre;
-    @Column(name = "pais")
+
     private String pais;
-    @Column(name = "poblacion")
+
     private String poblacion;
-    @Column(name = "direccionSocial")
+
     private String direccionSocial;
-    @Column(name = "razonSocial")
+
     private String razonSocial;
-    @Column(name = "identificacionSocial")
+
     private String identificacionSocial;
-    @Column(name = "telefono")
+
     private String telefono;
-    @Column(name = "email")
+
     private String email;
 
     //Atributos
