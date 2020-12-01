@@ -15,7 +15,7 @@ public class Persona implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy=GenerationType.TABLE)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "idPersona", unique = true, nullable = false)
     private Long idPersona;
 	@Column(name = "nombre", nullable = false)
@@ -37,11 +37,10 @@ public class Persona implements Serializable {
 	@Column (name = "fechaNac", nullable = false)
 	@Temporal(TemporalType.DATE)
     private Date fechaNac;
-
-	@OneToOne(mappedBy = "persona", optional = true)
-    @MapsId
+/*
+	@OneToOne(optional = true)
 	private Socio socio;
-
+*/
     public Persona()
     {
     	
@@ -277,13 +276,13 @@ public class Persona implements Serializable {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
     }
-
+/*
     public Socio getSocio() {
        return socio;
     }
 
     public void setSocio(Socio socio) {
         this.socio = socio;
-    }
+    }*/
 }
 

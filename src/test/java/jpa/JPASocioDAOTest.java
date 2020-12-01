@@ -41,18 +41,24 @@ public class JPASocioDAOTest {
     @Test
     public void test1ActualizarSocio() {
         JPASocioDAO jpaSocioDAO = new JPASocioDAO("KokoroTests");
-        double nuevoValor = 150.00;
         Socio newSocio = null;
+        double nuevoValor = 155.00;
         try {
-            Persona newPersona = new Persona(47L, "Test: testActualizarSocios", "Apellidos Test 1", "00000000T",
+            nuevoValor = 155.00;
+            Persona newPersona = new Persona(1L, "Test: testActualizarSocios", "Apellidos Test 1", "00000000T",
                     "Española", "C/ de mi casa 1", "Mi pueblo", "600000000", "test@prueba1.com", FFStringToDate("1983-07-24"));
-            newSocio = new Socio(newPersona, 48L, Periodo.ANU, nuevoValor, true);
+            newSocio = new Socio(newPersona, 1L, Periodo.ANU, nuevoValor, true);
         } catch (ParseException e) {
             e.printStackTrace();
+        }finally {
+            System.out.println("Test 6");
+            jpaSocioDAO.update(newSocio);
+            System.out.println("Test 7");
         }
-        jpaSocioDAO.update(newSocio);
-        Socio nuevo = jpaSocioDAO.get(48L);
 
+        Socio nuevo = jpaSocioDAO.get(1L);
+
+        System.out.println("Test " + nuevo.toString());
         assertEquals(nuevo.getCuota(), nuevoValor);
         closeManager(jpaSocioDAO.getManager());
     }
@@ -68,9 +74,7 @@ public class JPASocioDAOTest {
             e.printStackTrace();
         }
         Long currentID = jpaSocioDAO.save(newSocio, isId);
-
         Socio nuevo = jpaSocioDAO.get(currentID);
-        System.out.println(nuevo.toString());
         jpaSocioDAO.delete(nuevo);
 
         assertNull(jpaSocioDAO.get(currentID));

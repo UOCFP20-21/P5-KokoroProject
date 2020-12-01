@@ -6,8 +6,6 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Target;
 
 /***
  * @author Kokoro
@@ -19,8 +17,8 @@ public class Socio /*extends Persona*/ implements IIngreso, Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy=GenerationType.TABLE)
-    @Column(name = "idSocio", unique = true, nullable = false)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    //@Column(name = "idSocio", unique = true, nullable = false)
 	private Long idSocio;
     @Column(name = "periodo", nullable = false)
     @Enumerated(EnumType.STRING)
@@ -31,9 +29,9 @@ public class Socio /*extends Persona*/ implements IIngreso, Serializable {
     @Type(type="boolean")
     private boolean estado = false;
 
-    @OneToOne(mappedBy = "socio", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @MapsId
-    //@JoinColumn(name = "idPersona")
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @JoinColumn(name = "idPersona")
     private Persona persona;
 
     /***
@@ -152,7 +150,7 @@ public class Socio /*extends Persona*/ implements IIngreso, Serializable {
                 ", periodo=" + periodo.getNombrePeriodo() +
                 ", cuota=" + cuota +
                 ", estado=" + estado +
-                "} " +  super.toString();
+                "} " +  persona.toString();
     }
 
     // Métodos de Interface

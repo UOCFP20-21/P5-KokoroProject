@@ -25,6 +25,11 @@ public class JPASocioDAO implements SocioDAO {
     @Override
     public Socio get(long id) {
         Socio socio = manager.find(Socio.class, id);
+        if(socio == null){
+            System.out.println("GET is Null");
+        }else {
+            System.out.println("GET: " + socio.toString());
+        }
 
         return socio;
     }
@@ -59,14 +64,29 @@ public class JPASocioDAO implements SocioDAO {
     @Override
     public void update(Socio socio) {
         manager.getTransaction().begin();
-        Socio nuevosocio = get(socio.getIdSocio());
-        Persona persona = socio.getPersona();
+        Socio nuevosocio = this.get(socio.getIdSocio());
+
         nuevosocio.setCuota(socio.getCuota());
+
         nuevosocio.setEstado(socio.isEstado());
+
         nuevosocio.setPeriodo(socio.getPeriodo());
-        nuevosocio.setPersona(persona);
-        manager.persist(persona);
-        manager.persist(nuevosocio);
+        System.out.println("UpdateTest 5");
+/*
+        nuevosocio.setPersona(socio.getPersona());
+        System.out.println("UpdateTest 6");
+        Persona persona = nuevosocio.getPersona();
+        System.out.println("UpdateTest 7");
+        persona.setNombre(nuevosocio.getPersona().getNombre());
+        persona.setApellidos(nuevosocio.getPersona().getApellidos());
+        persona.setIdentificador(nuevosocio.getPersona().getIdentificador());
+        persona.setDireccion(nuevosocio.getPersona().getDireccion());
+        persona.setPoblacion(nuevosocio.getPersona().getPoblacion());
+        persona.setNacionalidad(nuevosocio.getPersona().getNacionalidad());
+        persona.setFechaNac(nuevosocio.getPersona().getFechaNac());
+        persona.setTelefono(nuevosocio.getPersona().getTelefono());
+        persona.setEmail(nuevosocio.getPersona().getEmail());
+        System.out.println("UpdateTest 8");*/
         manager.getTransaction().commit();
     }
 
