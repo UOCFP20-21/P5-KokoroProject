@@ -71,7 +71,7 @@ public class XmlDelegacionDAO implements DelegacionDAO {
     public Delegacion get(long id) throws Exception{
         List<Delegacion> listado = getAll();
         for(Delegacion delegacion : listado){
-            if (delegacion.getIdDelegacion().equals(id)){
+            if (delegacion.getIdDelegacion()==(id)){
                 return delegacion;
             }
         }
@@ -96,8 +96,8 @@ public class XmlDelegacionDAO implements DelegacionDAO {
                 {
                     Element eDelegacion = (Element) nNode;
                     /***
-                    Delegacion de prueba
-                    ***/
+                     Delegacion de prueba
+                     ***/
                     List<Trabajador> trabajadorList = new ArrayList<>();
                     List<Delegacion> delegacionLista = new ArrayList<>();
                     List<Socio> socioList =  new ArrayList<>();
@@ -105,10 +105,10 @@ public class XmlDelegacionDAO implements DelegacionDAO {
 
                     XmlProyectoDAO proyectoData = new XmlProyectoDAO();
                     List<Proyecto> proyectoList = proyectoData.getAll();
-                   // XmlTrabajadorDAO trabajadorData = new XmlTrabajadorDAO();
-                   // List<Trabajador> trabajadorList = subElementoIdList(eDelegacion, trabajadorData, "trabajadorList", "idTrabajador");
+                    // XmlTrabajadorDAO trabajadorData = new XmlTrabajadorDAO();
+                    // List<Trabajador> trabajadorList = subElementoIdList(eDelegacion, trabajadorData, "trabajadorList", "idTrabajador");
 
-                     Ong ong = new Ong(
+                    Ong ong = new Ong(
                             1L,
                             "Kokoro Sin Fronteras",
                             delegacionLista,
@@ -163,7 +163,7 @@ public class XmlDelegacionDAO implements DelegacionDAO {
             doc.appendChild(xmlRoot);
             for (Delegacion itemDelegacion : delegacionList){
 
-                if (itemDelegacion.getIdDelegacion().equals(delegacion.getIdDelegacion())){
+                if (itemDelegacion.getIdDelegacion()==(delegacion.getIdDelegacion())){
                     itemDelegacion = delegacion;
                     isNew = false;
                 }
@@ -180,9 +180,11 @@ public class XmlDelegacionDAO implements DelegacionDAO {
         }
     }
 
-     public void update(Delegacion delegacion) throws  Exception{
+
+
+    public void update(Delegacion delegacion) throws  Exception{
         save(delegacion);
-     }
+    }
 
 
     public void delete(Delegacion delegacion) throws Exception {

@@ -16,7 +16,7 @@ public class JPALineaAccionDAOTest {
     boolean isId = false;
     @Test
     public void test2AgregarLineaAccion() {
-        JPALineaAccionDAO jpaLineaAccion = new JPALineaAccionDAO("Kokoro");
+        JPALineaAccionDAO jpaLineaAccion = new JPALineaAccionDAO("KokoroTests");
         List<LineaAccion> listaPrevia = jpaLineaAccion.getAll();
         LineaAccion newLA = new LineaAccion(null, "Linea de Test Agregar Linea de acción "+listaPrevia.size());
         jpaLineaAccion.save(newLA);
@@ -28,7 +28,7 @@ public class JPALineaAccionDAOTest {
 
     @Test
     public void test1ActualizarLineaAccion() {
-        JPALineaAccionDAO jpaLineaAccion = new JPALineaAccionDAO("Kokoro");
+        JPALineaAccionDAO jpaLineaAccion = new JPALineaAccionDAO("KokoroTests");
         List<LineaAccion> listaTodos = jpaLineaAccion.getAll();
         String nuevoValor = "Linea de Accion Actualizar Linea 1L con el total de líneas: "+listaTodos.size();
         LineaAccion newLA = new LineaAccion(1L, nuevoValor);
@@ -40,7 +40,7 @@ public class JPALineaAccionDAOTest {
     }
     @Test
     public void test0DeleteLineaAccion() {
-        JPALineaAccionDAO jpaLineaAccion = new JPALineaAccionDAO("Kokoro");
+        JPALineaAccionDAO jpaLineaAccion = new JPALineaAccionDAO("KokoroTests");
         Random rand = new Random();
         // Agregamos una linea de Accion y recuperamos su ID
         LineaAccion newLA = new LineaAccion(null, "Linea de Accion Test para eliminar: "+rand.nextFloat());

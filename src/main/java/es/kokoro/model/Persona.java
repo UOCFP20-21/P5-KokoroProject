@@ -1,22 +1,51 @@
 package es.kokoro.model;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.*;
 
 /***
  * @author Kokoro
  */
-public abstract class Persona {
+
+@Entity
+@Table(name = "personas")
+public class Persona implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy=GenerationType.TABLE)
+	@Column(name = "idPersona", unique = true, nullable = false)
     private Long idPersona;
+	@Column(name = "nombre", nullable = false)
     private String nombre;
+	@Column (name = "apellidos", nullable = false)
     private String apellidos;
+	@Column (name = "identificador", nullable = false)//, unique = true
     private String identificador;
+	@Column (name = "nacionalidad", nullable = false)
     private String nacionalidad;
+	@Column (name = "direccion", nullable = false)
     private String direccion;
+	@Column (name = "poblacion", nullable = false)
     private String poblacion;
+	@Column (name = "telefono", nullable = false)
     private String telefono;
+	@Column (name = "email", nullable = false)
     private String email;
+	@Column (name = "fechaNac", nullable = false)
+	@Temporal(TemporalType.DATE)
     private Date fechaNac;
 
+	@OneToOne(mappedBy = "persona", optional = true)
+    @MapsId
+	private Socio socio;
+
+    public Persona()
+    {
+    	
+    }
     /***
      * Constructor de la clase Persona
      * @param idPersona
@@ -247,6 +276,14 @@ public abstract class Persona {
         result = 31 * result + (telefono != null ? telefono.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
+    }
+
+    public Socio getSocio() {
+       return socio;
+    }
+
+    public void setSocio(Socio socio) {
+        this.socio = socio;
     }
 }
 

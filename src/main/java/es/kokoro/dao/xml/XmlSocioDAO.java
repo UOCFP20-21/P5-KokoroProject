@@ -60,7 +60,8 @@ public class XmlSocioDAO implements SocioDAO {
         eSocio.appendChild(eEstado);
 
         Element eIdPersona = doc.createElement("idPersona");
-        eIdPersona.appendChild(doc.createTextNode(Long.toString(itemSocio.getIdPersona())));
+        eIdPersona.appendChild(doc.createTextNode(Long.toString(1L)));
+        //eIdPersona.appendChild(doc.createTextNode(Long.toString(itemSocio.getIdPersona())));
         eSocio.appendChild(eIdPersona);
 
         return eSocio;
@@ -100,13 +101,15 @@ public class XmlSocioDAO implements SocioDAO {
                      */
                     Date tmpDate = FFStringToDate("1983-07-24");
                     Periodo tmpPeriodo = Periodo.valueOf(eSocio.getElementsByTagName("tipoPeriodo").item(0).getTextContent());
-                    Socio tmpSocio = new Socio(
+                    Persona tmpPersona = new Persona(
                             parseLong(eSocio.getElementsByTagName("idPersona").item(0).getTextContent()), "Sara", "Planas", "44455578A",
-                            "Española", "calle", "Bcn", "65644846", "fajuh@sdfhaui.conm",
+                            "Española", "calle", "Bcn", "65644846", "fajuh@sdfhaui.conm", tmpDate );
+                    Socio tmpSocio = new Socio(
+                            tmpPersona,
                             parseLong(eSocio.getAttribute("id")),
                             tmpPeriodo,
                             Double.parseDouble(eSocio.getElementsByTagName("cuota").item(0).getTextContent()),
-                            Boolean.parseBoolean(eSocio.getElementsByTagName("estado").item(0).getTextContent()), tmpDate
+                            Boolean.parseBoolean(eSocio.getElementsByTagName("estado").item(0).getTextContent())
                     );
                     socioList.add(tmpSocio);
                 }
