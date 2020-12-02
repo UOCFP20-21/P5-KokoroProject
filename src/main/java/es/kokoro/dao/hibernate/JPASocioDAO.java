@@ -8,17 +8,20 @@ import javax.persistence.EntityManager;
 
 import java.util.List;
 
+import static es.kokoro.commons.JPAManager.closeManager;
 import static es.kokoro.commons.JPAManager.getEntityManager;
 
 public class JPASocioDAO implements SocioDAO {
     EntityManager manager;
+    String unitName = null;
     public JPASocioDAO()
     {
-        manager = getEntityManager();
+        this.manager = getEntityManager();
     }
     public JPASocioDAO(String unitName)
     {
-        manager = getEntityManager(unitName);
+        this.unitName = unitName;
+        this.manager = getEntityManager(this.unitName);
     }
     public EntityManager getManager(){ return manager; }
 
@@ -63,30 +66,25 @@ public class JPASocioDAO implements SocioDAO {
 
     @Override
     public void update(Socio socio) {
+        JPAPersonaDAO jpaPersonaDAO;
+        if(this.unitName != null)
+        {
+            jpaPersonaDAO = new JPAPersonaDAO(unitName);
+        }
+        else
+        {
+            jpaPersonaDAO = new JPAPersonaDAO();
+        }
+
+        jpaPersonaDAO.update(socio.getPersona());
+        //Persona persona = jpaPersonaDAO.get(socio.getPersona().getIdPersona());
+        closeManager(jpaPersonaDAO.getManager());
         manager.getTransaction().begin();
-        Socio nuevosocio = this.get(socio.getIdSocio());
-
+        Socio nuevosocio = get(socio.getIdSocio());
         nuevosocio.setCuota(socio.getCuota());
-
         nuevosocio.setEstado(socio.isEstado());
-
         nuevosocio.setPeriodo(socio.getPeriodo());
-        System.out.println("UpdateTest 5");
-/*
-        nuevosocio.setPersona(socio.getPersona());
-        System.out.println("UpdateTest 6");
-        Persona persona = nuevosocio.getPersona();
-        System.out.println("UpdateTest 7");
-        persona.setNombre(nuevosocio.getPersona().getNombre());
-        persona.setApellidos(nuevosocio.getPersona().getApellidos());
-        persona.setIdentificador(nuevosocio.getPersona().getIdentificador());
-        persona.setDireccion(nuevosocio.getPersona().getDireccion());
-        persona.setPoblacion(nuevosocio.getPersona().getPoblacion());
-        persona.setNacionalidad(nuevosocio.getPersona().getNacionalidad());
-        persona.setFechaNac(nuevosocio.getPersona().getFechaNac());
-        persona.setTelefono(nuevosocio.getPersona().getTelefono());
-        persona.setEmail(nuevosocio.getPersona().getEmail());
-        System.out.println("UpdateTest 8");*/
+        //nuevosocio.setPersona(persona);
         manager.getTransaction().commit();
     }
 

@@ -8,7 +8,7 @@
         <class>es.kokoro.model.Socio</class>
         <class>es.kokoro.model.LineaAccion</class>
         <properties>
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.1.51:3307/mydb"/>
             <property name="javax.persistence.jdbc.user" value="ongjaume"/>
             <property name="javax.persistence.jdbc.password" value="ong1234"/>

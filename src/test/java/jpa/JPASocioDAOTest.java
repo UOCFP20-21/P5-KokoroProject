@@ -40,12 +40,15 @@ public class JPASocioDAOTest {
 
     @Test
     public void test1ActualizarSocio() {
+        System.out.println("Test 3");
         JPASocioDAO jpaSocioDAO = new JPASocioDAO("KokoroTests");
+        System.out.println("Test 4");
         Socio newSocio = null;
-        double nuevoValor = 155.00;
+        System.out.println("Test 5");
+        double nuevoValor = 233.00;
         try {
-            nuevoValor = 155.00;
-            Persona newPersona = new Persona(1L, "Test: testActualizarSocios", "Apellidos Test 1", "00000000T",
+            nuevoValor = 233.00;
+            Persona newPersona = new Persona(1L, "Me he cambiado el nombre 2", "Apellidos Test 1", "00000000T",
                     "Española", "C/ de mi casa 1", "Mi pueblo", "600000000", "test@prueba1.com", FFStringToDate("1983-07-24"));
             newSocio = new Socio(newPersona, 1L, Periodo.ANU, nuevoValor, true);
         } catch (ParseException e) {

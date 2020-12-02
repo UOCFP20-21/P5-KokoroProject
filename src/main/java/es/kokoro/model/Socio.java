@@ -18,7 +18,7 @@ public class Socio /*extends Persona*/ implements IIngreso, Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    //@Column(name = "idSocio", unique = true, nullable = false)
+    @Column(name = "idSocio")
 	private Long idSocio;
     @Column(name = "periodo", nullable = false)
     @Enumerated(EnumType.STRING)
