@@ -21,14 +21,14 @@ import static es.kokoro.commons.FormatFecha.*;
 public class App {
     public static void main(String[] args) throws ParseException {
 
-        Socio socio = new Socio(1L, "Sergio", "Garcia Lopez", "12345678A","Español",
-                "tu casa","BCN","963258741","sergio@gmail.com",1,MES,30.0,
+        Socio socio = new Socio(null, "Sergio", "Garcia Lopez", "12345678A","Español",
+                "tu casa","BCN","963258741","sergio@gmail.com",null,MES,30.0,
                 TRUE,FFStringToDate("2020-01-01"));
-        Socio socio1 = new Socio(2L, "Manuel", "Robles Garcia", "987654321B","Español",
-                "mi casa","JAEN","654987321","manu@gmail.com",2,ANU,100.0,
+        Socio socio1 = new Socio(null, "Manuel", "Robles Garcia", "987654321B","Español",
+                "mi casa","JAEN","654987321","manu@gmail.com",null,ANU,100.0,
                 TRUE,FFStringToDate("2020-03-25"));
-        SubLineaAccion subLineaAccion = new SubLineaAccion(1L,"Accion tercer mundo");
-        SubLineaAccion subLineaAccion1 = new SubLineaAccion(2L,"Agua en Africa");
+        SubLineaAccion subLineaAccion = new SubLineaAccion(null,"Accion tercer mundo");
+        SubLineaAccion subLineaAccion1 = new SubLineaAccion(null,"Agua en Africa");
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.save(socio);
