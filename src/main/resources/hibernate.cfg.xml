@@ -8,8 +8,6 @@
         <property name="connection.url">jdbc:mysql://localhost/mydb?serverTimezone=UTC</property>
         <property name="connection.username">splanas</property>
         <property name="connection.password">sara</property>
-        <!-- JDBC connection pool settings ... using built-in test pool -->
-        <property name="connection.pool_size">1</property>
         <!-- Select our SQL dialect -->
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <!-- Echo the SQL to stdout -->
