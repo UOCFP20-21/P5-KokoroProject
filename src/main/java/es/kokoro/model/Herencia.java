@@ -9,7 +9,6 @@ public class Herencia extends Persona implements IIngreso {
 
     /***
      * @see Persona
-     * @param idPersona -
      * @param nombre -
      * @param apellidos -
      * @param identificador -
@@ -20,8 +19,8 @@ public class Herencia extends Persona implements IIngreso {
      * @param email -
      * @param idHerencia Índice de Herencia
      */
-    public Herencia(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idHerencia, Date fechaNac) {
-        super(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, fechaNac);
+    public Herencia(String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idHerencia, Date fechaNac) {
+        super(nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, fechaNac);
         this.idHerencia = idHerencia;
     }
 

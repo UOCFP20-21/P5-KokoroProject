@@ -30,9 +30,9 @@ public class MySqlFactoryDAO {
      */
     public static DAO getMySqlFactoryDAO(Class classInstance, Connection cnn) throws Exception {
         if (classInstance.equals(Socio.class)) {
-            return new MySQLSocioDAO(cnn);
+            return new MySQLSocioDAO();
         } else if (classInstance.equals(Particular.class)) {
-            return new MySQLParticularDAO(cnn);
+            return new MySQLParticularDAO();
         } else if (classInstance.equals(Accion.class)) {
             return new MySQLAccionDAO(cnn);
         } else if (classInstance.equals(LineaAccion.class)) {

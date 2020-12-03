@@ -10,7 +10,6 @@ public class Trabajador extends Persona{
 
     /***
      *
-     * @param idPersona Herencia de Persona
      * @param nombre Herencia de Persona
      * @param apellidos Herencia de Persona
      * @param identificador Herencia de Persona
@@ -24,8 +23,8 @@ public class Trabajador extends Persona{
      * @param fechaNac Fecha de Nacimiento
      * @param activo Boolean para definir si el trabajador está activo o no [true|false]
      */
-    public Trabajador(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idTrabajador, Delegacion delegacion, Date fechaNac, boolean activo, Ong ong) {
-        super(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, fechaNac);
+    public Trabajador(String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idTrabajador, Delegacion delegacion, Date fechaNac, boolean activo, Ong ong) {
+        super(nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, fechaNac);
         this.idTrabajador = idTrabajador;
         this.delegacion = delegacion;
         this.activo = activo;

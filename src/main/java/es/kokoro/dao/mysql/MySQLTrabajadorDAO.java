@@ -10,17 +10,39 @@ import java.util.List;
 import static es.kokoro.commons.sqlConection.commitData;
 import static es.kokoro.commons.sqlConection.conectar;
 
-public class MySQLTrabajadorDAO extends MySQLPersonaDAO implements TrabajadorDAO {
+public class MySQLTrabajadorDAO implements TrabajadorDAO {
 
     public MySQLTrabajadorDAO() {
         super();
     }
-    public MySQLTrabajadorDAO(Connection conexion) {
-        super(conexion);
+
+    public Connection getConexion() { return null; }
+
+    @Override
+    public Trabajador get(long id) throws Exception {
+        return null;
     }
 
-    public Connection getConexion() { return conexion; }
+    @Override
+    public List<Trabajador> getAll() throws Exception {
+        return null;
+    }
 
+    @Override
+    public void save(Trabajador trabajador) throws Exception {
+
+    }
+
+    @Override
+    public void update(Trabajador trabajador) throws Exception {
+
+    }
+
+    @Override
+    public void delete(Trabajador trabajador) throws Exception {
+
+    }
+/*
     public void setConexion(Connection cnn)
     {
         if(cnn == null){
@@ -368,5 +390,5 @@ public class MySQLTrabajadorDAO extends MySQLPersonaDAO implements TrabajadorDAO
                 System.out.println("Registro no encontrado: No existe ningún registro con los datos facilitados.");
             }
         }
-    }
+    }*/
 }

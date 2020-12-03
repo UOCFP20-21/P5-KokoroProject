@@ -11,7 +11,6 @@ public class Particular extends Persona implements IIngreso, IFinanciador {
     /***
      *
      * @see Persona
-     * @param idPersona -
      * @param nombre -
      * @param apellidos -
      * @param identificador -
@@ -22,8 +21,8 @@ public class Particular extends Persona implements IIngreso, IFinanciador {
      * @param email -
      * @param idParticular Índice de Particular
      */
-    public Particular(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idParticular, Date fechaNac) {
-        super(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, fechaNac);
+    public Particular(String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idParticular, Date fechaNac) {
+        super(nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, fechaNac);
         this.idParticular = idParticular;
     }
 

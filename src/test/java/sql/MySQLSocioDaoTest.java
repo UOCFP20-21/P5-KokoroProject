@@ -69,7 +69,7 @@ public class MySQLSocioDaoTest {
     public void testAgregarSocios() {
         Socio socio1 = null;
         try {
-            socio1 = new Socio(null, "Test: testAgregarSocios", "Apellidos Test 1", "00000000T",
+            socio1 = new Socio( "Test: testAgregarSocios", "Apellidos Test 1", "00000000T",
                     "Española", "C/ de mi casa 1", "Mi pueblo", "600000000", "test@prueba1.com",
                     null, Periodo.ANU, 50.00, true, FFStringToDate("1983-07-24"));
         } catch (ParseException e) {
@@ -259,13 +259,13 @@ public class MySQLSocioDaoTest {
         Socio socio2 = null;
         Socio socio3 = null;
         try {
-            socio1 = new Socio(null, "Socio 1", "Apellidos Test 1", "00000000T",
+            socio1 = new Socio( "Socio 1", "Apellidos Test 1", "00000000T",
                     "Española", "C/ de mi casa 1", "Mi pueblo1", "600000001", "test@prueba1.com",
                     null, Periodo.ANU, 50.00, true, FFStringToDate("1983-01-24"));
-            socio2 = new Socio(null, "Socio 2", "Apellidos Test 2", "00000001T",
+            socio2 = new Socio( "Socio 2", "Apellidos Test 2", "00000001T",
                     "Española", "C/ de mi casa 2", "Mi pueblo2", "600000002", "test@prueba2.com",
                     null, Periodo.ANU, 50.00, true, FFStringToDate("1983-02-24"));
-            socio3 = new Socio(null, "Socio 3", "Apellidos Test 3", "00000002T",
+            socio3 = new Socio( "Socio 3", "Apellidos Test 3", "00000002T",
                     "Española", "C/ de mi casa 3", "Mi pueblo3", "600000003", "test@prueba3.com",
                     null, Periodo.ANU, 50.00, true, FFStringToDate("1983-03-24"));
         } catch (ParseException e) {

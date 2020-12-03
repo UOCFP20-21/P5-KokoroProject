@@ -60,10 +60,6 @@ public class XmlSocioDAO implements SocioDAO {
         eEstado.appendChild(doc.createTextNode(saveEstado));
         eSocio.appendChild(eEstado);
 
-        Element eIdPersona = doc.createElement("idPersona");
-        eIdPersona.appendChild(doc.createTextNode(Long.toString(itemSocio.getIdPersona())));
-        eSocio.appendChild(eIdPersona);
-
         return eSocio;
     }
 

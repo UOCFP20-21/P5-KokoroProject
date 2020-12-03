@@ -11,7 +11,6 @@ public class VoluntarioInternacional extends Trabajador {
      * Hereda de Trabajador y a su vez hereda de Persona
      * @see Trabajador
      * @see Persona
-     * @param idPersona @see Persona
      * @param nombre @see Persona
      * @param apellidos @see Persona
      * @param identificador @see Persona
@@ -27,8 +26,8 @@ public class VoluntarioInternacional extends Trabajador {
      * @param idVoluntarioInternacional Índice de VoluntarioInternacional
      * @param inicioVoluntario Fecha de inicio del voluntariado
      */
-    public VoluntarioInternacional(Long idPersona, String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idTrabajador, Delegacion delegacion, Date fechaNac, boolean activo, Long idVoluntarioInternacional, Date inicioVoluntario, Ong ong) {
-        super(idPersona, nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, idTrabajador, delegacion, fechaNac, activo, ong);
+    public VoluntarioInternacional(String nombre, String apellidos, String identificador, String nacionalidad, String direccion, String poblacion, String telefono, String email, Long idTrabajador, Delegacion delegacion, Date fechaNac, boolean activo, Long idVoluntarioInternacional, Date inicioVoluntario, Ong ong) {
+        super(nombre, apellidos, identificador, nacionalidad, direccion, poblacion, telefono, email, idTrabajador, delegacion, fechaNac, activo, ong);
         this.idVoluntarioInternacional = idVoluntarioInternacional;
         this.inicioVoluntario = inicioVoluntario;
     }

@@ -19,7 +19,7 @@ import static es.kokoro.commons.sqlConection.*;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-
+/*
         Connection cnn = conectar();
 
         MySQLParticularDAO particular = new MySQLParticularDAO(cnn);
@@ -28,7 +28,7 @@ public class Main {
 
         desconectar(cnn);
 
-
+*/
 
 
 
