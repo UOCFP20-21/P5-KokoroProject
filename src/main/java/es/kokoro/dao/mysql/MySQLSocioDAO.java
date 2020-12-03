@@ -1,4 +1,4 @@
-package es.kokoro.dao.mysql;
+/*package es.kokoro.dao.mysql;
 
 import es.kokoro.dao.SocioDAO;
 import es.kokoro.enums.Periodo;
@@ -104,9 +104,9 @@ public class MySQLSocioDAO extends MySQLPersonaDAO implements SocioDAO {
         Long idPersona = null;
         try {
             conexion.setAutoCommit(false);
-            if(socio.getIdPersona() == null)   // No facilitamos ID persona
+            if(socio.getPersona().getIdPersona() == null)   // No facilitamos ID persona
             {
-                if(checkDNI(socio.getIdentificador()) == 0)  // No existe el Identificador en nuestra DDBB
+                if(checkDNI(socio.getPersona().getIdentificador()) == 0)  // No existe el Identificador en nuestra DDBB
                 {
                     idPersona = super.save(socio);
                     System.out.println("El ID de Persona nuevo es: " + idPersona);
@@ -226,3 +226,4 @@ public class MySQLSocioDAO extends MySQLPersonaDAO implements SocioDAO {
         }
     }
 }
+*/

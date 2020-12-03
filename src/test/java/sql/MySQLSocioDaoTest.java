@@ -1,4 +1,4 @@
-package sql;
+/*package sql;
 
 import es.kokoro.dao.mysql.MySQLSocioDAO;
 import es.kokoro.dao.mysql.MySqlFactoryDAO;
@@ -329,3 +329,4 @@ public class MySQLSocioDaoTest {
     }
 
 }
+*/

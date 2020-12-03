@@ -1,4 +1,4 @@
-import es.kokoro.dao.xml.XmlFactoryDAO;
+/*import es.kokoro.dao.xml.XmlFactoryDAO;
 import es.kokoro.enums.Periodo;
 import es.kokoro.model.Socio;
 import org.junit.jupiter.api.AfterEach;
@@ -117,4 +117,4 @@ public class SocioDaoTest {
     }
 }
 
-
+*/

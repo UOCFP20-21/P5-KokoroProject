@@ -7,9 +7,9 @@ import java.sql.Connection;
 
 public class MySqlFactoryDAO {
     public static DAO getMySqlFactoryDAO(Class classInstance) throws Exception {
-        if (classInstance.equals(Socio.class)) {
+        /*if (classInstance.equals(Socio.class)) {
             return new MySQLSocioDAO();
-        /*} else if (classInstance.equals(Contratado.class)) {
+        } else if (classInstance.equals(Contratado.class)) {
             return new XmlContratadoDAO();
         } else if (classInstance.equals(VoluntarioColaborador.class)) {
             return new XmlVoluntarioColaboradorDAO();
@@ -24,8 +24,8 @@ public class MySqlFactoryDAO {
         } else if (classInstance.equals(Delegacion.class)) {
             return new XmlDelegacionDAO();
         } else if (classInstance.equals(Empresa.class)) {
-            return new XmlEmpresaDAO();*/
-        } else if (classInstance.equals(Particular.class)) {
+            return new XmlEmpresaDAO();
+        } else */if (classInstance.equals(Particular.class)) {
             return new MySQLParticularDAO();/*
         } else if (classInstance.equals(Herencia.class)) {
             return new XmlHerenciaDAO();
@@ -70,9 +70,9 @@ public class MySqlFactoryDAO {
      * @throws Exception
      */
     public static DAO getMySqlFactoryDAO(Class classInstance, Connection cnn) throws Exception {
-        if (classInstance.equals(Socio.class)) {
+        /*if (classInstance.equals(Socio.class)) {
             return new MySQLSocioDAO(cnn);
-        } else if (classInstance.equals(Particular.class)) {
+        } else */if (classInstance.equals(Particular.class)) {
             return new MySQLParticularDAO(cnn);
         } else if (classInstance.equals(Accion.class)) {
             return new MySQLAccionDAO(cnn);

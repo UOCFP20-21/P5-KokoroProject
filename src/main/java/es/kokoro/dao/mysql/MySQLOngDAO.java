@@ -39,7 +39,7 @@ public class MySQLOngDAO implements OngDAO {
 
     private Ong setObject(ResultSet set)
     {
-        Ong tmpEntrada = null;
+        Ong tmpEntrada = null;/*
         try {
             long idOng = set.getLong("idOng");
             String nombre = set.getString("nombre");
@@ -52,7 +52,8 @@ public class MySQLOngDAO implements OngDAO {
             System.out.println("Error creando la instancia " + throwables);
         } finally {
             return tmpEntrada;
-        }
+        }*/
+        return tmpEntrada;
     }
 
 
