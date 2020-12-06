@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="477.0" prefWidth="829.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.kokoro.controller.SociosController">
+   <children>
+      <Pane layoutX="18.0" layoutY="46.0" prefHeight="330.0" prefWidth="791.0">
+         <children>
+            <TableView fx:id="tbl_ListadoSocios" prefHeight="330.0" prefWidth="791.0">
+              <columns>
+                <TableColumn fx:id="Clmn_idSocio" prefWidth="50.0" text="IdSocio" />
+                <TableColumn fx:id="Clmn_Nombre" prefWidth="60.0" text="Nombre" />
+                  <TableColumn fx:id="Clmn_idSocio1" prefWidth="60.0" text="Apellidos" />
+                  <TableColumn fx:id="Clmn_DNI" prefWidth="60.0" text="DNI" />
+                  <TableColumn fx:id="Clmn_Nacionalidad" prefWidth="60.0" text="Nacionalidad" />
+                  <TableColumn fx:id="Clmn_Direccion" prefWidth="75.0" text="Direccion" />
+                  <TableColumn fx:id="Clmn_Poblacion" prefWidth="60.0" text="Poblacion" />
+                  <TableColumn fx:id="Clmn_Telefono" prefWidth="60.0" text="Telefono" />
+                  <TableColumn fx:id="Clmn_Email" prefWidth="75.0" text="Email" />
+                  <TableColumn fx:id="Clmn_FechaNac" prefWidth="60.0" text="FechaNacimiento" />
+                  <TableColumn fx:id="Clmn_Periodo" prefWidth="60.0" text="Periodo" />
+                  <TableColumn fx:id="Clmn_Cuota" prefWidth="60.0" text="Cuota" />
+                  <TableColumn fx:id="Clmn_Estado" prefWidth="50.0" text="Estado" />
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
+      <Label fx:id="lbl_TituloSocios" layoutX="60.0" layoutY="14.0" text="Socios">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Button fx:id="btn_NuevoSocio" layoutX="70.0" layoutY="412.0" mnemonicParsing="false" text="Nuevo Socio" />
+       <Button fx:id="btn_EliminarSocio" layoutX="350.0" layoutY="412.0" mnemonicParsing="false" text="Eliminar Socio" />
+       <Button fx:id="btn_ModificarSocio" layoutX="650.0" layoutY="412.0" mnemonicParsing="false" text="Modificar Socio" />
+   </children>
+</AnchorPane>

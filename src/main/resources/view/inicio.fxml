@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.kokoro.controller.InicioController">
+<AnchorPane prefHeight="577.0" prefWidth="388.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.kokoro.controller.InicioController">
    <children>
-      <Button layoutX="58.0" layoutY="48.0" mnemonicParsing="false" onAction="#clickPrueba" text="Prueba" />
-      <Label layoutX="120.0" layoutY="111.0" prefHeight="46.0" prefWidth="113.0" fx:id="label1"/>
+      <AnchorPane fx:id="nchPg_inicio" prefHeight="439.0" prefWidth="388.0">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="file:/E:/PROYECTO%20PROGRAMACION%20ORIENTADA%20A%20OBJETOS%20Y%20BBDD/FASE3/entreculturas%20p4.png" />
+               </source>
+            </ImageInput>
+         </effect></AnchorPane>
+      <Pane disable="true" focusTraversable="true" layoutY="446.0" prefHeight="132.0" prefWidth="388.0" />
+      <Button fx:id="btn_inicio" cancelButton="true" layoutX="30.0" layoutY="499.0" mnemonicParsing="false" onAction="#nuevaVentana" prefHeight="26.0" prefWidth="140.0" text="Iniciar programa" />
+      <Button fx:id="btn_cerrar" cancelButton="true " layoutX="200.0" layoutY="499.0" mnemonicParsing="false" onAction="#cerrarAccion" prefHeight="26.0" prefWidth="140.0" text="Cerrar programa" />
    </children>
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
 </AnchorPane>

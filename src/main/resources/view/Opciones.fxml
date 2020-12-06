@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="577.0" prefWidth="388.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.kokoro.controller.OpcionesController">
+<children>
+    <Pane disable="true" focusTraversable="true" prefHeight="578.0" prefWidth="388.0" />
+          <Button fx:id="btn_sede" cancelButton="false" layoutX="27.0" layoutY="30.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="140.0" text="Sede" />
+          <Button fx:id="btn_delegacion" cancelButton="false " layoutX="27.0" layoutY="70.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="140.0" text="Delegaciones" />
+    <Button fx:id="btn_ingresos" cancelButton="false " layoutX="27.0" layoutY="110.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="140.0" text="Ingresos" />
+    <Button fx:id="btn_financiadores" cancelButton="false " layoutX="27.0" layoutY="150.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="140.0" text="Financiadores" />
+    <Button fx:id="btn_proyectos" cancelButton="false " layoutX="27.0" layoutY="190.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="140.0" text="Proyectos" />
+    <Button fx:id="btn_empresas" cancelButton="false " layoutX="27.0" layoutY="230.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="140.0" text="Empresas" />
+    <Button fx:id="btn_trabajadores" cancelButton="false " layoutX="27.0" layoutY="270.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="140.0" text="Trabajadores" />
+    <Button fx:id="btn_socios" cancelButton="false " layoutX="27.0" layoutY="310.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="140.0" text="Socios" />
+
+
+
+</children></AnchorPane>

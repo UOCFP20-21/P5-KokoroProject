@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="410.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AltaSocios">
+    <children>
+        <Pane layoutX="60.0" layoutY="54.0" prefHeight="330.0" prefWidth="586.0">
+            <children>
+                <Label fx:id="lbl_nombre" layoutX="14.0" layoutY="27.0" text="Nombre" />
+                <TextField fx:id="txt_nombre" layoutX="119.0" layoutY="23.0" prefHeight="25.0" prefWidth="170.0" />
+                <Label fx:id="lbl_apellidos" layoutX="14.0" layoutY="67.0" text="Apellidos" />
+                <TextField fx:id="txt_apellidos" layoutX="119.0" layoutY="63.0" prefHeight="25.0" prefWidth="170.0" />
+                <Label fx:id="lbl_dni" layoutX="14.0" layoutY="107.0" text="DNI" />
+                <TextField fx:id="txt_dni" layoutX="119.0" layoutY="103.0" prefHeight="25.0" prefWidth="170.0" />
+                <Label fx:id="lbl_nacionalidad" layoutX="14.0" layoutY="147.0" text="Nacionalidad" />
+                <TextField fx:id="txt_nacionalidad" layoutX="119.0" layoutY="143.0" prefHeight="25.0" prefWidth="170.0" />
+                <Label fx:id="lbl_direccion" layoutX="14.0" layoutY="187.0" text="Direccion" />
+                <TextField fx:id="txt_direccion" layoutX="119.0" layoutY="183.0" prefHeight="25.0" prefWidth="170.0" />
+                <Label fx:id="lbl_fechaNac" layoutX="14.0" layoutY="237.0" text="Fecha Nacimiento" />
+                <DatePicker fx:id="dt_FechaNac" layoutX="119.0" layoutY="233.0" prefHeight="25.0" prefWidth="170.0" />
+                <Label fx:id="lbl_poblacion" layoutX="322.0" layoutY="27.0" text="Poblacion" />
+                <TextField fx:id="txt_poblacion" layoutX="394.0" layoutY="25.0" prefHeight="25.0" prefWidth="170.0" />
+                <Label fx:id="lbl_telefono" layoutX="322.0" layoutY="67.0" text="Telefono" />
+                <TextField fx:id="txt_telefono" layoutX="394.0" layoutY="65.0" prefHeight="25.0" prefWidth="170.0" />
+                <Label fx:id="lbl_email" layoutX="322.0" layoutY="107.0" text="Email" />
+                <TextField fx:id="txt_email" layoutX="394.0" layoutY="105.0" prefHeight="25.0" prefWidth="170.0" />
+                <Label fx:id="lbl_periodo" layoutX="322.0" layoutY="147.0" text="Periodo" />
+                <ComboBox fx:id="cmb_Periodo" layoutX="394.0" layoutY="145.0" prefWidth="170.0" />
+                <Label fx:id="lbl_cuota" layoutX="322.0" layoutY="187.0" text="Cuota" />
+                <TextField fx:id="txt_cuota" layoutX="394.0" layoutY="185.0" prefHeight="25.0" prefWidth="170.0" />
+                <Button fx:id="btn_NuevoSocio" layoutX="437.0" layoutY="285.0" mnemonicParsing="false" text="Generar nuevo Socio" />
+            </children>
+        </Pane>
+        <Label fx:id="lbl_TituloAltaSocios" layoutX="60.0" layoutY="14.0" text="Alta de Socios">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>
