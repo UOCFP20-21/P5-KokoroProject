@@ -3,18 +3,29 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="577.0" prefWidth="388.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.kokoro.controller.OpcionesController">
-<children>
-    <Pane disable="true" focusTraversable="true" prefHeight="578.0" prefWidth="388.0" />
-          <Button fx:id="btn_sede" cancelButton="false" layoutX="27.0" layoutY="30.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="140.0" text="Sede" />
-          <Button fx:id="btn_delegacion" cancelButton="false " layoutX="27.0" layoutY="70.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="140.0" text="Delegaciones" />
-    <Button fx:id="btn_ingresos" cancelButton="false " layoutX="27.0" layoutY="110.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="140.0" text="Ingresos" />
-    <Button fx:id="btn_financiadores" cancelButton="false " layoutX="27.0" layoutY="150.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="140.0" text="Financiadores" />
-    <Button fx:id="btn_proyectos" cancelButton="false " layoutX="27.0" layoutY="190.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="140.0" text="Proyectos" />
-    <Button fx:id="btn_empresas" cancelButton="false " layoutX="27.0" layoutY="230.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="140.0" text="Empresas" />
-    <Button fx:id="btn_trabajadores" cancelButton="false " layoutX="27.0" layoutY="270.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="140.0" text="Trabajadores" />
-    <Button fx:id="btn_socios" cancelButton="false " layoutX="27.0" layoutY="310.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="140.0" text="Socios" />
-
-
-
-</children></AnchorPane>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="494.0" prefWidth="388.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.kokoro.controller.OpcionesController">
+    <children>
+        <Pane disable="false" focusTraversable="true" prefHeight="452.0" prefWidth="388.0">
+         <children>
+              <Button fx:id="btn_sede" cancelButton="true" layoutX="215.0" layoutY="290.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="140.0" text="Sede" />
+              <Button fx:id="btn_delegacion" cancelButton="true " layoutX="215.0" layoutY="250.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="140.0" text="Delegaciones" />
+              <Button fx:id="btn_ingresos" cancelButton="true " layoutX="215.0" layoutY="210.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="140.0" text="Ingresos" />
+              <Button fx:id="btn_financiadores" cancelButton="true " layoutX="215.0" layoutY="170.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="140.0" text="Financiadores" />
+              <Button fx:id="btn_proyectos" cancelButton="true " layoutX="215.0" layoutY="130.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="140.0" text="Proyectos" />
+              <Button fx:id="btn_empresas" cancelButton="true " layoutX="215.0" layoutY="90.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="140.0" text="Empresas" />
+              <Button fx:id="btn_trabajadores" cancelButton="true " layoutX="35.0" layoutY="250.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="140.0" text="Trabajadores" />
+              <Button fx:id="btn_socios" cancelButton="true " layoutX="35.0" layoutY="210.0" mnemonicParsing="false" onAction="#abrirSocios" prefHeight="26.0" prefWidth="140.0" text="Socios" />
+              <Button fx:id="btn_herencias" cancelButton="true " layoutX="35.0" layoutY="170.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="140.0" text="Herencias" />
+              <Button fx:id="btn_particulares" cancelButton="true " layoutX="35.0" layoutY="130.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="140.0" text="Particulares" />
+         </children>
+    </Pane>
+    <Label fx:id="lbl_TituloOpciones" layoutX="60.0" layoutY="14.0" text="Opciones">
+        <font>
+            <Font name="System Bold" size="13.0" />
+        </font>
+    </Label>
+        <Button fx:id="btn_cerrar" cancelButton="true " layoutX="209.0" layoutY="448.0" mnemonicParsing="false"
+                onAction="#cerrarAccion" prefHeight="26.0" prefWidth="140.0" text="Cerrar programa"/>
+    </children>
+</AnchorPane>

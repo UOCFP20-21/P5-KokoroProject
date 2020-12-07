@@ -4,44 +4,50 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="410.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ModificarSocio">
+<AnchorPane prefHeight="410.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.kokoro.controller.ModificarSociosController">
     <children>
         <Pane layoutX="60.0" layoutY="54.0" prefHeight="330.0" prefWidth="586.0">
             <children>
-                <Label fx:id="lbl_idSocio" layoutX="14.0" layoutY="12.0" text="idSocio:" />
-                <TextField fx:id="txt_idSocio" layoutX="119.0" layoutY="8.0" prefHeight="25.0" prefWidth="170.0" />
-                <Label fx:id="lbl_nombre" layoutX="14.0" layoutY="52.0" text="Nombre:" />
-                <TextField fx:id="txt_nombre" layoutX="119.0" layoutY="48.0" prefHeight="25.0" prefWidth="170.0" />
-                <Label fx:id="lbl_apellidos" layoutX="14.0" layoutY="92.0" text="Apellidos:" />
-                <TextField fx:id="txt_apellidos" layoutX="119.0" layoutY="88.0" prefHeight="25.0" prefWidth="170.0" />
-                <Label fx:id="lbl_dni" layoutX="14.0" layoutY="132.0" text="DNI:" />
-                <TextField fx:id="txt_dni" layoutX="119.0" layoutY="128.0" prefHeight="25.0" prefWidth="170.0" />
-                <Label fx:id="lbl_nacionalidad" layoutX="14.0" layoutY="172.0" text="Nacionalidad:" />
-                <TextField fx:id="txt_nacionalidad" layoutX="119.0" layoutY="168.0" prefHeight="25.0" prefWidth="170.0" />
-                <Label fx:id="lbl_direccion" layoutX="14.0" layoutY="212.0" text="Direccion:" />
-                <TextField fx:id="txt_direccion" layoutX="119.0" layoutY="208.0" prefHeight="25.0" prefWidth="170.0" />
-                <Label fx:id="lbl_fechaNac" layoutX="14.0" layoutY="252.0" text="Fecha Nacimiento:" />
-                <DatePicker fx:id="dt_FechaNac" layoutX="119.0" layoutY="248.0" prefHeight="25.0" prefWidth="170.0" />
-                <Label fx:id="lbl_poblacion" layoutX="324.0" layoutY="10.0" text="Poblacion:" />
-                <TextField fx:id="txt_poblacion" layoutX="396.0" layoutY="8.0" prefHeight="25.0" prefWidth="170.0" />
-                <Label fx:id="lbl_telefono" layoutX="324.0" layoutY="50.0" text="Telefono:" />
-                <TextField fx:id="txt_telefono" layoutX="396.0" layoutY="48.0" prefHeight="25.0" prefWidth="170.0" />
-                <Label fx:id="lbl_email" layoutX="324.0" layoutY="90.0" text="Email:" />
-                <TextField fx:id="txt_email" layoutX="396.0" layoutY="88.0" prefHeight="25.0" prefWidth="170.0" />
-                <Label fx:id="lbl_periodo" layoutX="324.0" layoutY="130.0" text="Periodo:" />
-                <ComboBox fx:id="cmb_Periodo" layoutX="396.0" layoutY="128.0" prefWidth="170.0" />
-                <Label fx:id="lbl_cuota" layoutX="324.0" layoutY="170.0" text="Cuota:" />
-                <TextField fx:id="txt_cuota" layoutX="396.0" layoutY="168.0" prefHeight="25.0" prefWidth="170.0" />
-                <Label fx:id="lbl_estado" layoutX="324.0" layoutY="210.0" text="Estado:" />
-                <CheckBox fx:id="chck_estado" layoutX="396.0" layoutY="212.0" mnemonicParsing="true" text="Activo" />
-                <Button fx:id="btn_ModificarSocio" layoutX="467.0" layoutY="284.0" mnemonicParsing="false" text="Modificar Socio" />
-
+                <Label fx:id="lbl_idSocio" layoutX="14.0" layoutY="12.0" text="idSocio:"/>
+                <TextField fx:id="txt_idSocio" layoutX="119.0" layoutY="8.0" prefHeight="25.0" prefWidth="170.0"/>
+                <Label fx:id="lbl_nombre" layoutX="14.0" layoutY="52.0" text="Nombre:"/>
+                <TextField fx:id="txt_nombre" layoutX="119.0" layoutY="48.0" prefHeight="25.0" prefWidth="170.0"/>
+                <Label fx:id="lbl_apellidos" layoutX="14.0" layoutY="92.0" text="Apellidos:"/>
+                <TextField fx:id="txt_apellidos" layoutX="119.0" layoutY="88.0" prefHeight="25.0" prefWidth="170.0"/>
+                <Label fx:id="lbl_dni" layoutX="14.0" layoutY="132.0" text="DNI:"/>
+                <TextField fx:id="txt_dni" layoutX="119.0" layoutY="128.0" prefHeight="25.0" prefWidth="170.0"/>
+                <Label fx:id="lbl_nacionalidad" layoutX="14.0" layoutY="172.0" text="Nacionalidad:"/>
+                <TextField fx:id="txt_nacionalidad" layoutX="119.0" layoutY="168.0" prefHeight="25.0"
+                           prefWidth="170.0"/>
+                <Label fx:id="lbl_direccion" layoutX="14.0" layoutY="212.0" text="Direccion:"/>
+                <TextField fx:id="txt_direccion" layoutX="119.0" layoutY="208.0" prefHeight="25.0" prefWidth="170.0"/>
+                <Label fx:id="lbl_fechaNac" layoutX="14.0" layoutY="252.0" text="Fecha Nacimiento:"/>
+                <DatePicker fx:id="dt_FechaNac" layoutX="119.0" layoutY="248.0" prefHeight="25.0" prefWidth="170.0"/>
+                <Label fx:id="lbl_poblacion" layoutX="324.0" layoutY="10.0" text="Poblacion:"/>
+                <TextField fx:id="txt_poblacion" layoutX="396.0" layoutY="8.0" prefHeight="25.0" prefWidth="170.0"/>
+                <Label fx:id="lbl_telefono" layoutX="324.0" layoutY="50.0" text="Telefono:"/>
+                <TextField fx:id="txt_telefono" layoutX="396.0" layoutY="48.0" prefHeight="25.0" prefWidth="170.0"/>
+                <Label fx:id="lbl_email" layoutX="324.0" layoutY="90.0" text="Email:"/>
+                <TextField fx:id="txt_email" layoutX="396.0" layoutY="88.0" prefHeight="25.0" prefWidth="170.0"/>
+                <Label fx:id="lbl_periodo" layoutX="324.0" layoutY="130.0" text="Periodo:"/>
+                <ComboBox fx:id="cmb_Periodo" layoutX="396.0" layoutY="128.0" prefWidth="170.0"/>
+                <Label fx:id="lbl_cuota" layoutX="324.0" layoutY="170.0" text="Cuota:"/>
+                <TextField fx:id="txt_cuota" layoutX="396.0" layoutY="168.0" prefHeight="25.0" prefWidth="170.0"/>
+                <Label fx:id="lbl_estado" layoutX="324.0" layoutY="210.0" text="Estado:"/>
+                <CheckBox fx:id="chck_estado" layoutX="396.0" layoutY="212.0" mnemonicParsing="true" text="Activo"/>
+                <Button fx:id="btn_ModificarSocio" layoutX="467.0" layoutY="284.0" mnemonicParsing="false"
+                        text="Modificar Socio"/>
             </children>
         </Pane>
         <Label fx:id="lbl_TituloModificarSocio" layoutX="60.0" layoutY="14.0" text="Modificar Socio">
             <font>
-                <Font name="System Bold" size="13.0" />
+                <Font name="System Bold" size="13.0"/>
             </font>
         </Label>
+        <Button fx:id="btn_cerrar" cancelButton="true " layoutX="213.0" layoutY="379.0" mnemonicParsing="false"
+                onAction="#cerrarAccion" prefHeight="26.0" prefWidth="140.0" text="Cerrar programa"/>
+        <Button fx:id="btn_atras" cancelButton="true" layoutX="38.0" layoutY="379.0" mnemonicParsing="false"
+                onAction="#atrasAccion" prefHeight="26.0" prefWidth="140.0" text="Menú de Opciones"/>
     </children>
 </AnchorPane>

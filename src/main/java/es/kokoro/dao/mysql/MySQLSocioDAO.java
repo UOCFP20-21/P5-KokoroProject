@@ -48,7 +48,7 @@ public class MySQLSocioDAO implements SocioDAO {
     @Override
     public List<Socio> getAll() {
         openCurrentSession();
-        List<Socio> socios = getCurrentSession().createQuery("from socios").list();
+        List<Socio> socios = getCurrentSession().createQuery("from Socio").list();
         closeCurrentSession();
 
         return socios;
