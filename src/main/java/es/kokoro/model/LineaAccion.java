@@ -1,28 +1,14 @@
 package es.kokoro.model;
 
-import javax.persistence.*;
-import java.io.Serializable;
-
 /**
  * Clase Linea de Accion
  * Contiene informacion de la Linea de Accion
  */
-@Entity
-@Table(name = "LineasAccion")
-public class LineaAccion implements Serializable {
+public class LineaAccion {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name = "idLineaAccion", unique = true)
     private Long idLineaAccion;
-    @Column(name = "linea", unique = true, nullable = false)
     private String linea;
 
-    public LineaAccion()
-    {
-
-    }
     /***
      *
      * @param idLineaAccion Índice Línea de Acción

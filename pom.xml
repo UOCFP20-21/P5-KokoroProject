@@ -3,10 +3,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.example</groupId>
+
+
+   <groupId>org.example</groupId>
     <artifactId>P5-KokoroProject</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+
     <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -16,10 +21,28 @@
                     <target>8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.3</version>
+                <configuration>
+                    <mainClass>org.openjfx.App</mainClass>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-fxml -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>16-ea+2</version>
+        </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
@@ -55,20 +78,6 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.4.24.Final</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
-		<dependency>
-		    <groupId>org.hibernate</groupId>
-		    <artifactId>hibernate-entitymanager</artifactId>
-		    <version>5.4.24.Final</version>
-		</dependency>
 
-        <!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
-		<dependency>
-		    <groupId>javax.persistence</groupId>
-		    <artifactId>javax.persistence-api</artifactId>
-		    <version>2.2</version>
-		</dependency>
-		        
     </dependencies>
-
 </project>

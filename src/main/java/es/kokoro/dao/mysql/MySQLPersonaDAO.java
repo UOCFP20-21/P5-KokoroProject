@@ -1,4 +1,4 @@
-package es.kokoro.dao.mysql;
+/*package es.kokoro.dao.mysql;
 
 import es.kokoro.model.Persona;
 
@@ -7,7 +7,7 @@ import java.sql.*;
 import static es.kokoro.commons.sqlConection.conectar;
 import static es.kokoro.commons.sqlConection.convertirFecha;
 
-public class MySQLPersonaDAO /*implements PersonaDAO */{
+public class MySQLPersonaDAO implements PersonaDAO {
 
     protected Connection conexion = null;
 
@@ -140,3 +140,4 @@ public class MySQLPersonaDAO /*implements PersonaDAO */{
     }
 
 }
+*/

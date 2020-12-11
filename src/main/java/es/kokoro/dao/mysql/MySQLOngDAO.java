@@ -39,21 +39,20 @@ public class MySQLOngDAO implements OngDAO {
 
     private Ong setObject(ResultSet set)
     {
-        Ong tmpEntrada = null;/*
+        Ong tmpEntrada = null;
         try {
             long idOng = set.getLong("idOng");
             String nombre = set.getString("nombre");
             MySQLDelegacionDAO mySQLDelegacionDAO = new MySQLDelegacionDAO(conexion);
             MySQLIngresoDAO mySQLIngresoDAO = new MySQLIngresoDAO(conexion);
-            MySQLSocioDAO mySQLSocioDAO = new MySQLSocioDAO(conexion);
+            MySQLSocioDAO mySQLSocioDAO = new MySQLSocioDAO();
             MySQLProyectoDAO mySQLProyectoDAO = new MySQLProyectoDAO(conexion);
             tmpEntrada = new Ong(idOng, nombre, mySQLDelegacionDAO.getAll(), mySQLIngresoDAO.getAll(), mySQLSocioDAO.getAll(), mySQLProyectoDAO.getAll());
         } catch (SQLException throwables) {
             System.out.println("Error creando la instancia " + throwables);
         } finally {
             return tmpEntrada;
-        }*/
-        return tmpEntrada;
+        }
     }
 
 

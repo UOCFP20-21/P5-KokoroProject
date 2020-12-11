@@ -1,4 +1,4 @@
-package jpa;
+/*package jpa;
 
 import es.kokoro.dao.hibernate.JPASocioDAO;
 import es.kokoro.enums.Periodo;
@@ -84,3 +84,4 @@ public class JPASocioDAOTest {
         closeManager(jpaSocioDAO.getManager());
     }
 }
+*/

@@ -17,6 +17,7 @@ import java.util.*;
 import static es.kokoro.commons.FormatFecha.FFStringToDate;
 import static es.kokoro.commons.fileXmlBuilder.*;
 import static java.lang.Long.parseLong;
+import static javax.xml.bind.DatatypeConverter.parseInteger;
 
 public class XmlSocioDAO implements SocioDAO {
 
@@ -37,7 +38,7 @@ public class XmlSocioDAO implements SocioDAO {
 
         // atributo para el nodo socio
         Attr attr = doc.createAttribute("id");
-        String saveIdSocio = Long.toString(itemSocio.getIdSocio());
+        String saveIdSocio = Integer.toString(itemSocio.getIdSocio());
         attr.setValue(saveIdSocio);
         eSocio.setAttributeNode(attr);
 
@@ -58,11 +59,6 @@ public class XmlSocioDAO implements SocioDAO {
         }
         eEstado.appendChild(doc.createTextNode(saveEstado));
         eSocio.appendChild(eEstado);
-
-        Element eIdPersona = doc.createElement("idPersona");
-        eIdPersona.appendChild(doc.createTextNode(Long.toString(1L)));
-        //eIdPersona.appendChild(doc.createTextNode(Long.toString(itemSocio.getIdPersona())));
-        eSocio.appendChild(eIdPersona);
 
         return eSocio;
     }
@@ -94,24 +90,22 @@ public class XmlSocioDAO implements SocioDAO {
 
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) // Comrpobamos si el nodo es == al tipo de nodo que hemos pedido
                 {
-                    Element eSocio = (Element) nNode;
+                  //  Element eSocio = (Element) nNode;
 
                     /***
                      * Persona de prueba
                      */
-                    Date tmpDate = FFStringToDate("1983-07-24");
+                    /*Date tmpDate = FFStringToDate("1983-07-24");
                     Periodo tmpPeriodo = Periodo.valueOf(eSocio.getElementsByTagName("tipoPeriodo").item(0).getTextContent());
-                    Persona tmpPersona = new Persona(
-                            parseLong(eSocio.getElementsByTagName("idPersona").item(0).getTextContent()), "Sara", "Planas", "44455578A",
-                            "Española", "calle", "Bcn", "65644846", "fajuh@sdfhaui.conm", tmpDate );
                     Socio tmpSocio = new Socio(
-                            tmpPersona,
-                            parseLong(eSocio.getAttribute("id")),
+                            parseLong(eSocio.getElementsByTagName("idPersona").item(0).getTextContent()), "Sara", "Planas", "44455578A",
+                            "Española", "calle", "Bcn", "65644846", "fajuh@sdfhaui.conm",
+                            parseInteger(eSocio.getAttribute("id")),
                             tmpPeriodo,
                             Double.parseDouble(eSocio.getElementsByTagName("cuota").item(0).getTextContent()),
-                            Boolean.parseBoolean(eSocio.getElementsByTagName("estado").item(0).getTextContent())
+                            Boolean.parseBoolean(eSocio.getElementsByTagName("estado").item(0).getTextContent()), tmpDate
                     );
-                    socioList.add(tmpSocio);
+                    socioList.add(tmpSocio);*/
                 }
             }
 

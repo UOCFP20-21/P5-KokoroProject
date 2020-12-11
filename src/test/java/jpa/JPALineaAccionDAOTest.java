@@ -1,4 +1,4 @@
-package jpa;
+/*package jpa;
 
 import es.kokoro.dao.hibernate.JPALineaAccionDAO;
 import es.kokoro.model.LineaAccion;
@@ -54,3 +54,4 @@ public class JPALineaAccionDAOTest {
         closeManager(jpaLineaAccion.getManager());
     }
 }
+*/

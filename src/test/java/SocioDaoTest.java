@@ -1,4 +1,4 @@
-/*import es.kokoro.dao.xml.XmlFactoryDAO;
+import es.kokoro.dao.xml.XmlFactoryDAO;
 import es.kokoro.enums.Periodo;
 import es.kokoro.model.Socio;
 import org.junit.jupiter.api.AfterEach;
@@ -35,9 +35,9 @@ public class SocioDaoTest {
 
     @Test
     public void testAgregarSocio() throws Exception {
-        Socio socio1 = new Socio(1L, "Daniella", "Robles",
+        Socio socio1 = new Socio( "Daniella", "Robles",
                 "12345678G", "española", "mi casa, 32",
-                "Barcelona", "933535353", "daniella@test.com", 1L,
+                "Barcelona", "933535353", "daniella@test.com", 1,
                 Periodo.TRI, 200.0, true, FFStringToDate("1983-07-24"));
         XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class, xmlFile);
         xmlSocioDao.save(socio1);
@@ -47,17 +47,17 @@ public class SocioDaoTest {
 
     @Test
     public void testListadoSocio() throws Exception {
-        Socio socio1 = new Socio(1L, "Daniella", "Robles",
+        Socio socio1 = new Socio("Daniella", "Robles",
                 "12345678G", "española", "mi casa, 32",
-                "Barcelona", "933535353", "daniella@test.com", 1L,
+                "Barcelona", "933535353", "daniella@test.com", 1,
                 Periodo.TRI, 200.0, true, FFStringToDate("1983-07-24"));
-        Socio socio2 = new Socio(2L, "Alex", "Robles",
+        Socio socio2 = new Socio( "Alex", "Robles",
                 "98765432G", "española", "Calle rio mora, 25",
-                "Barcelona", "678145555", "alex@test.com", 2L,
+                "Barcelona", "678145555", "alex@test.com", 2,
                 Periodo.MES, 30.0, true, FFStringToDate("1983-07-24"));
-        Socio socio3 = new Socio(3L, "Sara", "Planas",
+        Socio socio3 = new Socio( "Sara", "Planas",
                 "12365478A", "francesa", "calle nou pins, 12",
-                "Barcelona", "654987123", "sara@test.com", 3L,
+                "Barcelona", "654987123", "sara@test.com", 3,
                 Periodo.ANU, 500.0, true, FFStringToDate("1983-07-24"));
         XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class, xmlFile);
         xmlSocioDao.save(socio1);
@@ -72,9 +72,9 @@ public class SocioDaoTest {
 
     @Test
     public void testLeerSocio() throws Exception {
-        Socio socio1 = new Socio(1L, "Daniella", "Robles",
+        Socio socio1 = new Socio( "Daniella", "Robles",
                 "12345678G", "española", "mi casa, 32",
-                "Barcelona", "933535353", "daniella@test.com", 1L,
+                "Barcelona", "933535353", "daniella@test.com", 1,
                 Periodo.TRI, 200.0, true, FFStringToDate("1983-07-24"));
         XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class, xmlFile);
         xmlSocioDao.save(socio1);
@@ -85,9 +85,9 @@ public class SocioDaoTest {
 
     @Test
     public void testActualizarSocio() throws Exception {
-        Socio socio1 = new Socio(1L, "Daniella", "Robles",
+        Socio socio1 = new Socio( "Daniella", "Robles",
                 "12345678G", "española", "mi casa, 32",
-                "Barcelona", "933535353", "daniella@test.com", 1L,
+                "Barcelona", "933535353", "daniella@test.com", 1,
                 Periodo.TRI, 200.0, true, FFStringToDate("1983-07-24"));
 
         XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class, xmlFile);
@@ -103,9 +103,9 @@ public class SocioDaoTest {
 
     @Test
     public void testBorrarSocio() throws Exception {
-        Socio socio1 = new Socio(1L, "Daniella", "Robles",
+        Socio socio1 = new Socio( "Daniella", "Robles",
                 "12345678G", "española", "mi casa, 32",
-                "Barcelona", "933535353", "daniella@test.com", 1L,
+                "Barcelona", "933535353", "daniella@test.com", 1,
                 Periodo.TRI, 200.0, true, FFStringToDate("1983-07-24"));
 
         XmlSocioDAO xmlSocioDao = (XmlSocioDAO) XmlFactoryDAO.getXmlFactoryDao(Socio.class, xmlFile);
@@ -117,4 +117,4 @@ public class SocioDaoTest {
     }
 }
 
-*/
+

@@ -1,7 +1,17 @@
 package es.kokoro.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "sublineasaccion")
+
 public class SubLineaAccion {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idSubLinea")
     private Long idSubLinea;
+    @Column(name = "nombreSubLinea")
     private String nombreSubLinea;
 
     /***

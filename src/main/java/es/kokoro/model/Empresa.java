@@ -2,21 +2,37 @@ package es.kokoro.model;
 
 import es.kokoro.model.interfaces.IFinanciador;
 
+import javax.persistence.*;
+import java.util.Date;
+
+
+
 /**
  * Clase empresa
  * Contiene información de la empresa
  */
 public abstract class Empresa implements IFinanciador {
-    //Atributos
+
+
     private Long idEmpresa;
+
     private String nombre;
+
     private String pais;
+
     private String poblacion;
+
     private String direccionSocial;
+
     private String razonSocial;
+
     private String identificacionSocial;
+
     private String telefono;
+
     private String email;
+
+    //Atributos
 
     /***
      *

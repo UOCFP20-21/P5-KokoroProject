@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class sqlConection {
     private static Connection conexion;
-    private static String mysqlUrl = "jdbc:mysql://81.35.210.195:3307/mydb";
+    private static String mysqlUrl = "jdbc:mysql://192.168.1.51:3307/mydbtest?serverTimezone=UTC";
     private static String usuario = "ongjaume";
     private static String password = "ong1234";
 
