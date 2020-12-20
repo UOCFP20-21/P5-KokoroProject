@@ -17,10 +17,8 @@ public class OpcionesController {
 
     @FXML
     public void cerrarAccion(ActionEvent event) {
-
         Stage stage = (Stage) btn_cerrar.getScene().getWindow();
         stage.close();
-
     }
 
     @FXML
