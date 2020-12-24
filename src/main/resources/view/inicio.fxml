@@ -12,7 +12,7 @@
          <effect>
             <ImageInput>
                <source>
-                  <Image url="file:/E:/PROYECTO%20PROGRAMACION%20ORIENTADA%20A%20OBJETOS%20Y%20BBDD/FASE3/entreculturas%20p4.png" />
+                  <Image url="/view/entreculturas.png" />
                </source>
             </ImageInput>
          </effect></AnchorPane>
